@@ -5,6 +5,7 @@ var fs = require('fs');
 var path = require('path');
 var router = require('./router');
 router.require_2_0('./required');
+var domain = require('domain');
 
 //var router = new Router();
 //router.require_2_0('./required');
