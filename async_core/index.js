@@ -9,7 +9,7 @@ var HttpError = require('../errors').HttpError;
 var UploadError = require('../errors').UploadError;
 var EndpointError = require('./endpoint_error');
 var FindFiles = require('node-find-files');
-var config = require('../config');
+var config = require('../core_config');
 //from config: api_api_prefix;
 
 

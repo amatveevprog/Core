@@ -2,7 +2,7 @@ var express1 = require('express');
 var http = require('http');
 var path = require('path');
 var app = express1();
-var config = require('./config');
+var config = require('./core_config');
 
 //var log = require('libs/log')(module);
 //var errorHandler = require('errorhandler');

@@ -1,4 +1,4 @@
-var config = require('../config');
+var config = require('../core_config');
 var regexp = new RegExp(".*"+config.get('api_api_prefix')+".*");
 module.exports = function(app)
 {
