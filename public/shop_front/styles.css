@@ -1,0 +1,21 @@
+.cart_dialog_packs_variant_item
+{
+  opacity:1;
+  background:white;
+   -webkit-transition: opacity 1s;
+
+}
+
+.cart_dialog_packs_variant_item :hover
+{
+    opacity:0.7;
+    -webkit-transition: opacity 1s;
+}
+
+.cart_dialog_packs_variant_item_selected
+{
+  opacity:1;
+  background:white;
+   -webkit-transition: opacity 1s;
+
+}
