@@ -7,5 +7,5 @@ exports.test = function()
     var testdata = {
         data:"testdata"
     };
-    return(data);
+    return(testdata);
 }
