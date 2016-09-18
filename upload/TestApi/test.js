@@ -5,7 +5,9 @@
 exports.test = function()
 {
     var testdata = {
-        data:"testdata"
+        data:"testdata",
+        test_field1: "test_Field_1"
     };
     return(testdata);
 }
+
