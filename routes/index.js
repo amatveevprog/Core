@@ -7,4 +7,5 @@ module.exports = function(app)
     app.get(regexp,require('./api').get);
     app.get("/functions",require('./functions').get);
     app.get("/somepage",require('./somepage').get);
+    app.get("/catalog",require('./catalog').get);
 }
