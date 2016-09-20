@@ -9,7 +9,7 @@ var HttpError = require('../errors').HttpError;
 var UploadError = require('../errors').UploadError;
 var EndpointError = require('./endpoint_error');
 var FindFiles = require('node-find-files');
-var config = require('../core_config');
+var config = require('../config');
 //from config: api_api_prefix;
 
 
@@ -39,13 +39,13 @@ var parseQuery = function (queryString)
 //urlParsed = url.parse(req.url)
 //function enpoint = urlParsed.pathname
 //parameters query(raw, needs to be parsed to array of params) for the function: urlParsed.query
-exports.executeFunction = function(url,callback)
+exports.executeFunction = function(requestUrl,response,callback)
 {
     //1 - проверяем, есть ли данный метод
     //2 - проверяем строку параметров(м.б. null)
     //3 - выполняем функцию на сервере, вызываем коллбэк
     async.waterfall([function(callback){
-        var urlParsed = Url.parse(url);
+        var urlParsed = Url.parse(requestUrl);
         var endpoint = urlParsed.pathname;
         if(router.hasUrl(endpoint))
         {
@@ -59,12 +59,15 @@ exports.executeFunction = function(url,callback)
         if(urlParsed.query==null)
         {
             //вызов с параметром null
-            router.executeOnUrl(endpoint,null,callback);
+            var arr =[];
+            arr.push(response);
+            router.executeOnUrl(endpoint,arr,callback);
         }
         else
         {
             //нормальный вызов
             var arr = parseQuery(urlParsed.query);
+            arr.push(response);
             router.executeOnUrl(endpoint,arr,callback);
         }
     }],callback);

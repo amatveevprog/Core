@@ -133,13 +133,7 @@ Router.prototype.executeOnUrl = function(url,paramArray,callback)
     //смотрим urlArray:
     for(var i=0;i<this.urlArray.length;i++) {
         if (this.urlArray[i].url == url) {
-            if(paramArray!=null) {
                 return callback(null, this.urlArray[i].Function.apply(null, paramArray));
-            }
-            else
-            {
-                return callback(null, this.urlArray[i].Function.apply(null));
-            }
         }
     }
     return callback(new EndpointError("No such endpoint!"));
