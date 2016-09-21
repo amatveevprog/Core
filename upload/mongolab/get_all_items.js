@@ -1,7 +1,7 @@
 
 var productCard = require(process.cwd()+'/models/productCard').product;
 var turnOff = require(process.cwd()+'/models/productCard').turnOff;
-var mongoose = require('../libs/mongoose'),Schema = mongoose.Schema;
+
 
 exports.get_all_items = function () {
     var response = arguments[arguments.length-1];
