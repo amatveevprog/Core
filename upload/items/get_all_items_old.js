@@ -1,3 +1,6 @@
+/**
+ * Created by alexander.bondarik on 21.09.2016.
+ */
 
 
 
@@ -42,7 +45,7 @@ function get_all_items()
 
             console.log('> Sending result to client.... | result = ' + json);
             return(json);
-           //response.writeHead(200, {"Content-Type": "application/json; charset=utf-8"});
+            //response.writeHead(200, {"Content-Type": "application/json; charset=utf-8"});
             //response.write(json);
             //response.end();
         });
