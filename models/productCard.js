@@ -6,14 +6,34 @@ var productcard_schema = new Schema({
         type:String,
         required:true
     },
-    imgsrc:{
-        type:String,
-        unique:false,
-        required:false
-    },
     price:{
         type:Number,
-        required:true,
+        required:true
+    },
+    rate:{
+        type:Number
+    },
+    label:{
+        type:String
+    },
+    //картинка на карточке
+    image_src:{
+        type:String
+    },
+    description:{
+        type:String
+    },
+    categories:{
+        type:Array
+    },
+    photos:{
+        type:Array
+    },
+    variants:{
+        type:Array
+    },
+    type:{
+        type:String
     },
     created:{
         type:Date,
@@ -21,13 +41,55 @@ var productcard_schema = new Schema({
     }
 });
 
-exports.product = mongoose.model('productCard',productcard_schema);
-
+exports.product = mongoose.model('productcard',productcard_schema);
+var product = mongoose.model('productcard',productcard_schema)
 //TODO потом убрать!!!!
 exports.turnOff = function () {
     mongoose.disconnect();
 }
+var turnOff = function () {
+    mongoose.disconnect();
+}
 
+var teaCard = mongoose.model('productcard',productcard_schema);
+var prod1 = new teaCard( {
+    name: "ШАЙ ВАЙ МАЙ",
+price: 400,
+rate: 4.5,
+label: "Мао Фен Ы",
+    image_src: "https://encryptedtbn3.gstatic.com/images?q=tbn:ANd9GcRwEw7rdsvRCmkRdh5O8iBcZaczS4FJhjwhZUgLwpJ7asBYE4Lu" ,
+description:"Сюда описание, заголовки выделять <h4> Какойтозаголовок </h4>",
+categories: [
+"category_green",
+    "category_india",
+    "category_green"],
+photos: [
+    "http://www.playcast.ru/uploads/2015/12/15/16339360.jpg",
+    "http://www.playcast.ru/uploads/2015/12/15/16339360.jpg"
+],
+variants:[
+{
+    "name": "100",
+    "coefficient": 1
+},
+{
+    "name": "250",
+    "coefficient": 2.5
+},
+{
+    "name": "500",
+    "coefficient": 5
+}
+],
+type: "tea" });
+/*
+prod1.save(function(err,affected){
+    if(err){turnOff();throw(err)}
+else{
+        console.log(affected);
+        turnOff();
+    }});
+*/
 
 //вставка в БД
 /*
