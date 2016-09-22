@@ -44,10 +44,10 @@ function get_all_items()
             var json = JSON.stringify(json_item);
 
             console.log('> Sending result to client.... | result = ' + json);
-            return(json);
-            //response.writeHead(200, {"Content-Type": "application/json; charset=utf-8"});
-            //response.write(json);
-            //response.end();
+            //return(json);
+            response.writeHead(200, {"Content-Type": "application/json; charset=utf-8"});
+            response.write(json);
+            response.end();
         });
 
 
