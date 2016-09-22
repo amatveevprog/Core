@@ -1,7 +1,7 @@
 {
   "port":1000,
   "mongoose":{
-    "uri":"mongodb://teatimeshop_service:Lisa1234@ds047315.mlab.com:47315/production",
+    //"uri":"mongodb://teatimeshop_service:Lisa1234@ds047315.mlab.com:47315/production",
     "options":{
       "server":{
         "socketOptions":{
