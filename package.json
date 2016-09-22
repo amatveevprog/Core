@@ -2,7 +2,7 @@
   "name": "TeaTimeCore",
   "version": "0.0.1",
   "dependencies": {
-    
+    "nconf":"2.x"
   },
   "engines": {
 
