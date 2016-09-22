@@ -12,7 +12,7 @@ function get_all_items(response)
     var dbpassword = 'Lisa1234';
     var dbuser = 'teatimeshop_service';
     var url = 'mongodb://'+dbuser+':'+dbpassword+'@ds047315.mlab.com:47315/production';
-
+    console.log(url);
     mongodb.MongoClient.connect(url, function(err, db)
     {
         if(err)
@@ -30,7 +30,7 @@ function get_all_items(response)
             if(err)
             {
                 console.log('error at mongo / data receive error: =  ', err);
-                t
+
                 response.setHeader('Content-Type', 'text/html; charset=UTF-8');
                 response.end(err.toString())
             }

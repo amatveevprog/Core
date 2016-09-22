@@ -4,7 +4,8 @@
   "dependencies": {
     "nconf":"0.x",
     "node-find-files":"0.0.x",
-    "mongoose":"2.x"
+    "mongoose":"2.x",
+    "mongodb":"~1.x"
   },
   "engines": {
 
