@@ -1,3 +1,4 @@
+console.log('ololol now there will be the error:');
 var config = require('../config/config');
 var mongoose = require('mongoose');
 
