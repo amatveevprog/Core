@@ -2,8 +2,10 @@
   "name": "TeaTimeCore",
   "version": "0.0.1",
   "dependencies": {
+
+  },
+  "engines": {
     "npm": "2.x",
     "node": "4.x"
-  },
-  "engines": {}
+  }
 }
