@@ -1,3 +1,6 @@
+
+/*
+
 var mongoose = require('../libs/mongoose'),Schema = mongoose.Schema;
 var util = require('util');
 
@@ -123,6 +126,8 @@ teaCard.find(function (err,data) {
     });
     //console.log(JSON.stringify(data));
     mongoose.disconnect();
+
+ /
 });*/
 //console.log(process.cwd());//для того, чтобы узнать базовую директорию проекта
 

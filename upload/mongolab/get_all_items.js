@@ -1,4 +1,4 @@
-
+/*
 var productCard = require(process.cwd()+'/models/productCard').product;
 var turnOff = require(process.cwd()+'/models/productCard').turnOff;
 
@@ -29,4 +29,4 @@ exports.get_all_items = function () {
 
 
 
-
+*/
