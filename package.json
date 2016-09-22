@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "dependencies": {
     "nconf":"0.x",
-    "node-find-files":"2.x"
+    "node-find-files":"0.0.x"
   },
   "engines": {
 
