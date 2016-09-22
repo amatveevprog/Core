@@ -18,6 +18,9 @@ function get_all_items(response)
         if(err)
         {
             console.log('error at mongo connection / Mongo authorization error: =  ', err);
+            console.log('Error!' + err.toString() +' ');
+            response.setHeader('Content-Type', 'text/html; charset=UTF-8');
+            response.end(err.toString())
             throw err;
         }
 
@@ -27,7 +30,9 @@ function get_all_items(response)
             if(err)
             {
                 console.log('error at mongo / data receive error: =  ', err);
-                throw err;
+                t
+                response.setHeader('Content-Type', 'text/html; charset=UTF-8');
+                response.end(err.toString())
             }
 
             docs.forEach(function (doc)
