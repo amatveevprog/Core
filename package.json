@@ -4,6 +4,10 @@
   "dependencies": {
     "nconf":"0.x",
     "node-find-files":"0.0.x",
+    "express": "~2.5.9",
+    "pg":"~2.x",
+    "mime" : "~1.2.7",
+    "googleapis": "~4.x",
     "mongodb":"~1.x"
   },
   "engines": {
