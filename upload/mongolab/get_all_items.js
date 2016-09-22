@@ -12,7 +12,7 @@ exports.get_all_items = function () {
             response.end(err.toString())
             turnOff();
 
-            //TODO потом убрать
+
         }
         else
         {
@@ -32,4 +32,4 @@ exports.get_all_items = function () {
 */
 
 
-module.exports = function(){return};
+module.exports = function(){  var response = arguments[arguments.length-1]; response.end();};
