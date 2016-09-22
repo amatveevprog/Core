@@ -7,7 +7,9 @@ exports.get_all_items = function () {
     var response = arguments[arguments.length-1];
     productCard.find(function(err,data){
         if(err) {
-            console.log('Error!' + err.toString());
+            console.log('Error!' + err.toString() +' '+ productCard.uri);
+            response.setHeader('Content-Type', 'text/html; charset=UTF-8');
+            response.end(err.toString())
             turnOff();
 
             //TODO потом убрать
