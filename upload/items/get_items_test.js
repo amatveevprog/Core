@@ -1,12 +1,13 @@
 /**
  * Created by alexander.bondarik on 22.09.2016.
  */
-mongodb = require('mongodb');
+
 
 //return catalog items
 
 function get_all_items(response)
 {
+    mongodb = require('mongodb');
     var items_array = [];
     //var uri = 'mongodb://user:pass@host:port/db';
     var dbpassword = 'Lisa1234';
