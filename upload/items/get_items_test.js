@@ -13,7 +13,7 @@ function get_all_items(response)
     //var dbpassword = 'Lisa1234';
     //var dbuser = 'teatimeshop_service';
     //var url = 'mongodb://'+dbuser+':'+dbpassword+'@ds047315.mlab.com:47315/production';
-    var url = mongodb://amatveev_prog:1q2w4r7u9o0p@ds147965.mlab.com:47965/teatimeshop;
+    var url = 'mongodb://amatveev_prog:1q2w4r7u9o0p@ds147965.mlab.com:47965/teatimeshop';
     console.log(url);
     mongodb.MongoClient.connect(url, function(err, db)
     {
