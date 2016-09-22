@@ -32,4 +32,4 @@ exports.get_all_items = function () {
 */
 
 
-module.exports = function(){  var response = arguments[arguments.length-1]; response.end();};
+module.exports.smth = function(){  var response = arguments[arguments.length-1]; response.end();};
