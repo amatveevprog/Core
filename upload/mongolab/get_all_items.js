@@ -7,6 +7,7 @@ exports.get_all_items = function () {
     var response = arguments[arguments.length-1];
     productCard.find(function(err,data){
         if(err) {
+            console.log('Error!' + err.toString());
             turnOff();
 
             //TODO потом убрать
