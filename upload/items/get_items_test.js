@@ -30,7 +30,6 @@ function get_all_items(response)
             if(err)
             {
                 console.log('error at mongo / data receive error: =  ', err);
-                t
                 response.setHeader('Content-Type', 'text/html; charset=UTF-8');
                 response.end(err.toString())
             }
