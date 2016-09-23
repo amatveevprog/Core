@@ -19,7 +19,7 @@ function Category_widget(widget_object)
          catalog_object.Update_Categories;
      }
 
-    //Parse_Types_Level
+    //Parse_Types_Level 1
     this.parse_types = function(widget_object,html_object,selected_type)
     {
         for(var type in widget_object.categories_data.types)
@@ -27,7 +27,7 @@ function Category_widget(widget_object)
             console.log(widget_object.categories_data.types);
             if(widget_object.categories_data.types[type].groups_type == selected_type)
             {
-                widget_object.parse_groups(widget_object,widget_html,widget_object.categories_data.types[type].groups_type);
+                widget_object.parse_groups(widget_object,html_object,widget_object.categories_data.types[type].groups_type);
             }
             else
             {
@@ -36,7 +36,7 @@ function Category_widget(widget_object)
         }
     }
 
-   //Parse_array_groups_Level
+   //Parse_array_groups_Level 2
     this.parse_groups = function(widget_object,html_object,type_data)
     {
         for(var group in type_data)
