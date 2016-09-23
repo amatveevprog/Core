@@ -22,12 +22,12 @@ function Category_widget(widget_object)
     //Parse_Types_Level
     this.parse_types = function(widget_object,html_object,selected_type)
     {
-        for(var type in widget_object.types)
+        for(var type in widget_object.categories_data.types)
         {
-            console.log(widget_object.types);
-            if(widget_object.types[type].groups_type == selected_type)
+            console.log(widget_object.categories_data.types);
+            if(widget_object.categories_data.types[type].groups_type == selected_type)
             {
-                widget_object.parse_groups(widget_object,widget_html,widget_object.types[type].groups_type);
+                widget_object.parse_groups(widget_object,widget_html,widget_object.categories_data.types[type].groups_type);
             }
             else
             {
@@ -145,53 +145,84 @@ cart_widget.target_div = 'category_widget_div';
 cart_widget.categories_data =
 
 {
-    "groups":[
+    "types": [
         {
-            "id":"tea_type",
-            "label":"Тип чая",
-            "icon":"invert_colors",
-            "categories":[
+            "groups_type": "tea",
+            "groups": [
                 {
-                    "id":"category_green",
-                    "label":"Зеленые"
+                    "id":"tea_pots",
+                    "label":"чайники",
+                    "icon":"invert_colors",
+                    "categories":[
+                        {
+                            "id": "category_glass_pots",
+                            "label": "Стеклянные"
+                        }
+                    ]
                 },
                 {
-                    "id":"category_red",
-                    "label":"Красные"
-                },
-                {
-                    "id":"category_ulyn",
-                    "label":"Улуны"
-                },
-                {
-                    "id":"category_puerh",
-                    "label":"Пуэры"
+                    "id":"tea_cups",
+                    "label":"чашки",
+                    "icon":"invert_colors",
+                    "categories":[
+                        {
+                            "id": "category_pottery_cups",
+                            "label": "Глиненные"
+                        }
+                    ]
                 }
             ]
         },
         {
-            "id":"country",
-            "label":"Страна",
-            "icon":"account_balance",
-            "categories":[
+            "groups_type": "tea",
+            "groups": [
                 {
-                    "id":"category_china",
-                    "label":"Китай"
+                    "id": "tea_type",
+                    "label": "Тип чая",
+                    "icon": "invert_colors",
+                    "categories": [
+                        {
+                            "id": "category_green",
+                            "label": "Зеленые"
+                        },
+                        {
+                            "id": "category_red",
+                            "label": "Красные"
+                        },
+                        {
+                            "id": "category_ulyn",
+                            "label": "Улуны"
+                        },
+                        {
+                            "id": "category_puerh",
+                            "label": "Пуэры"
+                        }
+                    ]
                 },
                 {
-                    "id":"category_india",
-                    "label":"Индия"
-                },
-                {
-                    "id":"category_japan",
-                    "label":"Япония"
-                },
-                {
-                    "id":"category_srilanka",
-                    "label":"Шриланка"
+                    "id": "country",
+                    "label": "Страна",
+                    "icon": "account_balance",
+                    "categories": [
+                        {
+                            "id": "category_china",
+                            "label": "Китай"
+                        },
+                        {
+                            "id": "category_india",
+                            "label": "Индия"
+                        },
+                        {
+                            "id": "category_japan",
+                            "label": "Япония"
+                        },
+                        {
+                            "id": "category_srilanka",
+                            "label": "Япония"
+                        }
+                    ]
                 }
             ]
-
         }
     ]
 };
