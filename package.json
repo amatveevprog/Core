@@ -5,6 +5,7 @@
 
   },
   "engines": {
-      "mongoose":"4.1.9"
+       "mongoose":"4.1.9",
+       "express":"4.x"
   }
 }
