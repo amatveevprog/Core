@@ -1,0 +1,63 @@
+
+{
+  "groups":[
+    {
+      "id":"tea_type",
+      "label":"Тип чая",
+      "icon":"invert_colors",
+      "categories":[
+        {
+          "id":"green_tea",
+          "label":"Зеленые"
+        },
+        {
+          "id":"red_tea",
+          "label":"Красные"
+        },
+        {
+          "id":"puerh_tea",
+          "label":"Пуэры"
+        }
+      ]
+    },
+    {
+      "id":"country",
+      "label":"Страна",
+      "icon":"account_balance",
+      "categories":[
+        {
+          "id":"china",
+          "label":"Китай"
+        },
+        {
+          "id":"india",
+          "label":"Индия"
+        },
+        {
+          "id":"Japan",
+          "label":"Япония"
+        }
+      ]
+
+    },
+    {
+      "id":"additional",
+      "label":"Дополнительно",
+      "icon":"whatshot",
+      "categories":[
+        {
+          "id":"elite",
+          "label":"Элитные"
+        },
+        {
+          "id":"promo",
+          "label":"Акции"
+        },
+        {
+          "id":"new",
+          "label":"новинки"
+        }
+      ]
+    }
+  ]
+}
