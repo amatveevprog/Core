@@ -27,7 +27,7 @@ function Category_widget(widget_object)
             console.log(widget_object.categories_data.types);
             if(widget_object.categories_data.types[type].groups_type == selected_type)
             {
-                widget_object.parse_groups(widget_object,html_object,widget_object.categories_data.types[type].groups_type);
+                widget_object.parse_groups(widget_object,html_object,widget_object.categories_data.types[type].groups);
             }
             else
             {
