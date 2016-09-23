@@ -1,52 +1,82 @@
-
 {
-  "groups":[
+  "types": [
     {
-      "id":"tea_type",
-      "label":"Тип чая",
-      "icon":"invert_colors",
-      "categories":[
+      "groups_type": "tea",
+      "groups": [
         {
-          "id":"category_green",
-          "label":"Зеленые"
+          "id":"tea_pots",
+        "label":"чайники",
+        "icon":"invert_colors",
+        "categories":[
+          {
+            "id": "category_glass_pots",
+            "label": "Стеклянные"
+          }
+          ]
         },
         {
-          "id":"category_red",
-          "label":"Красные"
-        },
-        {
-          "id":"category_ulyn",
-          "label":"Улуны"
-        },
-        {
-          "id":"category_puerh",
-          "label":"Пуэры"
+          "id":"tea_cups",
+          "label":"чашки",
+          "icon":"invert_colors",
+          "categories":[
+            {
+              "id": "category_pottery_cups",
+              "label": "Глиненные"
+            }
+          ]
         }
       ]
     },
     {
-      "id":"country",
-      "label":"Страна",
-      "icon":"account_balance",
-      "categories":[
+      "groups_type": "tea",
+      "groups": [
         {
-          "id":"category_china",
-          "label":"Китай"
+          "id": "tea_type",
+          "label": "Тип чая",
+          "icon": "invert_colors",
+          "categories": [
+            {
+              "id": "category_green",
+              "label": "Зеленые"
+            },
+            {
+              "id": "category_red",
+              "label": "Красные"
+            },
+            {
+              "id": "category_ulyn",
+              "label": "Улуны"
+            },
+            {
+              "id": "category_puerh",
+              "label": "Пуэры"
+            }
+          ]
         },
         {
-          "id":"category_india",
-          "label":"Индия"
-        },
-        {
-          "id":"category_japan",
-          "label":"Япония"
-        },
-        {
-          "id":"category_srilanka",
-          "label":"Япония"
+          "id": "country",
+          "label": "Страна",
+          "icon": "account_balance",
+          "categories": [
+            {
+              "id": "category_china",
+              "label": "Китай"
+            },
+            {
+              "id": "category_india",
+              "label": "Индия"
+            },
+            {
+              "id": "category_japan",
+              "label": "Япония"
+            },
+            {
+              "id": "category_srilanka",
+              "label": "Япония"
+            }
+          ]
         }
       ]
-
     }
   ]
 }

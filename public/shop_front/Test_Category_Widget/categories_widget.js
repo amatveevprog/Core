@@ -15,15 +15,31 @@ function Category_widget(widget_object)
          var widget_html = document.createElement('ul');
          widget_html.className = 'collapsible';
          widget_html.setAttribute('data-collapsible','expandable')
-         widget_object.parse_groups(widget_object,widget_html);
+         widget_object.parse_types(widget_object,widget_html,'tea');
          catalog_object.Update_Categories;
-
      }
 
-   //Parse_array_groups_Level
-    this.parse_groups = function(widget_object,html_object)
+    //Parse_Types_Level
+    this.parse_types = function(widget_object,html_object,selected_type)
     {
-        for(var group in widget_object.categories_data.groups)
+        for(var type in widget_object.types)
+        {
+            console.log(widget_object.types);
+            if(widget_object.types[type].groups_type == selected_type)
+            {
+                widget_object.parse_groups(widget_object,widget_html,widget_object.types[type].groups_type);
+            }
+            else
+            {
+                console.log('error! no such type in categories data');
+            }
+        }
+    }
+
+   //Parse_array_groups_Level
+    this.parse_groups = function(widget_object,html_object,type_data)
+    {
+        for(var group in type_data)
         {
             //create_group_object
             var html_group_object = document.createElement('li');
