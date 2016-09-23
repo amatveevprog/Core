@@ -45,10 +45,10 @@ function Category_widget(widget_object)
             var html_group_object = document.createElement('li');
 
             //create_group_head
-            var group_head = widget_object.create_group_head(widget_object,widget_object.categories_data.groups[group]);
+            var group_head = widget_object.create_group_head(widget_object,type_data.categories_data.groups[group]);
 
             //creare_group_body
-            var group_body = widget_object.create_group_body(widget_object,widget_object.categories_data.groups[group]);
+            var group_body = widget_object.create_group_body(widget_object,type_data.categories_data.groups[group]);
 
             //create_group
             html_group_object.appendChild(group_head);
