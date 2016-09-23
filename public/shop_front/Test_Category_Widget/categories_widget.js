@@ -121,8 +121,10 @@ function Category_widget(widget_object)
 //Test Init
 
 var cart_widget = new Category_widget();
-cart_widget.target_div = 'test_widget';
+cart_widget.target_div = 'category_widget_div';
+
 cart_widget.categories_data =
+
 {
     "groups":[
         {
@@ -131,15 +133,19 @@ cart_widget.categories_data =
             "icon":"invert_colors",
             "categories":[
                 {
-                    "id":"green_tea",
+                    "id":"category_green",
                     "label":"Зеленые"
                 },
                 {
-                    "id":"red_tea",
+                    "id":"category_red",
                     "label":"Красные"
                 },
                 {
-                    "id":"puerh_tea",
+                    "id":"category_ulyn",
+                    "label":"Улуны"
+                },
+                {
+                    "id":"category_puerh",
                     "label":"Пуэры"
                 }
             ]
@@ -150,38 +156,23 @@ cart_widget.categories_data =
             "icon":"account_balance",
             "categories":[
                 {
-                    "id":"china",
+                    "id":"category_china",
                     "label":"Китай"
                 },
                 {
-                    "id":"india",
+                    "id":"category_india",
                     "label":"Индия"
                 },
                 {
-                    "id":"Japan",
+                    "id":"category_japan",
+                    "label":"Япония"
+                },
+                {
+                    "id":"category_srilanka",
                     "label":"Япония"
                 }
             ]
 
-        },
-        {
-            "id":"additional",
-            "label":"Дополнительно",
-            "icon":"whatshot",
-            "categories":[
-                {
-                    "id":"elite",
-                    "label":"Элитные"
-                },
-                {
-                    "id":"promo",
-                    "label":"Акции"
-                },
-                {
-                    "id":"new",
-                    "label":"новинки"
-                }
-            ]
         }
     ]
 };

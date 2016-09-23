@@ -43,77 +43,10 @@
   <div id = 'category_sidebar' class = '' >
     <div style = "white">
         <button id = 'category_pin_button' onclick = 'category_pin()'> закрепить </button>
-
-     <!-- Accordeon-->
-       <ul class="collapsible" data-collapsible="expandable">
-         <li>
-           <div class="collapsible-header"><i class="material-icons small">invert_colors</i>Тип чая</div>
-           <div class="collapsible-body">
-
-               <p style = 'padding-top:5px; padding-bottom:5px; padding-left:5px'>
-                 <input type="checkbox" id="category_green" onchange = 'start_fasset_search()' checked="checked"/>
-                 <label for="category_green" id = 'label_category_green'>Зеленые </label>
-               </p>
-               <p style = 'padding-top:5px; padding-bottom:5px; padding-left:5px'>
-                 <input type="checkbox" id="category_red" onchange = 'start_fasset_search()' checked="checked"/>
-                 <label for="category_red" id = 'label_category_red'>Красные (15)</label>
-               </p>
-               <p style = 'padding-top:5px; padding-bottom:5px; padding-left:5px'>
-                 <input type="checkbox" id="category_puerh" onchange = 'start_fasset_search()'checked="checked"/>
-                 <label for="category_puerh" id = 'label_category_puerh'>Пуэры  (6)</label>
-               </p>
-               <p style = 'padding-top:5px; padding-bottom:5px; padding-left:5px'>
-                 <input type="checkbox" id="category_ulyn" onchange = 'start_fasset_search()' checked="checked"/>
-                 <label for="category_ulyn" id = 'label_category_ulyn'>Улуны (5)</label>
-               </p>
-
-           </div>
-         </li>
-         <li>
-           <div class="collapsible-header"><i class="material-icons small">account_balance</i>Страна</div>
-           <div class="collapsible-body">
-
-               <p style = 'padding-top:5px; padding-bottom:5px; padding-left:5px'>
-                 <input type="checkbox" id="category_china" onchange = 'start_fasset_search()' checked="checked"/>
-                 <label for="category_china" id = 'label_category_china'>Китай</label>
-               </p>
-               <p style = 'padding-top:5px; padding-bottom:5px; padding-left:5px'>
-                 <input type="checkbox" id="category_india"  onchange = 'start_fasset_search()'checked="checked"/>
-                 <label for="category_india" id = 'label_category_india'>Индия</label>
-               </p>
-               <p style = 'padding-top:5px; padding-bottom:5px; padding-left:5px'>
-                 <input type="checkbox" id="category_japan"  onchange = 'start_fasset_search()'checked="checked"/>
-                 <label for="category_japan" id = 'label_category_japan'>Япония</label>
-               </p>
-               <p style = 'padding-top:5px; padding-bottom:5px; padding-left:5px'>
-                 <input type="checkbox" id="category_srilanka"  onchange = 'start_fasset_search()'checked="checked"/>
-                 <label for="category_srilanka" id = 'label_category_srilanka'>Шри-Ланка</label>
-               </p>
-
-
-       </div>
-         </li>
-         <li>
-           <div class="collapsible-header"><i class="material-icons small">whatshot</i>Дополнительно</div>
-           <div class="collapsible-body">
-
-               <p style = 'padding-top:5px; padding-bottom:5px; padding-left:5px'>
-                 <input type="checkbox" id="test51" />
-                 <label for="test51">Акции</label>
-               </p>
-               <p style = 'padding-top:5px; padding-bottom:5px; padding-left:5px'>
-                 <input type="checkbox" id="test61" />
-                 <label for="test61">Элитные</label>
-               </p>
-               <p style = 'padding-top:5px; padding-bottom:5px; padding-left:5px'>
-                 <input type="checkbox" id="test71" />
-                 <label for="test71">Новинки</label>
-               </p>
-
+        <!-- Accordeon -->
+        <div id = 'category_widget_div'>
 
          </div>
-        </li>
-       </ul>
    </div>
   </div>
 </div>
@@ -202,4 +135,7 @@ $(document).ready(function(){
 </script>
 <script src = 'shop_front/cart.js'>
 </script>
-<script src = 'shop_front/ClientServer.js'></script>
+<script src = 'shop_front/ClientServer.js'>
+</script>
+<script src = 'shop_front/Test_Category_Widget/categories_widget.js'>
+</script>

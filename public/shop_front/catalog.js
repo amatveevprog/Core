@@ -178,6 +178,9 @@ function start_fasset_search()
 
    var pre_fasset_array = [];
    var faset_array = [];
+
+
+
    var t1_value = document.getElementById('category_green');
    var t2_value = document.getElementById('category_red');
    var t3_value = document.getElementById('category_ulyn');
