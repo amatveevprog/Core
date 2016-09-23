@@ -84,12 +84,14 @@ function Category_widget(widget_object)
                 {
                     this_ref.arrayOfUnchecked.push(event.target.id);
                     console.log(this_ref.arrayOfUnchecked);
+                    catalog_object.search(this_ref.arrayOfUnchecked);
                 }
                 else
                 {
                     var index = this_ref.arrayOfUnchecked.indexOf(event.target.id);
                     this_ref.arrayOfUnchecked.splice(index,1);
                     console.log(this_ref.arrayOfUnchecked);
+                    catalog_object.search(this_ref.arrayOfUnchecked);
                 }
 
             });
