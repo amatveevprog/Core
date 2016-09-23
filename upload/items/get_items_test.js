@@ -9,11 +9,11 @@ function get_all_items(response)
 {
     mongodb = require('mongodb');
     var items_array = [];
-    //var uri = 'mongodb://user:pass@host:port/db';
-    //var dbpassword = 'Lisa1234';
-    //var dbuser = 'teatimeshop_service';
-    //var url = 'mongodb://'+dbuser+':'+dbpassword+'@ds047315.mlab.com:47315/production';
-    var url = 'mongodb://amatveev_prog:1q2w4r7u9o0p@ds147965.mlab.com:47965/teatimeshop';
+    var uri = 'mongodb://user:pass@host:port/db';
+    var dbpassword = 'Lisa1234';
+    var dbuser = 'teatimeshop_service';
+    var url = 'mongodb://'+dbuser+':'+dbpassword+'@ds047315.mlab.com:47315/production';
+    //var url = 'mongodb://amatveev_prog:1q2w4r7u9o0p@ds147965.mlab.com:47965/teatimeshop';
     console.log(url);
     mongodb.MongoClient.connect(url, function(err, db)
     {
@@ -26,8 +26,8 @@ function get_all_items(response)
             throw err;
         }
 
-        //var items = db.collection('items');
-        var items = db.collection('productcards');
+        var items = db.collection('items');
+        //var items = db.collection('productcards');
         items.find().toArray(function (err, docs)
         {
             if(err)
