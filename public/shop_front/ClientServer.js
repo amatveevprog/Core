@@ -16,7 +16,7 @@ $(document).ready(function()
 function get_all_items()
 {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/catalog?method=get_all_items', true);
+    xhr.open('GET', '/API/get_items_test_js_get_all_items_int', true);
     xhr.send();
     xhr.onreadystatechange = function()
     {
