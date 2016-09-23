@@ -16,6 +16,7 @@ function Category_widget(widget_object)
          widget_html.className = 'collapsible';
          widget_html.setAttribute('data-collapsible','expandable')
          widget_object.parse_groups(widget_object,widget_html);
+         catalog_object.Update_Categories;
 
      }
 
@@ -171,7 +172,7 @@ cart_widget.categories_data =
                 },
                 {
                     "id":"category_srilanka",
-                    "label":"Япония"
+                    "label":"Шриланка"
                 }
             ]
 
