@@ -147,7 +147,7 @@ cart_widget.categories_data =
 {
     "types": [
         {
-            "groups_type": "tea",
+            "groups_type": "dishes",
             "groups": [
                 {
                     "id":"tea_pots",
