@@ -6,7 +6,7 @@ function Category_widget(widget_object)
 {
     this.categories_data = '';
     this.target_div = '';
-
+    this.arrayOfUnchecked=[];
 
 
   //Initialization
@@ -77,6 +77,22 @@ function Category_widget(widget_object)
             input.type = 'checkbox';
             input.id = id_value;
             input.onChange = function(){console.log('changed!')};
+            var this_ref = this;
+            input.addEventListener("click",function(event){
+                event.stopPropagation();
+                if(event.target.checked==false)
+                {
+                    this_ref.arrayOfUnchecked.push(event.target.id);
+                    console.log(this_ref.arrayOfUnchecked);
+                }
+                else
+                {
+                    var index = this_ref.arrayOfUnchecked.indexOf(event.target.id);
+                    this_ref.arrayOfUnchecked.splice(index,1);
+                    console.log(this_ref.arrayOfUnchecked);
+                }
+
+            });
             input.checked = 'checked';
             var label = document.createElement('label');
             label.setAttribute('for',id_value);
