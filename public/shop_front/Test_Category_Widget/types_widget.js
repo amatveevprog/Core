@@ -18,7 +18,7 @@ var types_menu = function()
          button.id =  types_menu_object.types_data[type].groups_label;
          types_div.appendChild();
       }
-      document.getElementById(types_menu_object.target_div).appendChild(types_div);
+      var target_object = document.getElementById(types_menu_object.target_div).appendChild(types_div);
 
     }
 }
