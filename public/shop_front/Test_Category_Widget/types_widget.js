@@ -16,6 +16,11 @@ var types_menu = function()
          var button = document.createElement('button');
          button.innerText =  cart_widget.categories_data.types[type].groups_label;
          button.id =   cart_widget.categories_data.types[type].groups_label;
+          button.addEventListener("click",function(event) {
+              event.stopPropagation();
+              var selected_type = event.target.id;
+              console.log(selected_type);
+          });
          types_div.appendChild();
       }
       var target_object = document.getElementById(types_menu_object.target_div).appendChild(types_div);
