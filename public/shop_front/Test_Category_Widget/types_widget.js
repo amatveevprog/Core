@@ -11,11 +11,11 @@ var types_menu = function()
     this.init = function(types_menu_object,categories_object)
     {
       var types_div = document.createElement('div');
-      for(var type in types_menu_object.types_data)
+      for(var type in types_menu_object)
       {
          var button = document.createElement('button');
-         button.innerText = types_menu_object.types_data[type].groups_label;
-         button.id =  types_menu_object.types_data[type].groups_label;
+         button.innerText = types_menu_object[type].groups_label;
+         button.id =  types_menu_object[type].groups_label;
          types_div.appendChild();
       }
       var target_object = document.getElementById(types_menu_object.target_div).appendChild(types_div);
