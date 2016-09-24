@@ -2,9 +2,10 @@
   "types": [
     {
       "groups_type": "dishes",
+      "groups_label":"Посуда",
       "groups": [
         {
-          "id":"tea_pots",
+        "id":"tea_pots",
         "label":"чайники",
         "icon":"invert_colors",
         "categories":[
@@ -29,6 +30,7 @@
     },
     {
       "groups_type": "tea",
+      "groups_label":"Чай",
       "groups": [
         {
           "id": "tea_type",
