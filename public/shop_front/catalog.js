@@ -68,6 +68,7 @@ function catalog()
       //iterate through all the items
      for (var i in this.items)
       {
+
         var fassets_flag = 0;
         for(var j in faset_array)
          {
@@ -75,7 +76,8 @@ function catalog()
            for(var c in this.items[i].categories)
             {
                 // To be optimized!!! move up to prevent additional clooping
-              if((this.items[i].categories[c] == faset_array[j])&(this.items[i].type == selected_type))
+                console.log('lets compare ' + this.items[i].type + '  vs  '+selected_type);
+              if((this.items[i].categories[c] == faset_array[j])||(this.items[i].type != selected_type))
                {
                   check_category_flag = check_category_flag + 1;
                }
