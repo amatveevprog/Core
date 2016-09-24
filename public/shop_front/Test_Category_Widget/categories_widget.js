@@ -12,7 +12,7 @@ function Category_widget(widget_object)
   //Initialization
      this.init = function(widget_object,selected_type)
      {
-         document.getElementById(widget_object.target_div).innerHTML = '';
+         //document.getElementById(widget_object.target_div).innerHTML = '';
          var widget_html = document.createElement('ul');
          widget_html.className = 'collapsible';
          widget_html.setAttribute('data-collapsible','expandable')
