@@ -8,18 +8,19 @@ var types_menu = function()
     this.target_div = '';
     //this.categories_object = {};
 
-    this.init = function(types_menu_object,cart_widget)
+    this.init = function(types_menu_object,category_widget)
     {
       var types_div = document.createElement('div');
-      for(var type in cart_widget.categories_data.types)
+      for(var type in category_widget.categories_data.types)
       {
          var button = document.createElement('button');
-         button.innerText =  cart_widget.categories_data.types[type].groups_label;
-         button.id =   cart_widget.categories_data.types[type].groups_label;
-          button.addEventListener("click",function(event) {
+         button.innerText =  category_widget.categories_data.types[type].groups_label;
+         button.id =   category_widget.categories_data.types[type].groups_type;
+          button.addEventListener("click",function(event)
+          {
               event.stopPropagation();
               var selected_type = event.target.id;
-              console.log(selected_type);
+              cart_widget.init(category_widget,selected_type);
           });
          types_div.appendChild(button);
       }

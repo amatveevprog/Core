@@ -10,12 +10,13 @@ function Category_widget(widget_object)
 
 
   //Initialization
-     this.init = function(widget_object)
+     this.init = function(widget_object,selected_type)
      {
+         document.getElementById(widget_object.target_div).innerHTML = '';
          var widget_html = document.createElement('ul');
          widget_html.className = 'collapsible';
          widget_html.setAttribute('data-collapsible','expandable')
-         widget_object.parse_types(widget_object,widget_html,'tea');
+         widget_object.parse_types(widget_object,widget_html,selected_type);
          catalog_object.Update_Categories;
      }
 
@@ -225,5 +226,5 @@ cart_widget.categories_data =
         }
     ]
 };
-cart_widget.init(cart_widget);
+cart_widget.init(cart_widget,'tea');
 
