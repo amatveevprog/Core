@@ -21,7 +21,7 @@ var types_menu = function()
               var selected_type = event.target.id;
               console.log(selected_type);
           });
-         types_div.appendChild();
+         types_div.appendChild(button);
       }
       var target_object = document.getElementById(types_menu_object.target_div).appendChild(types_div);
 
