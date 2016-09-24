@@ -77,7 +77,7 @@ function catalog()
             {
                 // To be optimized!!! move up to prevent additional clooping
                 console.log('lets compare ' + this.items[i].type + '  vs  '+selected_type);
-              if((this.items[i].categories[c] == faset_array[j])||(this.items[i].type != selected_type))
+              if(this.items[i].categories[c] == faset_array[j])
                {
                   check_category_flag = check_category_flag + 1;
                }
@@ -89,7 +89,7 @@ function catalog()
              }
          }
           //check if all the fassets are applicable
-          if (fassets_flag  == 0)
+          if ((fassets_flag  == 0)&&(this.items[i].type==selected_type))
            {
              this.filtered_items.push(this.items[i]);
              paint_item(this.items[i],this.tile_item_template);

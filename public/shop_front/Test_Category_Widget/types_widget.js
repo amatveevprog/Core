@@ -23,6 +23,7 @@ var types_menu = function()
               console.log(selected_type);
               cart_widget.selected_type = selected_type;
               cart_widget.init(category_widget);
+
           });
          types_div.appendChild(button);
       }

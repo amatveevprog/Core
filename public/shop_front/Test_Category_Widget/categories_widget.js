@@ -20,6 +20,8 @@ function Category_widget(widget_object)
          widget_html.setAttribute('data-collapsible','expandable');
          widget_object.parse_types(widget_object,widget_html,widget_object.selected_type);
          catalog_object.Update_Categories;
+         var fasset_array = ['null'];
+         catalog_object.search(fasset_array,this.selected_type);
          $('.collapsible').collapsible({
              accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
          });
