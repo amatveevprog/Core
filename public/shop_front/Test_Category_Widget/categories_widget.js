@@ -221,7 +221,7 @@ cart_widget.categories_data =
                         },
                         {
                             "id": "category_srilanka",
-                            "label": "Япония"
+                            "label": "Шри-Ланка"
                         }
                     ]
                 }
