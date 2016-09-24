@@ -145,6 +145,7 @@ cart_widget.categories_data =
     "types": [
         {
             "groups_type": "dishes",
+            "groups_label":"Посуда",
             "groups": [
                 {
                     "id":"tea_pots",
@@ -172,6 +173,7 @@ cart_widget.categories_data =
         },
         {
             "groups_type": "tea",
+            "groups_label":"Чай",
             "groups": [
                 {
                     "id": "tea_type",
