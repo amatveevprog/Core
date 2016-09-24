@@ -15,9 +15,12 @@ function Category_widget(widget_object)
          //document.getElementById(widget_object.target_div).innerHTML = '';
          var widget_html = document.createElement('ul');
          widget_html.className = 'collapsible';
-         widget_html.setAttribute('data-collapsible','expandable')
+         widget_html.setAttribute('data-collapsible','expandable');
          widget_object.parse_types(widget_object,widget_html,selected_type);
          catalog_object.Update_Categories;
+         $('.collapsible').collapsible({
+             accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+         });
      }
 
     //Parse_Types_Level 1
