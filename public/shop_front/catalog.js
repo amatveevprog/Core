@@ -58,7 +58,7 @@ function catalog()
 
 
  //search in all items_area
- this.search = function(faset_array)
+ this.search = function(faset_array,selected_type)
   {
      //erase array
       this.filtered_items = [];
@@ -72,7 +72,8 @@ function catalog()
            var check_category_flag = 0;
            for(var c in this.items[i].categories)
             {
-              if(this.items[i].categories[c] == faset_array[j])
+                // To be optimized!!! move up to prevent additional clooping
+              if((this.items[i].categories[c] == faset_array[j])&(this.items[i].type == selected_type))
                {
                   check_category_flag = check_category_flag + 1;
                }
@@ -109,7 +110,10 @@ function catalog()
       {
           for(var c in this.items)
            {
+              //Check selected_type
+
              //iterate through categories in items
+
               for(var t in this.items[c].categories)
               {
                 if(this.items[c].categories[t] == this.categories[j].id)

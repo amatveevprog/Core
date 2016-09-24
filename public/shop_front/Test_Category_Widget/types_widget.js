@@ -20,7 +20,9 @@ var types_menu = function()
           {
               event.stopPropagation();
               var selected_type = event.target.id;
-              cart_widget.init(category_widget,selected_type);
+              console.log(selected_type);
+              cart_widget.selected_type = selected_type;
+              cart_widget.init(category_widget);
           });
          types_div.appendChild(button);
       }

@@ -7,16 +7,18 @@ function Category_widget(widget_object)
     this.categories_data = '';
     this.target_div = '';
     this.arrayOfUnchecked=[];
+    this.selected_type = '';
 
 
   //Initialization
-     this.init = function(widget_object,selected_type)
+     this.init = function(widget_object)
      {
+         this.arrayOfUnchecked=[];
          document.getElementById(widget_object.target_div).innerHTML = '';
          var widget_html = document.createElement('ul');
          widget_html.className = 'collapsible';
          widget_html.setAttribute('data-collapsible','expandable');
-         widget_object.parse_types(widget_object,widget_html,selected_type);
+         widget_object.parse_types(widget_object,widget_html,widget_object.selected_type);
          catalog_object.Update_Categories;
          $('.collapsible').collapsible({
              accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
@@ -104,15 +106,13 @@ function Category_widget(widget_object)
                 if(event.target.checked==false)
                 {
                     this_ref.arrayOfUnchecked.push(event.target.id);
-                    console.log(this_ref.arrayOfUnchecked);
-                    catalog_object.search(this_ref.arrayOfUnchecked);
+                    catalog_object.search(this_ref.arrayOfUnchecked,widget_object.selected_type);
                 }
                 else
                 {
                     var index = this_ref.arrayOfUnchecked.indexOf(event.target.id);
                     this_ref.arrayOfUnchecked.splice(index,1);
-                    console.log(this_ref.arrayOfUnchecked);
-                    catalog_object.search(this_ref.arrayOfUnchecked);
+                    catalog_object.search(this_ref.arrayOfUnchecked,widget_object.selected_type);
                 }
 
             });
@@ -141,7 +141,7 @@ function Category_widget(widget_object)
 
 var cart_widget = new Category_widget();
 cart_widget.target_div = 'category_widget_div';
-
+cart_widget.selected_type = 'tea';
 
 cart_widget.categories_data =
 
@@ -229,5 +229,5 @@ cart_widget.categories_data =
         }
     ]
 };
-cart_widget.init(cart_widget,'tea');
+cart_widget.init(cart_widget);
 
