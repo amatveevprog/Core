@@ -60,6 +60,8 @@ function catalog()
  //search in all items_area
  this.search = function(faset_array,selected_type)
   {
+
+      console.log('start search wirh fasset = '+faset_array);
      //erase array
       this.filtered_items = [];
       document.getElementById('items_area').innerHTML = '';
@@ -126,10 +128,11 @@ function catalog()
       }
 
    //RUN UPDATE categories
-   this.Update_Categories();
+   //this.Update_Categories();
   };
 
-//Update_Categories
+//
+
 this.Update_Categories = function()
  {
    console.log('start updating ' + this.categories.length);
@@ -145,6 +148,7 @@ this.Update_Categories = function()
    }
 
  };
+
 
 //INIT draw categories
 
