@@ -45,10 +45,10 @@ function Category_widget(widget_object)
             var html_group_object = document.createElement('li');
 
             //create_group_head
-            var group_head = widget_object.create_group_head(widget_object,type_data[group].categories);
+            var group_head = widget_object.create_group_head(widget_object,type_data[group]);
 
             //creare_group_body
-            var group_body = widget_object.create_group_body(widget_object,type_data[group].categories);
+            var group_body = widget_object.create_group_body(widget_object,type_data[group]);
 
             //create_group
             html_group_object.appendChild(group_head);
@@ -133,14 +133,18 @@ function Category_widget(widget_object)
 
 }
 
+var catalog_object_class = function(){
 
+    this.Update_Categories = function(){console.log('ololo')};
+};
 
-
+catalog_object = new catalog_object_class();
 
 //Test Init
 
 var cart_widget = new Category_widget();
 cart_widget.target_div = 'category_widget_div';
+
 
 cart_widget.categories_data =
 
@@ -227,3 +231,4 @@ cart_widget.categories_data =
     ]
 };
 cart_widget.init(cart_widget);
+
