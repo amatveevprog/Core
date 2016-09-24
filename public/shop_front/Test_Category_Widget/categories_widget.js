@@ -133,13 +133,6 @@ function Category_widget(widget_object)
 
 }
 
-var catalog_object_class = function(){
-
-    this.Update_Categories = function(){console.log('ololo')};
-};
-
-catalog_object = new catalog_object_class();
-
 //Test Init
 
 var cart_widget = new Category_widget();
