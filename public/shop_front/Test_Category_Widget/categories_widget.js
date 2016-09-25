@@ -51,7 +51,7 @@ function Category_widget(widget_object)
         {
             //create_group_object
             var html_group_object = document.createElement('li');
-
+            html_group_object.className='active';
             //create_group_head
             var group_head = widget_object.create_group_head(widget_object,type_data[group]);
 
@@ -74,7 +74,7 @@ function Category_widget(widget_object)
     this.create_group_head = function(widget_object, group)
     {
        var group_head = document.createElement('div');
-        group_head.className = 'collapsible-header';
+        group_head.className = 'collapsible-header active';
        var group_icon = document.createElement('i');
         group_icon.className = 'material-icons small';
         group_icon.innerText = group.icon;
