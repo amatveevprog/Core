@@ -1,0 +1,7 @@
+{
+  "basic_session":{
+  "html": "true",
+"session_id":"1234567890",
+  "session_state":"ordinary_user"
+}
+}

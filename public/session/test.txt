@@ -27,7 +27,6 @@
         </form>
     <div id="downloaded"></div>
     <script>
-
         document.forms.upload.onsubmit = function()
         {
             var input = this.elements.module;
