@@ -1,4 +1,4 @@
-
+console.log("sdfsdfasfsfsaf");
 function run()
 {
     try
@@ -30,50 +30,77 @@ function saveJSONStorageData(json_data){
     }
     window.localStorage['StorageJSONData'] = JSON.stringify(json_data);
 }
-function register()
-{
-    window.onload = function () {
-        if((window.localStorage['StorageData']!=null)&&(window.localStorage['StorageData']!='undefined')) {
-        }
-            loadStorageData();
-        }
-    }
-    window.onunload = function () {
-        saveStorageData(fs.readFileSync('test.txt').toString());
-    }
-}
+/*function register()
+ {
+ window.onload = function () {
+ if((window.localStorage['StorageData']!=null)&&(window.localStorage['StorageData']!='undefined')) {
+ }
+ loadStorageData();
+ }
+ }
+ window.onunload = function () {
+ saveStorageData(fs.readFileSync('test.txt').toString());
+ }
+ }*/
 function loadStorageData() {
     var object = getStorageData();
     if((object.html!=null)&&(object.html!='undefined')) {
         window.document.write(window.localStorage['StorageData']);
     }
 }
-function getStorageData()
+function getStorageData(urlPath,callback)
 {
-    let obj={html:null,json:null};
+    var obj={html:null,json:null};
     //obj.html = window.localStorage['StorageData'];
     var XHR = new XMLHttpRequest();
     XHR.onload = XHR.onerror = function () {
         if(this.status==200)
         {
-            document.textContent=XHR.responseText;
+            window.document.textContent=XHR.responseText;
+            saveStorageData(XHR.responseText);
+            obj.json = window.localStorage['StorageJSONData'];
+            obj.html = window.localStorage['StorageData'];
+            callback(null,obj);
         }
         else
         {
             console.log("error: "+ this.status);
         }
     }
-    obj.json = window.localStorage['StorageJSONData'];
-    return obj;
+    XHR.open("GET",urlPath,true);
+    XHR.send();
+    /*XHR.onreadystatechange = function () {
+ if(XHR.readyState!=4)
+ {
+ return;
+ }
+ if(XHR.status!=200)
+ {
+ alert(XHR.status+":"+XHR.statusText);
+ }
+ else
+ {
+ document.textContent=XHR.responseText;
+ }
+ }*/
+
 }
 //функция отправки
 function saveHtmlSnapShot()
 {
-    let htmlString = window.document;
+    var htmlString = window.document.body;
     saveStorageData(htmlString);
 }
-function onLoad()
+function checkIfIwasHere()
 {
-    
+    try
+    {
+        return 'StorageData' in window.localStorage && window.localStorage['StorageData']!== null;
+    }
+    catch(e)
+    {
+        return false;
+    }
 }
+
 
