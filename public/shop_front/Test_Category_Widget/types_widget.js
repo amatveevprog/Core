@@ -14,8 +14,8 @@ var types_menu = function()
       for(var type in category_widget.categories_data.types)
       {
          var button = document.createElement('button');
-         button.innerText =  category_widget.categories_data.types[type].groups_label;
-         button.id =   category_widget.categories_data.types[type].groups_type;
+         button.innerText =  category_widget.categories_data.types[type].group_label;
+         button.id =   category_widget.categories_data.types[type].group_type;
           button.addEventListener("click",function(event)
           {
               event.stopPropagation();

@@ -9,5 +9,5 @@ module.exports = function(app)
     app.get("/somepage",require('./somepage').get);
     app.get("/catalog",require('./catalog').get);
     app.get("/session",require('./session').get);
-    app.get("/specialpage",require('./specailpage'.get));
+    //app.get("/specialpage",require('./specailpage'.get));
 }

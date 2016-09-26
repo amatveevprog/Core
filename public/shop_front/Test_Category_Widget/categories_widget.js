@@ -33,7 +33,7 @@ function Category_widget(widget_object)
         for(var type in widget_object.categories_data.types)
         {
             console.log(widget_object.categories_data.types);
-            if(widget_object.categories_data.types[type].groups_type == selected_type)
+            if(widget_object.categories_data.types[type].group_type == selected_type)
             {
                 widget_object.parse_groups(widget_object,html_object,widget_object.categories_data.types[type].groups);
             }
@@ -150,8 +150,8 @@ cart_widget.categories_data =
 {
     "types": [
         {
-            "groups_type": "dishes",
-            "groups_label":"Посуда",
+            "group_type": "dishes",
+            "group_label":"Посуда",
             "groups": [
                 {
                     "id":"tea_pots",
@@ -178,8 +178,8 @@ cart_widget.categories_data =
             ]
         },
         {
-            "groups_type": "tea",
-            "groups_label":"Чай",
+            "group_type": "tea",
+            "group_label":"Чай",
             "groups": [
                 {
                     "id": "tea_type",

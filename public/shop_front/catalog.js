@@ -27,7 +27,11 @@ function catalog()
      for(var i in this.filtered_items)
       {
         var item = this.filtered_items[i];
-        paint_item(item,this.tile_item_template);
+        var items_area = document.createElement('div');
+
+
+        paint_item(item,this.tile_item_template,items_area);
+
       }
    };
  

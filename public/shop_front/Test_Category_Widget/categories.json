@@ -1,8 +1,8 @@
 {
   "types": [
     {
-      "groups_type": "dishes",
-      "groups_label":"Посуда",
+      "group_type": "dishes",
+      "group_label":"Посуда",
       "groups": [
         {
         "id":"tea_pots",
@@ -29,8 +29,8 @@
       ]
     },
     {
-      "groups_type": "tea",
-      "groups_label":"Чай",
+      "group_type": "tea",
+      "group_label":"Чай",
       "groups": [
         {
           "id": "tea_type",
