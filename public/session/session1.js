@@ -88,8 +88,17 @@ function getStorageData(urlPath,callback)
 //функция отправки
 function saveHtmlSnapShot()
 {
-    var htmlString = window.document.body;
+    var htmlString = window.document.body.innerHTML;
     saveStorageData(htmlString);
+}
+function restoreHtmlSnapshot()
+{
+    document.body.innerHTML = window.localStorage['StorageData'];
+}
+//функция очистки
+function clearHtml()
+{
+    window.document.body.innerHTML="";
 }
 function checkIfIwasHere()
 {
