@@ -75,7 +75,7 @@ function catalog()
 
         for(var i = this.partially_paint_batch_size * this.partially_position; i<=this.filtered_items.length; i++)
         {
-            console.log('lets paint item!' );
+            //console.log('lets paint item!' );
             var item = this.filtered_items[i];
 
             if(i>this.partially_paint_batch_size * this.partially_position+this.partially_paint_batch_size)
@@ -133,7 +133,7 @@ function catalog()
            for(var c in this.items[i].categories)
             {
                 // To be optimized!!! move up to prevent additional clooping
-                console.log('lets compare ' + this.items[i].type + '  vs  '+selected_type);
+               // console.log('lets compare ' + this.items[i].type + '  vs  '+selected_type);
               if(this.items[i].categories[c] == faset_array[j])
                {
                   check_category_flag = check_category_flag + 1;
