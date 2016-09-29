@@ -20,7 +20,7 @@ function catalog()
    this.categories_template = '';
 
     //partially paint batch size
-    this.partially_paint_batch_size = 12;
+    this.partially_paint_batch_size = 10;
     this.partially_paint_array_to_paint = [];
     this.partially_position = 1;
 
@@ -149,11 +149,12 @@ function catalog()
           if ((fassets_flag  == 0)&&(this.items[i].type==selected_type))
            {
              this.filtered_items.push(this.items[i]);
-             paint_item(this.items[i],this.tile_item_template);
+             //paint_item(this.items[i],this.tile_item_template);
            }
 
       }
         this.Count_current_categories();
+        this.paint_all_items();
   };
 
   // Count_current_categories
