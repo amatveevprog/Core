@@ -20,7 +20,7 @@ function catalog()
    this.categories_template = '';
 
     //partially paint batch size
-    this.partially_paint_batch_size = 20;
+    this.partially_paint_batch_size = 12;
     this.partially_paint_array_to_paint = [];
     this.partially_position = 1;
 
@@ -35,7 +35,8 @@ function catalog()
               if(this.filtered_items.length >20)
               {
                   var scroll_block = window;
-                  this.partially_paint_init(scroll_block);
+                  var this_ref = this;
+                  this.partially_paint_init(scroll_block,this_ref);
               }
               return('true');
           }
@@ -50,13 +51,16 @@ function catalog()
 
    //  [========  Partually_Paint   ==============]
     //scroll bottom
-  this.partially_paint_init = function(scroll_block)
+  this.partially_paint_init = function(scroll_block,this_ref)
   {
-      document.getElementById('items_container').addEventListener('scroll',function(e){
 
-          if(scroll_block.scrollTop == scroll_block.scrollHeight-scroll_block.clientHeight)
+      scroll_block.addEventListener('scroll',function(e){
+          var check = scroll_block.scrollHeight-scroll_block.clientHeight - scroll_block.scrollTop;
+          //console.log('qweqwe'+window.scrollTop+' ' + window.height+' ' +document.height+' ' +window.pageYOffset+'Scroll event.  Check = ' +check +'  ' + scroll_block.scrollHeight + '  ' + scroll_block.clientHeight + '  '+ scroll_block.scrollTop);
+
+          if((window.innerHeight + window.scrollY) >= document.body.offsetHeight)
           {
-              this.partially_paint_paint_new_batch(scroll_block);
+              this_ref.partially_paint_paint_new_batch(scroll_block);
           }
       });
 
@@ -65,9 +69,13 @@ function catalog()
    // paint new_portion
    this.partially_paint_paint_new_batch = function(scroll_block)
     {
+        console.log('lets_paint' );
         var items_area = document.createElement('div');
-        for(var i = this.partially_paint_batch_size * this.partially_position; i<=this.filtered_items;i++)
+
+
+        for(var i = this.partially_paint_batch_size * this.partially_position; i<=this.filtered_items.length; i++)
         {
+            console.log('lets paint item!' );
             var item = this.filtered_items[i];
 
             if(i>this.partially_paint_batch_size * this.partially_position+this.partially_paint_batch_size)

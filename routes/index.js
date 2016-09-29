@@ -8,6 +8,7 @@ module.exports = function(app)
     app.get("/functions",require('./functions').get);
     app.get("/somepage",require('./somepage').get);
     app.get("/catalog",require('./catalog').get);
+    app.get("/catalog_experimental",require('./catalog_experimental').get);
     app.get("/session",require('./session').get);
     app.get("/specialpage",require('./specialpage').get);
 }
