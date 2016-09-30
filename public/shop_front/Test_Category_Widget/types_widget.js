@@ -13,9 +13,10 @@ var types_menu = function()
       var types_div = document.createElement('div');
       for(var type in category_widget.categories_data.types)
       {
-         var button = document.createElement('button');
+         var button = document.createElement('a');
          button.innerText =  category_widget.categories_data.types[type].group_label;
          button.id =   category_widget.categories_data.types[type].group_type;
+          button.className = 'waves-effect waves-light btn';
           button.addEventListener("click",function(event)
           {
               event.stopPropagation();

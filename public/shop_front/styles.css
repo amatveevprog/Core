@@ -19,3 +19,27 @@
    -webkit-transition: opacity 1s;
 
 }
+
+.collapsible
+{
+    padding:0;
+    margin:0;
+}
+
+p
+{
+    padding:0;
+    margin:0;
+}
+
+ul
+{
+    padding:0;
+    margin:0;
+}
+
+li
+{
+    padding:0;
+    margin:0;
+}

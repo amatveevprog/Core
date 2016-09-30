@@ -340,7 +340,7 @@ for (var i in categories_json.categories)
     var category_div = document.getElementById('category_sidebar');
     category_div.className = 'pinned';
     var button = document.getElementById('category_pin_button');
-    button.innerHTML = 'открепить';
+    button.innerHTML = 'открепить панель';
      button.onclick = function(){category_unpin();};
   }
 
@@ -350,7 +350,7 @@ for (var i in categories_json.categories)
    var category_div = document.getElementById('category_sidebar');
    category_div.className = '';
    var button = document.getElementById('category_pin_button');
-   button.innerHTML = 'закрепить';
+   button.innerHTML = 'закрепить панель';
    button.onclick = function(){category_pin();};
  }
 //END_PIN
