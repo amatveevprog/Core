@@ -5,13 +5,13 @@ function registerEvents(timeStampDeltaMinutes)
         if(checkIfIwasHere()==true)
         {
             //сначала проверяем, соответствует ли timestamp разумным пределам
-            let DeltaMinutes = timeStampDeltaMinutes;
-            let dateNow = new Date();
+            let DeltaMinutes = parseFloat(timeStampDeltaMinutes)*1000;
+            console.log("your delta: "+DeltaMinutes);
+            let dateNow = Date.now();
             console.log("now time is: " + dateNow);
-            let lastTimeStamp = localStorage['TimeStamp'];
+            let lastTimeStamp = parseFloat(localStorage['TimeStamp']);
             console.log("lsat saved time: "+ lastTimeStamp);
-            let delta = dateNow.getMinutes()-lastTimeStamp.getMinutes();
-
+            let delta = dateNow-lastTimeStamp;
             console.log("delta: "+ delta);
             if(delta <= DeltaMinutes) {
                 clearHtml();
