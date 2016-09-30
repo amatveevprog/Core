@@ -291,14 +291,14 @@ var catalog_object = new catalog();
 
 //верстальшик сделал больше строк
 
-var element_html_template = '<div class="card" style = "width:200px">' +
+var element_html_template = '<div class="card" style = "width:235px">' +
     '<div class="card-image waves-effect waves-block waves-light">   ' +
     '<img id = "catalog_tile_image_src" class="activator" src="'
-       + " &catalog_tile_image_src&" + '" style = "height: 200px; width:200px">     </div>' +
+       + " &catalog_tile_image_src&" + '" style = "height: 200px; width:235px">     </div>' +
     '<div class="card-content"><span id = "catalog_tile_label"  class="card-title activator truncate grey-text text-darken-4">'
-       + "&catalog_tile_label&"+'<br><i class="material-icons right">more_vert</i></span> <div class = "row"><div class = "col m19 s9 l9 9"><br><p><a id = "catalog_tile_open_item" class="waves-effect waves-light btn" style="width:135px; text-align: left;" onclick = "open_item('
-       + "&catalog_tile_open_item&"+')">ПОДРОБНЕЕ</a></p></div><div class = "col m8 s3 l3 3"><h5 id = "catalog_tile_price" style="vertical-align: bottom;">'
-       +"&catalog_tile_price&"+ '</h5></div></div></div><div class="card-reveal"><span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span><p>Here is some more information about this product that is only revealed once clicked on.</p></div> </div>';
+       + "&catalog_tile_label&"+'<br><i class="material-icons right">more_vert</i></span> <div class = "row"><div class = "col m19 s9 l9 9"><br><p><a id = "catalog_tile_open_item" class="waves-effect waves-light btn" style="width:145px; text-align: left;" onclick = "open_item('
+       + "&catalog_tile_open_item&"+')">ПОДРОБНЕЕ</a></p></div><div class = "col m8 s3 l3 3"><h6 id = "catalog_tile_price" style="font-size: 130%">'
+       +"&catalog_tile_price&"+ '</h6></div></div></div><div class="card-reveal"><span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span><p>Here is some more information about this product that is only revealed once clicked on.</p></div> </div>';
 
 catalog_object.tile_item_template = element_html_template;
 
