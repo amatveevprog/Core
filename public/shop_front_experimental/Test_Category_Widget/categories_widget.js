@@ -104,7 +104,7 @@ function Category_widget(widget_object)
             input.id = id_value;
             //input.onChange = function(){console.log('changed!')};
             var this_ref = this;
-            input.checked = 'true';
+            //input.checked = 'checked';
             input.className = 'category_widget_check_box';
             input.addEventListener("click",function(event){
                 event.stopPropagation();
@@ -121,7 +121,7 @@ function Category_widget(widget_object)
                 }
 
             });
-
+            input.checked = 'checked';
             var label = document.createElement('label');
             label.setAttribute('for',id_value);
             label.id = 'label_'+id_value;
