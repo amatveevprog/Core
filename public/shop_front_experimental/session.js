@@ -1,6 +1,6 @@
 function registerEvents(timeStampDeltaMinutes)
 {
-    window.onload = function () {
+    /*window.onload = function () {
 
 
         if(checkIfIwasHere()==true)
@@ -8,15 +8,15 @@ function registerEvents(timeStampDeltaMinutes)
             clearHtml();
             restoreHtmlSnapshot();
             //сначала проверяем, соответствует ли timestamp разумным пределам
-            /*let DeltaMinutes = parseFloat(timeStampDeltaMinutes)*1000;
+            /!*let DeltaMinutes = parseFloat(timeStampDeltaMinutes)*1000;
             console.log("your delta: "+DeltaMinutes);
             let dateNow = Date.now();
             console.log("now time is: " + dateNow);
             let lastTimeStamp = parseFloat(localStorage['TimeStamp']);
             console.log("lsat saved time: "+ lastTimeStamp);
             let delta = dateNow-lastTimeStamp;
-            console.log("delta: "+ delta);*/
-            /*if(delta <= DeltaMinutes) {
+            console.log("delta: "+ delta);*!/
+            /!*if(delta <= DeltaMinutes) {
                 clearHtml();
                 restoreHtmlSnapshot();
             }
@@ -25,9 +25,9 @@ function registerEvents(timeStampDeltaMinutes)
                 //если вышли за пределы, то удаляем данные из локального хранилища
                 //можно ничего не делать, т.к. при закрытии новый снэпшот все равно сохранится
 
-            }*/
+            }*!/
         }
-    }
+    }*/
     window.onbeforeunload = function () {
         //делаем снапшот
         //window.localStorage['TimeStamp'] = Date.now();
