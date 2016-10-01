@@ -1,0 +1,84 @@
+{
+  "types": [
+    {
+      "group_type": "dishes",
+      "group_label":"Посуда",
+      "groups": [
+        {
+        "id":"tea_pots",
+        "label":"чайники",
+        "icon":"invert_colors",
+        "categories":[
+          {
+            "id": "category_glass_pots",
+            "label": "Стеклянные"
+          }
+          ]
+        },
+        {
+          "id":"tea_cups",
+          "label":"чашки",
+          "icon":"invert_colors",
+          "categories":[
+            {
+              "id": "category_pottery_cups",
+              "label": "Глиненные"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "group_type": "tea",
+      "group_label":"Чай",
+      "groups": [
+        {
+          "id": "tea_type",
+          "label": "Тип чая",
+          "icon": "invert_colors",
+          "categories": [
+            {
+              "id": "category_green",
+              "label": "Зеленые"
+            },
+            {
+              "id": "category_red",
+              "label": "Красные"
+            },
+            {
+              "id": "category_ulyn",
+              "label": "Улуны"
+            },
+            {
+              "id": "category_puerh",
+              "label": "Пуэры"
+            }
+          ]
+        },
+        {
+          "id": "country",
+          "label": "Страна",
+          "icon": "account_balance",
+          "categories": [
+            {
+              "id": "category_china",
+              "label": "Китай"
+            },
+            {
+              "id": "category_india",
+              "label": "Индия"
+            },
+            {
+              "id": "category_japan",
+              "label": "Япония"
+            },
+            {
+              "id": "category_srilanka",
+              "label": "Япония"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

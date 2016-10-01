@@ -4,39 +4,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="shop_front/styles.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" media="screen,projection">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" media="screen,projection">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 
 <head>
  <body class="grey lighten-4">
-
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
   
        <div class = "col s12 m12 l12 12" style = "position:fixed; width:100%; z-index:100;background:#FAFAFA">
        </div>
 
        <div class = "row" style = "margin-bottom:0px;">
-           <div class = 'col s12 m5 l4 3'>
+           <div class = 'col s13 m2 l3 3'>
             <div class = 'row' style = 'margin-bottom:0px;'>
-                <img src = "http://cs636917.vk.me/v636917513/118b2/90RyVUBPnec.jpg" style = 'max-height:60px;'> </img>
+                <img src = "http://cs636917.vk.me/v636917513/118b2/90RyVUBPnec.jpg" style = 'max-height:55px;'> </img>
            </div>
           </div>
-           <div class = 'col s6 m5 l3 4'>
-
-           </div>
-
-           <div class = 'col s5 m4 l3 3'>
+          <div class = 'col s3 m2 l3 3'>
              Есть вопросы? +7 987 7899889
           </div>
-          <div class = 'col s12 m3 l2 3 hoverable  light-green' style="float:right;">
+          <div class = 'col s4 m4 l4 4'>
+
+          </div>
+          <div class = 'col s12 m4 l2 3 hoverable  light-green'>
               <div class = 'row' id = 'shopping_cart_wrapper'>
               </div>
           </div>
         </div>
 
 
-<div id = 'main_area' style = 'background:#f5f5f5' class = 'row' style = 'margin-top:20%;'>
+<div id = 'main_area' style = 'margin-top:5%;background:#f5f5f5' class = 'row' style = 'margin-top:20%;'>
     <div class = 'col s12 m12 l12 12' id = 'types_area'>
 
     </div>
@@ -44,7 +42,7 @@
 <div class = 'col s12 m2 l2 2'>
   <div id = 'category_sidebar' class = '' >
     <div style = 'white'>
-        <a id = 'category_pin_button' onclick = 'category_pin()' style='waves-effect waves-light btn'>закрепить панель</a>
+        <button id = 'category_pin_button' onclick = 'category_pin()'> закрепить </button>
         <!-- Accordeon -->
         <div id = 'category_widget_div'>
 
@@ -54,22 +52,22 @@
 </div>
 
 <!-- STart Main Catalog Area-->
-<div class = 'col s12 m10 l10 10' style="float:right;">
+<div class = 'col s12 m10 l10 10'>
  <div class="container">
    <!-- Search Area -->
    <div class="row center-align" style = 'margin-top:5%;' >
-       <!-- область сортировки -->
+    область сортировки
    </div>
 
 
-     <div class="row center-align" id = 'items_area' style = 'margin-top:3%;'>
-     </div>
+   <div class="row center-align" id = 'items_area' style = 'margin-top:3%;'>
+   </div>
 
-     </div>
-     </div>
-    </div>
+ </div>
+ </div>
+</div>
 
-    <!-- modal window -->
+<!-- modal window -->
 <div id="modal_window" class="modal  modal-fixed-footer" style = 'width:95%; overflow:visible'>
   <div class="modal-content" id = 'modal_content' style = 'overflow:auto'>
   </div>
