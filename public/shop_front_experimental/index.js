@@ -26,11 +26,11 @@ $(document).ready(function()
 
        //Get Objects
 
-       catalog_object = new catalog();
-       category_widget = new Category_widget();
-       types_menu_object = new types_menu();
-       item_object = new item_card();
-        cart_object = new shopping_cart();
+       catalog_object =  window.localStorage['catalog_object'];
+       category_widget =  window.localStorage['category_widget'];
+       types_menu_object =  window.localStorage['types_menu_object'];
+       item_object =  window.localStorage['item_object'];
+        cart_object =  window.localStorage['cart_object'];
 
        // Draw_HTML
           document.body.innerHTML = window.localStorage['htmlSnapshot'];
