@@ -291,10 +291,10 @@ var catalog_object = new catalog();
 
 //верстальшик сделал больше строк
 
-var element_html_template = '<div class="card" style = "width:235px; max-height:365px;">' +
+var element_html_template = '<div class="card" style = "min-width:225px; max-width:240px; max-height:365px;">' +
     '<div class="card-image waves-effect waves-block waves-light">   ' +
     '<img id = "catalog_tile_image_src" class="activator" src="'
-       + " &catalog_tile_image_src&" + '" style = "height: 200px; width:235px">     </div>' +
+       + " &catalog_tile_image_src&" + '" style = "height: 200px; min-width:225px; max-width:240px;">     </div>' +
     '<div class="card-content"><span id = "catalog_tile_label"  class="card-title activator truncate grey-text text-darken-4">'
        + "&catalog_tile_label&"+'<br><i class="material-icons right">more_vert</i></span> <div class = "row"><div class = "col m19 s9 l9 9"><p><a id = "catalog_tile_open_item" class="waves-effect waves-light btn" style="width:145px; text-align: left;" onclick = "open_item('
        + "&catalog_tile_open_item&"+')">ПОДРОБНЕЕ</a></p></div><div class = "col m8 s3 l3 3"><h6 id = "catalog_tile_price" style="font-size: 130%">'
