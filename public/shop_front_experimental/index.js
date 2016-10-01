@@ -30,7 +30,7 @@ $(document).ready(function()
        category_widget =  window.localStorage['category_widget'];
        types_menu_object =  window.localStorage['types_menu_object'];
        item_object =  window.localStorage['item_object'];
-        cart_object =  window.localStorage['cart_object'];
+       cart_object =  window.localStorage['cart_object'];
 
        // Draw_HTML
           document.body.innerHTML = window.localStorage['htmlSnapshot'];
@@ -210,7 +210,7 @@ function check_categories(categories_object)
 
         for(var j in categories_object.arrayOfUnchecked)
         {
-            if (check_boxes[i].id == categories_object.arrayOfUnchecked[j])
+            if (check_boxes[i].id != categories_object.arrayOfUnchecked[j])
             {
                 check_boxes[i].checked = 'true';
             }
