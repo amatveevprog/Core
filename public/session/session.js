@@ -4,7 +4,9 @@ function registerEvents(timeStampDeltaMinutes)
 
         if(checkIfIwasHere()==true)
         {
-            //сначала проверяем, соответствует ли timestamp разумным пределам
+            clearHtml();
+            restoreHtmlSnapshot();
+            /*//сначала проверяем, соответствует ли timestamp разумным пределам
             let DeltaMinutes = parseFloat(timeStampDeltaMinutes)*1000;
             console.log("your delta: "+DeltaMinutes);
             let dateNow = Date.now();
@@ -22,7 +24,7 @@ function registerEvents(timeStampDeltaMinutes)
                 //если вышли за пределы, то удаляем данные из локального хранилища
                 //можно ничего не делать, т.к. при закрытии новый снэпшот все равно сохранится
 
-            }
+            }*/
         }
     }
     window.onbeforeunload = function () {

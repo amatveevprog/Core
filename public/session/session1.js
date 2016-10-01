@@ -1,4 +1,4 @@
-console.log("sdfsdfasfsfsaf");
+//console.log("sdfsdfasfsfsaf");
 function run()
 {
     try
@@ -17,7 +17,7 @@ function saveStorageData(string_data) {
         //удаляем предыдущую StorageData перед добавлением
         //случай, когда в браузере есть данные о предыдущем заходе
         window.localStorage.removeItem('StorageData');
-        console.log("Вы уже здесь были!!!");
+        //console.log("Вы уже здесь были!!!");
     }
     window.localStorage['StorageData'] = string_data;
 }
@@ -26,7 +26,7 @@ function saveJSONStorageData(json_data){
     {
         //удаляем предыдущую StorageData перед добавлением
         //случай, когда в браузере есть данные о предыдущем заходе
-        window.localStorage.removeItem('StorageJSONData');
+        //window.localStorage.removeItem('StorageJSONData');
     }
     window.localStorage['StorageJSONData'] = JSON.stringify(json_data);
 }
