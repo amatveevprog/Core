@@ -102,8 +102,10 @@ function Category_widget(widget_object)
             var input = document.createElement('input');
             input.type = 'checkbox';
             input.id = id_value;
-            input.onChange = function(){console.log('changed!')};
+            //input.onChange = function(){console.log('changed!')};
             var this_ref = this;
+            input.checked = 'true';
+            input.className = 'category_widget_check_box';
             input.addEventListener("click",function(event){
                 event.stopPropagation();
                 if(event.target.checked==false)
@@ -119,7 +121,7 @@ function Category_widget(widget_object)
                 }
 
             });
-            input.checked = 'checked';
+
             var label = document.createElement('label');
             label.setAttribute('for',id_value);
             label.id = 'label_'+id_value;

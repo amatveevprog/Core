@@ -4,25 +4,44 @@
 
 //Global Variables
 var  catalog_object = new catalog();
-var cart_widget = new Category_widget();
+var category_widget = new Category_widget();
 var types_menu_object = new types_menu();
 var item_object = new item_card();
+var cart_object = new shopping_cart();
 
 
 
 
 $(document).ready(function()
 {
+    //STart to register evenst for session save
+
+    registerEvents(0);
     //GET_ALL_ITEMS
 
     //Check local storage
    if(check_local_storage_availability() == true)
    {
      // Upload from local storage
+
+       //Get Objects
+
+       catalog_object = new catalog();
+       category_widget = new Category_widget();
+       types_menu_object = new types_menu();
+       item_object = new item_card();
+        cart_object = new shopping_cart();
+
        // Draw_HTML
           document.body.innerHTML = window.localStorage['htmlSnapshot'];
+       check_categories(category_widget);
+
+       $('.collapsible').collapsible({
+           accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+       });
        // Init Cart
-          cart_widget = window.localStorage['cart_onject'];
+          //cart_widget = window.localStorage['cart_onject'];
+
 
 
    }
@@ -62,9 +81,9 @@ var  shop_engine_init = new Promise(function(resolve, reject)
 
 // INIT Categories Widget
     //cart_widget = new Category_widget();
-    cart_widget.target_div = 'category_widget_div';
-    cart_widget.selected_type = 'tea';
-    cart_widget.categories_data =
+        category_widget.target_div = 'category_widget_div';
+        category_widget.selected_type = 'tea';
+        category_widget.categories_data =
     {
         "types": [
             {
@@ -149,15 +168,16 @@ var  shop_engine_init = new Promise(function(resolve, reject)
             }
         ]
     };
-    cart_widget.init(cart_widget);
+        category_widget.init(category_widget);
 
  // INIT Types widget
     //types_menu_object = new types_menu();
     types_menu_object.target_div = 'types_area';
     types_menu_object.init(types_menu_object,cart_widget);
 
-
-    resolve(true);
+//SHopping Cart
+        cart_object.draw_widget();
+        resolve(true);
 
 
 }
@@ -167,7 +187,7 @@ var  shop_engine_init = new Promise(function(resolve, reject)
 //Check for local storage session availability
 function check_local_storage_availability()
 {
-    return(true);
+    return(false);
 }
 
 
@@ -176,4 +196,24 @@ function check_local_storage_availability()
 function Save_To_Storage()
 {
 
+}
+
+
+// check categories
+
+function check_categories(categories_object)
+{
+    var check_boxes = document.getElementsByClassName('category_widget_check_box');
+
+    for(var i in check_boxes)
+    {
+
+        for(var j in categories_object.arrayOfUnchecked)
+        {
+            if (check_boxes[i].id == categories_object.arrayOfUnchecked[j])
+            {
+                check_boxes[i].checked = 'true';
+            }
+        }
+    }
 }
