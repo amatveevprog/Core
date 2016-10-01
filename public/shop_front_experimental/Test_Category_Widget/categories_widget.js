@@ -13,6 +13,7 @@ function Category_widget(widget_object)
   //Initialization
      this.init = function(widget_object)
      {
+         console.log('initializing the Category_Widget');
          this.arrayOfUnchecked=[];
          document.getElementById(widget_object.target_div).innerHTML = '';
          var widget_html = document.createElement('ul');
@@ -140,96 +141,3 @@ function Category_widget(widget_object)
 }
 
 //Test Init
-
-var cart_widget = new Category_widget();
-cart_widget.target_div = 'category_widget_div';
-cart_widget.selected_type = 'tea';
-
-cart_widget.categories_data =
-
-{
-    "types": [
-        {
-            "group_type": "dishes",
-            "group_label":"Посуда",
-            "groups": [
-                {
-                    "id":"tea_pots",
-                    "label":"чайники",
-                    "icon":"invert_colors",
-                    "categories":[
-                        {
-                            "id": "category_glass_pots",
-                            "label": "Стеклянные"
-                        }
-                    ]
-                },
-                {
-                    "id":"tea_cups",
-                    "label":"чашки",
-                    "icon":"invert_colors",
-                    "categories":[
-                        {
-                            "id": "category_pottery_cups",
-                            "label": "Глиненные"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "group_type": "tea",
-            "group_label":"Чай",
-            "groups": [
-                {
-                    "id": "tea_type",
-                    "label": "Тип чая",
-                    "icon": "invert_colors",
-                    "categories": [
-                        {
-                            "id": "category_green",
-                            "label": "Зеленые"
-                        },
-                        {
-                            "id": "category_red",
-                            "label": "Красные"
-                        },
-                        {
-                            "id": "category_ulyn",
-                            "label": "Улуны"
-                        },
-                        {
-                            "id": "category_puerh",
-                            "label": "Пуэры"
-                        }
-                    ]
-                },
-                {
-                    "id": "country",
-                    "label": "Страна",
-                    "icon": "account_balance",
-                    "categories": [
-                        {
-                            "id": "category_china",
-                            "label": "Китай"
-                        },
-                        {
-                            "id": "category_india",
-                            "label": "Индия"
-                        },
-                        {
-                            "id": "category_japan",
-                            "label": "Япония"
-                        },
-                        {
-                            "id": "category_srilanka",
-                            "label": "Шри-Ланка"
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-};
-cart_widget.init(cart_widget);
-
