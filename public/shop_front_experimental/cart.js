@@ -7,7 +7,7 @@ function shopping_cart()
    this.cart_dialog_pack_html = '';
    this.cart_items = [];
    this.widget_placeholder_id = 'shopping_cart_wrapper';
-   this.cart_widget_html = "<div class = 'col s3 m3 l3 3'><div><i class = ' material-icons' style = 'border-radius:999px;padding:30%;:90px; margin-top:20%'>shopping_cart</i></div></div><div class = 'col s8 m8 l8 8'><p style = 'color:white; margin-bottom:0px;margin-top:5%;font-size:140%'> корзина </p><hr style = 'margin:0px'><p id = 'shopping_cart_price' style = 'color:white; font-size:110% ; margin-top:0px; margin-bottom:0px; margin-left:5%'>корзина пуста</p></div>'";
+   this.cart_widget_html = "<div class = 'col s3 m3 l3 3' class = 'cart_widget'><div><i class = ' material-icons' style = 'border-radius:999px;padding:30%;:90px; margin-top:20%'>shopping_cart</i></div></div><div class = 'col s8 m8 l8 8'><p style = 'color:white; margin-bottom:0px;margin-top:5%;font-size:140%'> корзина </p><hr style = 'margin:0px'><p id = 'shopping_cart_price' style = 'color:white; font-size:110% ; margin-top:0px; margin-bottom:0px; margin-left:5%'>корзина пуста</p></div>'";
    
    this.cart_sum = 0;
    this.cart_template = "<div class = 'header grey lighten-4' style = 'margin:0px;padding:0px;'> <div class = 'row' id = 'cart_tabs' style = 'height:100%;margin-top:0px;padding-top:0px;'><div id = 'cart_tab_items' class = 'col s2 m2 l2 2 light green valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'><div><i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> list </i><hr>Товары</div></div><div id = 'cart_tab_pack' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'><div><i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> card_giftcard</i><hr>Упаковка</div></div><div id = 'cart_tab_pack' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'><div><i class = 'material-icons ' style = 'border-radius:999px;padding:3%'>local_shipping</i><hr>Доставка</div></div><div id = 'cart_tab_pay' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'><div><i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> payment</i><hr>Оплата</div></div><div id = 'cart_tab_submit' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'><div><i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> done </i><hr>Отслеживание</div></div><div><hr><div id = 'cart_content'></div>";
@@ -25,7 +25,7 @@ function shopping_cart()
 this.draw_widget = function()
  {
    document.getElementById(this.widget_placeholder_id).innerHTML = this.cart_widget_html;
-   console.log('adding onclick function.....');
+   //console.log('adding onclick function.....');
    document.getElementById(this.widget_placeholder_id).onclick = function(){cart_widget_click();};
  };
 
@@ -33,7 +33,7 @@ this.draw_widget = function()
  //cart widget onclick
  this.widget_onclick = function()
  {
-   console.log('cart clicked');
+   //console.log('cart clicked');
 
    this.shop_cart_dialog_items();
    var modal_content = document.getElementById('modal_content_cart');
@@ -75,7 +75,7 @@ this.draw_widget = function()
            new_item.cart_item_id = 'citem_N'+this.cart_item_id_counter;
            this.cart_items.push(new_item);
            this.calculate_price();
-           console.log(this.cart_items);
+           //console.log(this.cart_items);
            return('true');
          }
       }
@@ -179,7 +179,7 @@ this.draw_widget = function()
         items_html  = items_html  +" <td> <input placeholder='" +this.cart_items[i].selected_quantity+"'  type='text' class='validate' style = 'width:10%' value = '"+this.cart_items[i].selected_quantity+"'></td>";
 
         var result_price = 0;
-        console.log('id = ' + this.cart_items[i].id + 'Q = ' +  this.cart_items[i].selected_quantity + "Type = " +this.cart_items[i].selected_type);
+       // console.log('id = ' + this.cart_items[i].id + 'Q = ' +  this.cart_items[i].selected_quantity + "Type = " +this.cart_items[i].selected_type);
         if(this.cart_items[i].type == 'tea')
          {
            var coefficient = 1;
@@ -227,7 +227,7 @@ this.draw_widget = function()
  //DIALOG / ITEMS_SCREEN / DELETE ITEMS_SCREEN
   this.cart_dialog_delete_item = function(cart_item_id_screen)
    {
-     console.log('trying to remove element id = ' + cart_item_id_screen);
+     //console.log('trying to remove element id = ' + cart_item_id_screen);
       var item_row_id = '' +  cart_item_id_screen;
      //console.log('Delete item cart_item_id = ' + cart_item_id);
       this.remove_from_cart(cart_item_id_screen);
@@ -308,7 +308,7 @@ this.draw_widget = function()
       this.dialog_pack_choose_quantity = function()
        {
 
-         console.log('ok!');
+        // console.log('ok!');
          var choosed_item = document.getElementById("choosed_item").value;
 
          var div3  = document.getElementById('cart_dialog_pack_3stage');
@@ -398,11 +398,11 @@ this.draw_widget = function()
                          var pack_validity_flag = 0;
                          for(var t in catalog_object.packs.array[j].item_types)
                          {
-                           console.log('compare item: type = '+ this.cart_packed_item.type+'  variant = '+this.cart_packed_item.selected_type+' VS pack type = '+catalog_object.packs.array[j].item_types[t].item_type +  ' variant =  '+catalog_object.packs.array[j].item_types[t].item_variant);
+                           //console.log('compare item: type = '+ this.cart_packed_item.type+'  variant = '+this.cart_packed_item.selected_type+' VS pack type = '+catalog_object.packs.array[j].item_types[t].item_type +  ' variant =  '+catalog_object.packs.array[j].item_types[t].item_variant);
                            if((catalog_object.packs.array[j].item_types[t].item_type == this.cart_packed_item.type) && (catalog_object.packs.array[j].item_types[t].item_variant == this.cart_packed_item.selected_type))
                             {
                               pack_validity_flag = pack_validity_flag + 1;
-                              console.log('Yes! flag = ' + pack_validity_flag);
+                              //console.log('Yes! flag = ' + pack_validity_flag);
                             }
 
                          }
@@ -420,7 +420,7 @@ this.draw_widget = function()
 
                       }
                       //Done we have array of availavle packs
-                      console.log(available_packs);
+                      //console.log(available_packs);
 
                       //lets start to create a html for packs
                       var packs_html = '<div class = "col s12 m12 l12 12"><form action = "#">';
@@ -542,10 +542,10 @@ cart_object.draw_widget();
 //add_to_cart
 function add_to_cart(item_id)
  {
-   console.log('ok, starting adding to cart....');
+   //console.log('ok, starting adding to cart....');
    var selected_type  = document.getElementById('item_card_options_type').value;
    var selected_quantity = document.getElementById('item_card_options_quantity').value;
-   console.log('nice stype = ' + selected_type  + ' quantity = ' + selected_quantity);
+   //console.log('nice stype = ' + selected_type  + ' quantity = ' + selected_quantity);
    cart_object.add_to_cart(item_id,catalog_object.items,selected_type,selected_quantity);
 
     // 2) send item to cart
@@ -587,7 +587,7 @@ function cart_dialog_delete_item (cart_item_id)
 //CART DIALOG / NEXT screen
 function cart_dialog_nextscreen(screen)
 {
-  console.log('ok ! ! !');
+  //console.log('ok ! ! !');
   cart_object.next_screen(screen);
 }
 

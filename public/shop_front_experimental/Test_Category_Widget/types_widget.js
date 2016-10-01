@@ -5,6 +5,7 @@
 
 var types_menu = function()
 {
+    console.log('init types_menu');
     this.target_div = '';
     //this.categories_object = {};
 
@@ -32,6 +33,3 @@ var types_menu = function()
     }
 }
 
-types_menu_object = new types_menu();
-types_menu_object.target_div = 'types_area';
-types_menu_object.init(types_menu_object,cart_widget);

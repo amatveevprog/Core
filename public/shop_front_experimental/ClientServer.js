@@ -2,13 +2,6 @@
 
 
 // INITIAL SERVER CALLS
-$(document).ready(function()
-{
-  //GET_ALL_ITEMS
-  get_all_items();
-
-});
-
 
 
 

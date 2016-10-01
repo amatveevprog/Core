@@ -1,8 +1,5 @@
 //[========================Product Catalog LOGIC==========================]
 
-
-
-
 function catalog()
 {
 
@@ -69,7 +66,7 @@ function catalog()
    // paint new_portion
    this.partially_paint_paint_new_batch = function(scroll_block)
     {
-        console.log('lets_paint' );
+        //console.log('lets_paint' );
         var items_area = document.createElement('div');
 
 
@@ -118,7 +115,7 @@ function catalog()
  this.search = function(faset_array,selected_type)
   {
 
-      console.log('start search wirh fasset = '+faset_array);
+      //console.log('start search wirh fasset = '+faset_array);
      //erase array
       this.filtered_items = [];
       document.getElementById('items_area').innerHTML = '';
@@ -195,10 +192,10 @@ function catalog()
 
 this.Update_Categories = function()
  {
-   console.log('start updating ' + this.categories.length);
+   //console.log('start updating ' + this.categories.length);
    for (var i in this.categories)
    {
-     console.log('lets update ' + this.categories[i].id);
+     //console.log('lets update ' + this.categories[i].id);
      var category_checker = document.getElementById(this.categories[i].id);
 
 
@@ -238,103 +235,6 @@ this.open_item = function(item_id)
 
 
 
-
-
-//______________________fasset_search__________________________
-function start_fasset_search()
- {
-
-   var pre_fasset_array = [];
-   var faset_array = [];
-
-
-
-   var t1_value = document.getElementById('category_green');
-   var t2_value = document.getElementById('category_red');
-   var t3_value = document.getElementById('category_ulyn');
-   var t4_value = document.getElementById('category_puerh');
-
-   var t5_value = document.getElementById('category_china');
-   var t6_value = document.getElementById('category_india');
-   var t7_value = document.getElementById('category_japan');
-   var t8_value = document.getElementById('category_srilanka');
-
-   pre_fasset_array.push(t1_value);
-   pre_fasset_array.push(t2_value);
-   pre_fasset_array.push(t3_value);
-   pre_fasset_array.push(t4_value);
-   pre_fasset_array.push(t5_value);
-   pre_fasset_array.push(t6_value);
-   pre_fasset_array.push(t7_value);
-   pre_fasset_array.push(t8_value);
-
- console.log(pre_fasset_array);
-   for (var i in pre_fasset_array)
-    {
-      console.log(i);
-       if(pre_fasset_array[i].checked == false)
-        {
-          console.log('!');
-          faset_array.push(pre_fasset_array[i].id);
-        }
-    }
-
-   //console.log(faset_array);
-   catalog_object.search(faset_array);
-
-
- }
-
-
-
-
-
-
-//INIT catalog
-var catalog_object = new catalog();
-
-
-
-var element_html_template = '<div class="card"><div class="card-image waves-effect waves-block waves-light">   <img id = "catalog_tile_image_src" class="activator" src="'
-       + " &catalog_tile_image_src&" + '" style = "height:200px;">     </div><div class="card-content"><span id = "catalog_tile_label"  class="card-title activator truncate grey-text text-darken-4">'
-       + "&catalog_tile_label&"+'<i class="material-icons right">more_vert</i></span> <div class = "row"><div class = "col m19 s9 l9 9"><p><a id = "catalog_tile_open_item" class="waves-effect waves-light btn" onclick = "open_item('
-       + "&catalog_tile_open_item&"+')">ТЕСТЗАМЕНА</a></p></div><div class = "col m8 s3 l3 3"><h5 id = "catalog_tile_price">'
-       +"&catalog_tile_price&"+ '</h5></div></div></div><div class="card-reveal"><span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span><p>Here is some more information about this product that is only revealed once clicked on.</p></div> </div>';
-
-catalog_object.tile_item_template = element_html_template;
-
-
-
-
-
-
-//Categories_STAB
- var categories_json = {"categories":[{"name":"Зеленые", "count":0, "id":"category_green", "type":"teatype"},
-                                      {"name":"Красные", "count":0, "id":"category_red", "type":"teatype"},
-                                      {"name":"Улуны",   "count":0, "id":"category_ulyn", "type":"teatype"},
-                                      {"name":"Пуеры",   "count":0, "id":"category_puerh", "type":"teatype"},
-                                      {"name":"Китай",   "count":0, "id":"category_china", "type":"country"},
-                                      {"name":"Япония",   "count":0, "id":"category_japan", "type":"country"},
-                                      {"name":"Индия",   "count":0, "id":"category_india", "type":"country"},
-                                      {"name":"Шри-ланка",   "count":0, "id":"category_srilanka", "type":"country"},
-                                    ]};
-
-
-
-
-
-for (var i in categories_json.categories)
- {
-    catalog_object.categories.push(categories_json.categories[i]);
- }
-
-
-
-
-
-
-//End of Categories Stab
-
 // PIN CATEGORY SIDE BAR
  function category_pin()
   {
@@ -355,58 +255,4 @@ for (var i in categories_json.categories)
    button.onclick = function(){category_pin();};
  }
 //END_PIN
-
-
-//____PACKING_STUB____
-//pack objects
-var packs_json = {'array':[{"pack_id":"1",
- "pack_flag" : true,
- "price":"100",
- "pack_description":"хорошая упаковка подойдет для всего",
- "name":"пакетики 100 гр.",
- "image":"http://teatime.esy.es/wp-content/uploads/2015/05/a79da84207e0db6b72954b5cb8534bf8.png",
- "item_types":[{"name":"пакетики","item_type":"tea","item_variant":"100"}],
- "variants":[{"id":"1","name":"красный","image":"http://teatime.esy.es/wp-content/uploads/2015/05/a79da84207e0db6b72954b5cb8534bf8.png"},
-             {"id":"2","name":"синий","image":"http://teatime.esy.es/wp-content/uploads/2015/05/99fe7fbc60a1778755ba43fae76c1dc5.png"}]
-           },
-
-  {"pack_id":"2",
-            "pack_flag" : true,
-            "price":"200",
-            "pack_description":"хорошая упаковка подойдет для всего",
-            "name":"пакетища 500 гр.",
-            "image":"http://teatime.esy.es/wp-content/uploads/2015/05/502517fb39b08b25d6f48ab6cd63ecc1.png",
-            "item_types":[{"name":"пакетики","item_type":"tea","item_variant":"250"},{"name":"пакетища","item_type":"tea","item_variant":"500"}],
-            "variants":[{"id":"1","name":"красный","image":"http://teatime.esy.es/wp-content/uploads/2015/05/9167eea9fe5397561070f449d92050b3.png"},
-                        {"id":"2","name":"синий","image":"http://teatime.esy.es/wp-content/uploads/2015/05/a2a6e5ccf4128048255d0a0f682def84.png"}]
-                      },
-     {"pack_id":"3",
-               "pack_flag" : true,
-               "price":"210",
-               "pack_description":"хорошая упаковка 2 подойдет для всего",
-               "name":"пакет 601 гр.",
-               "image":"http://teatime.esy.es/wp-content/uploads/2015/05/a2a6e5ccf4128048255d0a0f682def84.png",
-               "item_types":[{"name":"пакетики","item_type":"tea","item_variant":"250"},{"name":"пакетища","item_type":"tea","item_variant":"500"}],
-               "variants":[{"id":"1","name":"красны23й","image":"http://teatime.esy.es/wp-content/uploads/2015/05/9167eea9fe5397561070f449d92050b3.png"},
-                           {"id":"2","name":"синий23","image":"http://teatime.esy.es/wp-content/uploads/2015/05/a2a6e5ccf4128048255d0a0f682def84.png"}]
-                         },
-                         {"pack_id":"4",
-                                   "pack_flag" : true,
-                                   "price":"300",
-                                   "pack_description":"Ништячек упаковка",
-                                   "name":"Нормальная упаковка.",
-                                   "image":"http://teatime.esy.es/wp-content/uploads/2015/05/9167eea9fe5397561070f449d92050b3.png",
-                                   "item_types":[{"name":"пакетища","item_type":"tea","item_variant":"500"}],
-                                   "variants":[{"id":"1","name":"красны223232323й","image":"http://teatime.esy.es/wp-content/uploads/2015/05/a79da84207e0db6b72954b5cb8534bf8.png"},
-                                               {"id":"2","name":"син234234242ий","image":"http://teatime.esy.es/wp-content/uploads/2015/05/a79da84207e0db6b72954b5cb8534bf8.png"}]
-                                             }]
-};
-
-
-
-//to remove after test
-catalog_object.packs = packs_json;
-
-
-
 
