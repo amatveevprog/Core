@@ -2,18 +2,21 @@ function registerEvents(timeStampDeltaMinutes)
 {
     window.onload = function () {
 
+
         if(checkIfIwasHere()==true)
         {
+            clearHtml();
+            restoreHtmlSnapshot();
             //сначала проверяем, соответствует ли timestamp разумным пределам
-            let DeltaMinutes = parseFloat(timeStampDeltaMinutes)*1000;
+            /*let DeltaMinutes = parseFloat(timeStampDeltaMinutes)*1000;
             console.log("your delta: "+DeltaMinutes);
             let dateNow = Date.now();
             console.log("now time is: " + dateNow);
             let lastTimeStamp = parseFloat(localStorage['TimeStamp']);
             console.log("lsat saved time: "+ lastTimeStamp);
             let delta = dateNow-lastTimeStamp;
-            console.log("delta: "+ delta);
-            if(delta <= DeltaMinutes) {
+            console.log("delta: "+ delta);*/
+            /*if(delta <= DeltaMinutes) {
                 clearHtml();
                 restoreHtmlSnapshot();
             }
@@ -22,12 +25,12 @@ function registerEvents(timeStampDeltaMinutes)
                 //если вышли за пределы, то удаляем данные из локального хранилища
                 //можно ничего не делать, т.к. при закрытии новый снэпшот все равно сохранится
 
-            }
+            }*/
         }
     }
     window.onbeforeunload = function () {
         //делаем снапшот
-        window.localStorage['TimeStamp'] = Date.now();
+        //window.localStorage['TimeStamp'] = Date.now();
         saveHtmlSnapShot();
     }
 }
@@ -51,6 +54,10 @@ function saveHtmlSnapShot()
 {
     var htmlString = window.document.body.innerHTML;
     saveStorageData(htmlString);
+    window.localStorage['catalog_object'] = catalog_object;
+    window.localStorage['cart_widget'] = cart_widget;
+    window.localStorage['types_menu_object'] = types_menu_object;
+    window.localStorage['item_object'] = item_object;
 }
 function saveStorageData(string_data) {
     if((window.localStorage['htmlSnapshot']!=null)&&(window.localStorage['htmlSnapshot']!='undefined'))
