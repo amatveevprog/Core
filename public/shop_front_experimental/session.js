@@ -58,6 +58,7 @@ function saveHtmlSnapShot()
     window.localStorage['cart_widget'] = cart_widget;
     window.localStorage['types_menu_object'] = types_menu_object;
     window.localStorage['item_object'] = item_object;
+    window.localStorage['cart_object'] = cart_object;
 }
 function saveStorageData(string_data) {
     if((window.localStorage['htmlSnapshot']!=null)&&(window.localStorage['htmlSnapshot']!='undefined'))
