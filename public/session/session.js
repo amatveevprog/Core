@@ -4,8 +4,10 @@ function registerEvents(timeStampDeltaMinutes)
 
         if(checkIfIwasHere()==true)
         {
-            clearHtml();
-            restoreHtmlSnapshot();
+            if(checkTimeStamp(20)) {
+                clearHtml();
+                restoreHtmlSnapshot();
+            }
             /*//сначала проверяем, соответствует ли timestamp разумным пределам
             let DeltaMinutes = parseFloat(timeStampDeltaMinutes)*1000;
             console.log("your delta: "+DeltaMinutes);
@@ -28,8 +30,8 @@ function registerEvents(timeStampDeltaMinutes)
         }
     }
     window.onbeforeunload = function () {
-        //делаем снапшот
-        window.localStorage['TimeStamp'] = Date.now();
+        //делаем снапшот и сохраняем время
+        setTimeStamp();
         saveHtmlSnapShot();
     }
 }
@@ -72,4 +74,28 @@ function restoreHtmlSnapshot()
 function clearHtml()
 {
     window.document.body.innerHTML="";
+}
+function setTimeStamp()
+{
+    //var leaving_date = new Date();
+    let leaving_date = Date.now();
+    window.localStorage['TimeStamp'] = leaving_date;
+}
+function clearTimeStamp() {
+    window.localStorage['TimeStamp']="";
+}
+function checkTimeStamp(initial_delta_seconds)
+{
+    let date_now = Date.now();
+    let old_time = parseInt(window.localStorage['TimeStamp'],10);
+    let raz = date_now-old_time;
+    let initial_delta_miliseconds = initial_delta_seconds*1000;
+    if(raz>initial_delta_miliseconds)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
