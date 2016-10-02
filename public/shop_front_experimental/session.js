@@ -33,7 +33,7 @@ function registerEvents(timeStampDeltaMinutes)
     }*/
     window.onbeforeunload = function () {
         //делаем снапшот
-        //window.localStorage['TimeStamp'] = Date.now();
+        window.localStorage['TimeStamp'] = Date.now();
         saveHtmlSnapShot();
     }
 }
@@ -83,10 +83,7 @@ function saveHtmlSnapShot()
 function saveStorageData(string_data) {
     if((window.localStorage['htmlSnapshot']!=null)&&(window.localStorage['htmlSnapshot']!='undefined'))
     {
-        //удаляем предыдущую StorageData перед добавлением
-        //случай, когда в браузере есть данные о предыдущем заходе
         window.localStorage.removeItem('htmlSnapshot');
-        console.log("Вы уже здесь были!!!");
     }
     window.localStorage['htmlSnapshot'] = string_data;
 }
