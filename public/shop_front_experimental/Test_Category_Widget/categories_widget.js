@@ -103,21 +103,26 @@ function Category_widget(widget_object)
             input.type = 'checkbox';
             input.id = id_value;
             //input.onChange = function(){console.log('changed!')};
-            var this_ref = this;
+            var this_ref = widget_object;
             //input.checked = 'checked';
             input.className = 'category_widget_check_box';
             input.addEventListener("click",function(event){
                 event.stopPropagation();
                 if(event.target.checked==false)
                 {
-                    this_ref.arrayOfUnchecked.push(event.target.id);
-                    catalog_object.search(this_ref.arrayOfUnchecked,widget_object.selected_type);
+                    console.log(this_ref);
+                    //this_ref.arrayOfUnchecked.push(event.target.id);
+                    //catalog_object.search(this_ref.arrayOfUnchecked,widget_object.selected_type);
+                    widget_object.arrayOfUnchecked.push(event.target.id);
+                    catalog_object.search(widget_object.arrayOfUnchecked,widget_object.selected_type);
                 }
                 else
                 {
                     var index = this_ref.arrayOfUnchecked.indexOf(event.target.id);
-                    this_ref.arrayOfUnchecked.splice(index,1);
-                    catalog_object.search(this_ref.arrayOfUnchecked,widget_object.selected_type);
+                    //this_ref.arrayOfUnchecked.splice(index,1);
+                    //catalog_object.search(this_ref.arrayOfUnchecked,widget_object.selected_type);
+                    widget_object.arrayOfUnchecked.splice(index,1);
+                    catalog_object.search(widget_object.arrayOfUnchecked,widget_object.selected_type);
                 }
 
             });
