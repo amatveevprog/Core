@@ -1,3 +1,6 @@
+/**
+ * Created by alexey.matveev on 02.10.2016.
+ */
 function registerEvents(timeStampDeltaMinutes)
 {
     /*window.onload = function () {
@@ -95,4 +98,34 @@ function restoreHtmlSnapshot()
 function clearHtml()
 {
     window.document.body.innerHTML="";
+}
+//установить временную метку
+function setTimeStamp()
+{
+    //var leaving_date = new Date();
+    let leaving_date = Date.now();
+    window.localStorage['TimeStamp'] = leaving_date;
+}
+//удалить временную метку
+function clearTimeStamp() {
+    window.localStorage['TimeStamp']="";
+}
+//проверить, укладывается ли разность временных меток в указанный
+//внутреним параметром функции временной промежуток
+//returns: false if passed more than <initial_delta_seconds> is less than difference
+//between current_time and old_time
+function checkTimeStamp(initial_delta_seconds)
+{
+    let date_now = Date.now();
+    let old_time = parseInt(window.localStorage['TimeStamp'],10);
+    let raz = date_now-old_time;
+    let initial_delta_miliseconds = initial_delta_seconds*1000;
+    if(raz>initial_delta_miliseconds)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
 }
