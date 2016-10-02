@@ -121,6 +121,7 @@ function Category_widget(widget_object)
                 }
 
             });
+            console.log('lets put checked');
             input.checked = 'checked';
             var label = document.createElement('label');
             label.setAttribute('for',id_value);
