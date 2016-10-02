@@ -55,24 +55,24 @@ function saveHtmlSnapShot()
     var htmlString = window.document.body.innerHTML;
     saveStorageData(htmlString);
     //window.localStorage['catalog_object'] = catalog_object;
-    window.localStorage['catalog_object_categories'] = catalog_object.categories;
-    window.localStorage['catalog_object_items'] = catalog_object.items;
-    window.localStorage['catalog_object_filtered_items'] = catalog_object.filtered_items;
+    window.localStorage['catalog_object_categories'] = JSON.stringify(catalog_object.categories);
+    window.localStorage['catalog_object_items'] = JSON.stringify(catalog_object.items);
+    window.localStorage['catalog_object_filtered_items'] = JSON.stringify(catalog_object.filtered_items);
 
    // window.localStorage['cart_widget'] = cart_widget;
-    window.localStorage['types_menu_object'] = types_menu_object;
-    window.localStorage['item_object'] = item_object;
+    //window.localStorage['types_menu_object'] = types_menu_object;
+    //window.localStorage['item_object'] = item_object;
 
     //window.localStorage['cart_object'] = cart_object;
-    window.localStorage['cart_object_cart_items'] = cart_object.cart_items;
-    window.localStorage['cart_object_cart_sum'] = cart_object.cart_sum;
-    window.localStorage['cart_object_cart_item_id_counter'] = cart_object.cart_item_id_counter;
-    window.localStorage['cart_object_cart_object.cart_template'] = cart_object.cart_template;
+    window.localStorage['cart_object_cart_items'] = JSON.stringify(cart_object.cart_items);
+    window.localStorage['cart_object_cart_sum'] = JSON.stringify(cart_object.cart_sum);
+    window.localStorage['cart_object_cart_item_id_counter'] = JSON.stringify(cart_object.cart_item_id_counter);
+    window.localStorage['cart_object_cart_object.cart_template'] = JSON.stringify(cart_object.cart_template);
 
     //window.localStorage['category_widget'] = category_widget;
-    window.localStorage['category_widget_arrayOfUnchecked'] = category_widget.arrayOfUnchecked;
-    window.localStorage['category_widget_selected_type'] = category_widget.selected_type;
-    window.localStorage['category_widget_categories_data'] = category_widget.categories_data;
+    window.localStorage['category_widget_arrayOfUnchecked'] = JSON.stringify(category_widget.arrayOfUnchecked);
+    window.localStorage['category_widget_selected_type'] = JSON.stringify(category_widget.selected_type);
+    window.localStorage['category_widget_categories_data'] = JSON.stringify(category_widget.categories_data);
 
 
 
