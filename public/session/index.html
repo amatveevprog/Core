@@ -1,44 +1,16 @@
 <!DOCTYPE html>
 <html lang="ru">
 <meta charset="utf-8">
-<script type='text/javascript' src='session/session1.js'></script>
+<script type='text/javascript' src='session/session.js'></script>
 <!--Писать путь до файла только в таком формате, как в предыдущем src!!!-->
 <body>
 <div>Это тестовая страница.</div>
 <script>
-    window.onload = function () {
-        //saveHtmlSnapShot();
-        if(checkIfIwasHere()==true)
-        {
-            //localStorage.clear();
-            //let a = document.createElement("div");
-            //a.innerHTML="Вы здесь уже были!!!";
-            //document.body.appendChild(a);
-            console.log("Storage Data: " + window.localStorage['StoreData']);
-            //загружаем снапшот
-            clearHtml();
-            restoreHtmlSnapshot();
-            //document.body.innerHTML = window.localStorage['StoreData'];
-            //window.innerHTML = window.localStorage['StoreData'];
-            //document.textContent = window.localStorage['StoreData'];
-        }
-        else {
-            //let a = document.createElement("div");
-            //a.innerHTML="Это Ваше первое посещение!!!";
-            //document.body.appendChild(a);
-            console.log("Storage Data: " + window.localStorage['StoreData']);
-            //делаем
-        }
-
-    }
-    window.onbeforeunload = function () {
-        //делаем снапшот
-        saveHtmlSnapShot();
-    }
+    registerEvents();
     function insertSomeShit(){
         console.log("clicked!!!");
         var l=document.createElement("div");
-        l.innerHTML='newDiv'+Math.random();
+        l.innerHTML='newDiv '+Math.random()+" random Value";
         document.body.appendChild(l);
     }
     function clearHist()
