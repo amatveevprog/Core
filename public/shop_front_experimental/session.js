@@ -5,9 +5,9 @@ function registerEvents(timeStampDeltaMinutes)
 {
     window.onbeforeunload = function () {
         //делаем снапшот
-        //window.localStorage['TimeStamp'] = Date.now();
-        //saveHtmlSnapShot();
-        window.localStorage.clear();
+        window.localStorage['TimeStamp'] = Date.now();
+        saveHtmlSnapShot();
+        //window.localStorage.clear();
     }
 }
 function clearHist()
