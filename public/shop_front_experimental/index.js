@@ -10,7 +10,11 @@ var item_object;
 var cart_object;
 
 
-
+//Check for local storage session availability
+function check_local_storage_availability()
+{
+    return(true);
+}
 
 $(document).ready(function()
 {
@@ -32,16 +36,29 @@ $(document).ready(function()
        //types_menu_object =  window.localStorage['types_menu_object'];
        //item_object =  window.localStorage['item_object'];
        //cart_object =  window.localStorage['cart_object'];
-       category_widget.arrayOfUnchecked =JSON.parse(window.localStorage['category_widget_arrayOfUnchecked ']);
-       category_widget.selected_type =JSON.parse(window.localStorage['category_widget_selected_type']);
-       category_widget.categories_data =JSON.parse(window.localStorage['category_widget_categories_data']);
-       catalog_object.categories =JSON.parse(window.localStorage['catalog_object_categories']);
-       catalog_object.items = JSON.parse(window.localStorage['catalog_object_items']);
-       catalog_object.filtered_items =JSON.parse(window.localStorage['catalog_object_filtered_items']);
-       cart_object.cart_items = JSON.parse(window.localStorage['cart_object_cart_items']);
-       cart_object.cart_sum =JSON.parse(window.localStorage['cart_object_cart_sum']);
-       cart_object.cart_item_id_counter =JSON.parse(window.localStorage['cart_object_cart_item_id_counter ']);
-       cart_object.cart_template = JSON.parse(window.localStorage['cart_object_cart_template']);
+       category_widget.arrayOfUnchecked =JSON.parse(window.localStorage['category_widget_arrayOfUnchecked']);
+
+       category_widget.selected_type=JSON.parse(window.localStorage['category_widget_selected_type']);
+       category_widget.categories_data=JSON.parse(window.localStorage['category_widget_categories_data']);
+       catalog_object.categories=JSON.parse(window.localStorage['catalog_object_categories']);
+       catalog_object.items=JSON.parse(window.localStorage['catalog_object_items']);
+       catalog_object.filtered_items=JSON.parse(window.localStorage['catalog_object_filtered_items']);
+       cart_object.cart_items=JSON.parse(window.localStorage['cart_object_cart_items']);
+       cart_object.cart_sum=JSON.parse(window.localStorage['cart_object_cart_sum']);
+       cart_object.cart_item_id_counter=JSON.parse(window.localStorage['cart_object_cart_item_id_counter']);
+       cart_object.cart_template=JSON.parse(window.localStorage['cart_object_cart_template']);
+
+       console.log("_______________________DATA__________________");
+       console.log("selected_type"+category_widget.selected_type);
+       console.log("categories_data"+category_widget.categories_data);
+       console.log("categories"+category_widget.categories);
+       console.log("items"+category_widget.items);
+       console.log("filtered_items"+category_widget.filtered_items);
+       console.log("cart_items"+category_widget.cart_items);
+       console.log("cart_sum"+category_widget.cart_sum);
+       console.log("cart_item_id_counter"+category_widget.cart_item_id_counter);
+       console.log("cart_template"+category_widget.cart_template);
+       console.log("_______________________DATA__________________");
 
        // Draw_HTML
           document.body.innerHTML = window.localStorage['htmlSnapshot'];
@@ -221,11 +238,7 @@ var  shop_engine_init = new Promise(function(resolve, reject)
 );
 
 
-//Check for local storage session availability
-function check_local_storage_availability()
-{
-    return(false);
-}
+
 
 
 

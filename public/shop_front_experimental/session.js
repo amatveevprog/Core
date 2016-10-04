@@ -43,7 +43,7 @@ function saveHtmlSnapShot()
     window.localStorage['cart_object_cart_items'] = JSON.stringify(cart_object.cart_items);
     window.localStorage['cart_object_cart_sum'] = JSON.stringify(cart_object.cart_sum);
     window.localStorage['cart_object_cart_item_id_counter'] = JSON.stringify(cart_object.cart_item_id_counter);
-    window.localStorage['cart_object_cart_object.cart_template'] = JSON.stringify(cart_object.cart_template);
+    window.localStorage['cart_object_cart_template'] = JSON.stringify(cart_object.cart_template);
 
     //window.localStorage['category_widget'] = category_widget;
     window.localStorage['category_widget_arrayOfUnchecked'] = JSON.stringify(category_widget.arrayOfUnchecked);
