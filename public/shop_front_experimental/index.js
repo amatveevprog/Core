@@ -74,6 +74,19 @@ function shop_engine_read_from_storage(resolve,reject)
     cart_object.cart_dialog_tabs_html = cart_dialog_tabs_html;
     cart_object.cart_dialog_items_html = cart_dialog_items_html;
     cart_object.cart_dialog_pack_html = cart_dialog_pack_html;
+
+
+    /*  Probpem Here
+    try {
+        cart_object.cart_items = JSON.parse(window.localStorage['cart_object_cart_items']);
+        cart_object.cart_sum = JSON.parse(window.localStorage['cart_object_cart_sum']);
+        cart_object.cart_item_id_counter = JSON.parse(window.localStorage['cart_object_cart_item_id_counter ']);
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
+    */
     cart_object.draw_widget();
 
     //INIT catalog
@@ -90,6 +103,8 @@ function shop_engine_read_from_storage(resolve,reject)
         +"&catalog_tile_price&"+ '</h6></div></div></div><div class="card-reveal"><span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span><p>Here is some more information about this product that is only revealed once clicked on.</p></div> </div>';
 
     catalog_object.tile_item_template = element_html_template;
+    catalog_object.items = JSON.parse(window.localStorage['catalog_object_items']);
+    catalog_object.filtered_items = JSON.parse(window.localStorage['catalog_object_filtered_items']);
 
 
 
@@ -189,6 +204,7 @@ function shop_engine_read_from_storage(resolve,reject)
     category_widget.arrayOfUnchecked = JSON.parse(window.localStorage['category_widget_arrayOfUnchecked']);
     check_categories(category_widget)
 
+    catalog_object.search(category_widget.arrayOfUnchecked,category_widget.selected_type);
 
     types_menu_object.target_div = 'types_area';
     types_menu_object.init(types_menu_object,category_widget);
