@@ -13,7 +13,7 @@ function Category_widget(widget_object)
   //Initialization
      this.init = function(widget_object)
      {
-         console.log('initializing the Category_Widget');
+         console.log('initializing the Category_Widget1');
          this.arrayOfUnchecked=[];
          document.getElementById(widget_object.target_div).innerHTML = '';
          var widget_html = document.createElement('ul');
