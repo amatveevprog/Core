@@ -343,14 +343,16 @@ var check_boxes = document.getElementsByClassName('category_widget_check_box');
 
 for(var i in check_boxes)
 {
+    //console.log('lets start Checking boxes');
     check_boxes[i].checked = 'checked';
 
     for(var j in categories_object.arrayOfUnchecked)
     {
-        console.log('check ' +check_boxes[i].id +'   ' + categories_object.arrayOfUnchecked[j] );
+        //console.log('check ' +check_boxes[i].id +'   ' + categories_object.arrayOfUnchecked[j] );
         if (check_boxes[i].id == categories_object.arrayOfUnchecked[j])
         {
-            check_boxes[i].checked = 'false';
+            console.log('setting checkbox of ' +  check_boxes[i].id);
+            check_boxes[i].checked = '';
         }
     }
 }
