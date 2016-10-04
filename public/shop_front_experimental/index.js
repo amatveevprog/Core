@@ -97,9 +97,8 @@ function shop_engine_read_from_storage(resolve,reject)
     item_object.item_template = item_template;
 
 
-
     category_widget.target_div = 'category_widget_div';
-    category_widget.selected_type = 'tea';
+    category_widget.selected_type = JSON.parse(window.localStorage['category_widget_selected_type']);;
     category_widget.categories_data =
     {
         "types": [
@@ -190,8 +189,11 @@ function shop_engine_read_from_storage(resolve,reject)
     category_widget.arrayOfUnchecked = JSON.parse(window.localStorage['category_widget_arrayOfUnchecked']);
     check_categories(category_widget)
 
+
     types_menu_object.target_div = 'types_area';
     types_menu_object.init(types_menu_object,category_widget);
+
+
 
 
 
