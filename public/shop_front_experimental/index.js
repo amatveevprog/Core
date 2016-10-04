@@ -7,7 +7,7 @@
 //Check for local storage session availability
 function check_local_storage_availability()
 {
-    return(false);
+    return(true);
 }
 
 
@@ -29,7 +29,7 @@ $(document).ready(function()
    if(check_local_storage_availability() == true)
    {
        console.log('TRUE!!!!');
-       shop_engine_read_from_storage.then(function(){console.log('Init Error')},function(){console.log('Init Error')});
+       shop_engine_read_from_storage();
    }
    else
    {
@@ -45,9 +45,10 @@ $(document).ready(function()
 
 
 
-shop_engine_read_from_storage =  new Promise(function(resolve,reject)
+function shop_engine_read_from_storage(resolve,reject)
 {
     console.log('read from storage');
+
     /*
     try {
         category_widget.arrayOfUnchecked = JSON.parse(window.localStorage['category_widget_arrayOfUnchecked ']);
@@ -65,9 +66,40 @@ shop_engine_read_from_storage =  new Promise(function(resolve,reject)
     {
         console.log(e);
     }
-    */
-    category_widget.arrayOfUnchecked = JSON.parse(window.localStorage['category_widget_arrayOfUnchecked ']);
-    category_widget.selected_type = window.localStorage['category_widget_selected_type'];
+*/
+
+    var cart_dialog_tabs_html = "<div class = 'header grey lighten-4' style = 'margin:0px;padding:0px;'>  <div class = 'row' id = 'cart_tabs' style = 'height:100%;margin-top:0px;padding-top:0px;'>    <div id = 'cart_tab_items' class = 'col s2 m2 l2 2 light green valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>      <div>          <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> list </i>          <hr>          Товары      </div>    </div>    <div id = 'cart_tab_pack' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>      <div>         <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> card_giftcard</i>         <hr>         Упаковка      </div>    </div>    <div id = 'cart_tab_pack' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>      <div>         <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'>local_shipping</i>         <hr>Доставка      </div>    </div>    <div id = 'cart_tab_pay' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>      <div>         <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> payment</i>         <hr>         Оплата      </div>    </div>      <div id = 'cart_tab_submit' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>        <div>          <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> done </i>          <hr>          Отслеживание        </div>      </div>      <div>        <hr>        <div id = 'cart_content'>                   </div>      </div>    </div>";
+    var cart_dialog_items_html = "<div class = 'header grey lighten-4' style = 'margin:0px;padding:0px;'>  <div class = 'row' id = 'cart_tabs' style = 'height:100%;margin-top:0px;padding-top:0px;'>    <div id = 'cart_tab_items' class = 'col s2 m2 l2 2 light green valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>      <div>          <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> list </i>          <hr>          Товары      </div>    </div>    <div id = 'cart_tab_pack' class = 'col s2 m2 l2 2 valign-wrapper hoverable waves-effect waves-yellow center-align z-depth-1' style = 'height:100px; padding:1%;background:#FAFAFA'>      <div>         <i class = 'material-icons  z-depth-1' style = 'border-radius:999px;padding:3%'> card_giftcard</i>         <hr>         Упаковка      </div>    </div>    <div id = 'cart_tab_pack' class = 'col s2 m2 l2 2  valign-wrapper hoverable waves-effect waves-yellow center-align z-depth-1' style = 'height:100px; padding:1%;background:#FAFAFA'>      <div>         <i class = 'material-icons  z-depth-1' style = 'border-radius:999px;padding:3%'>local_shipping</i>         <hr>Доставка      </div>    </div>    <div id = 'cart_tab_pay' class = 'col s2 m2 l2 2 valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%; background:#FAFAFA'>      <div>         <i class = 'material-icons  z-depth-1' style = 'border-radius:999px;padding:3%;background:#FAFAFA'> payment</i>         <hr>         Оплата      </div>    </div>      <div id = 'cart_tab_submit' class = 'col s2 m2 l2 2  valign-wrapper hoverable waves-effect waves-yellow center-align z-depth-1' style = 'height:100px; padding:1%; background:#FAFAFA'>        <div>          <i class = 'material-icons  z-depth-1' style = 'border-radius:999px;padding:3%'> done </i>          <hr>          Отслеживание        </div>      </div>      <div>        <hr>        <div id = 'cart_content'>           <div class = 'row' style = ''> <div class = 'col s12 m12 l12 12 center-align purple lighten-4' id = 'cart_dialog_order_summary' style = 'margin-top:3%; background:#FAFAFA; margin-bottom:3%; padding:2%; background:#FAFAFA'>                 <h4 > Ваш заказ: </h4>                                           <h6 id = 'cart_items_counter'> Всего товаров: 24 </h6>                 <h5 id = 'cart_items_price'> На сумму: 670р.</h5>                                             * для выбора упаковки перейдите на следующий экран      </div>                                                                <div class = 'col s12 m12 l12 12 z-depth-1' style = ' background:#FAFAFA;padding:3%' >   <table class = 'responsive-table highlight striped' style = 'background:#FAFAFA; z-depth-1; padding:2%;'>                <thead>                  <tr>   <th data-field='id'>Фото</th>                    <th data-field='name'>Наименование</th>                    <th data-field='type'>Тип</th>                                                                            <th data-field='quantity'>количество</th>                    <th data-field='price'>цена</th>                  </tr>                                                                               <tbody id = 'cart_items_table'>                                                   </tbody>              </table>            </div>                                        </div>        </div>      </div>    </div>";
+    var cart_dialog_pack_html = "<div class = 'center-align'><div id = 'cart_dialog_pack_primary' class = 'col s12 m12 l12 12 z-depth-1' style = 'padding:3%; margin-top:3%; margin-bottom:1%;'></div><div id = 'cart_dialog_pack_1stage_label' class = 'left-align col s12 m12 l12 12 grey-text darken-2-text' style = 'margin:1%'></div><div id = 'cart_dialog_pack_1stage' style= 'margin-top:1%; margin-bottom:1%; background:#FAFAFA; display:none' class = 'cart_dialog_screen_pack white col s12 m12 l12 12 z-depth-1'></div><div id = 'cart_dialog_pack_2stage_label' class = 'left-align col s12 m12 l12 12 grey-text darken-2-text' style = 'margin:1%' ></div><div style= 'margin-top:1%;margin-bottom:1%; padding:2%; display:none'  id = 'cart_dialog_pack_2stage' class = 'cart_dialog_screen_pack col s12 m12 l12 12 white z-depth-1'></div><div id = 'cart_dialog_pack_3stage_label' class ='left-align col s12 m12 l12 12 grey-text darken-2-text' style = 'margin:1%'></div><div style= 'margin-top:1%;margin-bottom:1%; padding:2%;display:none'    id = 'cart_dialog_pack_3stage' class = 'cart_dialog_screen_pack col s12 m12 l12 12 white z-depth-1'></div><div id = 'cart_dialog_pack_4stage_label' class = 'left-align col s12 m12 l12 12 grey-text darken-2-text' style = 'margin:1%' ></div><div id = 'cart_dialog_pack_4stage'  style= 'margin-top:1%; margin-bottom:1%;padding:2%;display:none'  class = 'cart_dialog_screen_pack col s12 m12 l12 12 white z-depth-1'></div><div id = 'cart_dialog_pack_pack_grid'  style= 'margin-top:1%;padding:2%;display:none'  class = 'cart_dialog_screen_pack col s12 m12 l12 12 white z-depth-1'></div></div>";
+    cart_object.cart_dialog_tabs_html = cart_dialog_tabs_html;
+    cart_object.cart_dialog_items_html = cart_dialog_items_html;
+    cart_object.cart_dialog_pack_html = cart_dialog_pack_html;
+    cart_object.draw_widget();
+
+    //INIT catalog
+
+//верстальшик сделал больше строк
+
+    var element_html_template = '<div class="card" style = "min-width:225px; max-width:240px; max-height:365px;">' +
+        '<div class="card-image waves-effect waves-block waves-light">   ' +
+        '<img id = "catalog_tile_image_src" class="activator" src="'
+        + " &catalog_tile_image_src&" + '" style = "height: 200px; min-width:225px; max-width:240px;">     </div>' +
+        '<div class="card-content"><span id = "catalog_tile_label"  class="card-title activator truncate grey-text text-darken-4">'
+        + "&catalog_tile_label&"+'<br><i class="material-icons right">more_vert</i></span> <div class = "row"><div class = "col m19 s9 l9 9"><p><a id = "catalog_tile_open_item" class="waves-effect waves-light btn" style="width:145px; text-align: left;" onclick = "open_item('
+        + "&catalog_tile_open_item&"+')">ПОДРОБНЕЕ</a></p></div><div class = "col m8 s3 l3 3"><h6 id = "catalog_tile_price" style="font-size: 130%">'
+        +"&catalog_tile_price&"+ '</h6></div></div></div><div class="card-reveal"><span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span><p>Here is some more information about this product that is only revealed once clicked on.</p></div> </div>';
+
+    catalog_object.tile_item_template = element_html_template;
+
+
+
+    var item_template = "<div class='modal-content'><div class = 'header'><div class = 'row'><div class = 'col s3 m3 l3 3 yellow'><h5 id = 'PRODUCT_NAME'>PRODUCT_NAME</h5></div><div class = 'col s5 m5 l5 5'><ul class='tabs'><li class='tab col s3'><a class='active' href='#PRODUCT_DESCRIPTION'>Информация</a></li><li class='tab col s3'><a href='#product_photos'>Фогорафии</a></li><li class='tab col s3'> <a href='#similar'>Похожие</a></li><li class='tab col s3'><a href='#howto'>Как заваривать</a></li></ul></div><div class = 'col s4 m4 l4 4 blue-grey lighten-3'><h5>Комментарии</h5></div></div><div class = 'row'><div class = 'col s3 m3 l3 3'><img id = 'IMAGE_SRC' style = 'width:100%' src = ''><h5 id = 'PRODUCT_PRICE'> </h5><h5 id = 'PRODUCT_RATE'></h5> <hr> <div id = 'item_card_oprions_div'></div></div><div class = 'col s5 m5 l5 5'><div id='PRODUCT_DESCRIPTION' class='col s12'></div><div id='product_photos' class='col s12 m12 l12 12'></div><div id='similar' class='col s12'>Test 3</div><div id='howto' class='col s12'>Test 4</div></div><div id = 'comments_area' class = 'col s4 m4 l4 4'>Comments Area</div><div></div></div>";
+    item_object.item_template = item_template;
+
+
+
+    category_widget.target_div = 'category_widget_div';
+    category_widget.selected_type = 'tea';
     category_widget.categories_data =
     {
         "types": [
@@ -153,16 +185,20 @@ shop_engine_read_from_storage =  new Promise(function(resolve,reject)
             }
         ]
     };
+
     category_widget.init(category_widget);
-    check_categories(category_widget);
+    category_widget.arrayOfUnchecked = JSON.parse(window.localStorage['category_widget_arrayOfUnchecked']);
+    check_categories(category_widget)
 
     types_menu_object.target_div = 'types_area';
     types_menu_object.init(types_menu_object,category_widget);
 
 
 
-    resolve('true');
-});
+
+
+
+};
 
 shop_engine_init = new Promise(function(resolve, reject)
 {
