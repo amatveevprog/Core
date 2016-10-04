@@ -115,6 +115,8 @@ function Category_widget(widget_object)
                     //catalog_object.search(this_ref.arrayOfUnchecked,widget_object.selected_type);
                     widget_object.arrayOfUnchecked.push(event.target.id);
                     catalog_object.search(widget_object.arrayOfUnchecked,widget_object.selected_type);
+                    window.localStorage['category_widget_arrayOfUnchecked '] = JSON.stringify(category_widget.arrayOfUnchecked);
+                    console.log(category_widget.arrayOfUnchecked);
                 }
                 else
                 {
@@ -123,6 +125,9 @@ function Category_widget(widget_object)
                     //catalog_object.search(this_ref.arrayOfUnchecked,widget_object.selected_type);
                     widget_object.arrayOfUnchecked.splice(index,1);
                     catalog_object.search(widget_object.arrayOfUnchecked,widget_object.selected_type);
+                    window.localStorage['category_widget_arrayOfUnchecked '] = JSON.stringify(category_widget.arrayOfUnchecked);
+
+                    console.log(category_widget.arrayOfUnchecked);
                 }
 
             });
