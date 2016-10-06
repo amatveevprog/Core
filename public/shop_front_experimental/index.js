@@ -139,7 +139,7 @@ function shop_engine_read_from_storage(resolve,reject)
                         "categories":[
                             {
                                 "id": "category_pottery_cups",
-                                "label": "Глиненные"
+                                "label": "Глинянные"
                             }
                         ]
                     }
