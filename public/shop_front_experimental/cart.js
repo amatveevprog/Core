@@ -76,6 +76,7 @@ this.draw_widget = function()
            this.cart_items.push(new_item);
             window.localStorage['cart_object_cart_items'] =   JSON.stringify(this.cart_items);
            this.calculate_price();
+             Materialize.toast('Товар добавлен в корзину. Для просмотра и оплаты заказа нажмите на значек корзины в правом углу', 4000);
            //console.log(this.cart_items);
            return('true');
          }
@@ -111,7 +112,7 @@ this.draw_widget = function()
         {
           document.getElementById("shopping_cart_price").innerHTML = this.cart_sum + ' рублей';
         }
-          Materialize.toast('Товар добавлен в корзину. Для просмотра и оплаты заказа нажмите на значек корзины в правом углу', 4000);
+
     };
 
    
@@ -540,8 +541,8 @@ this.dialog_pack_choose_variant = function(pack_id)
 
 
 //init_cart
-var cart_object = new shopping_cart();
-cart_object.draw_widget();
+//var cart_object = new shopping_cart();
+//cart_object.draw_widget();
 
 //add_to_cart
 function add_to_cart(item_id)
@@ -566,7 +567,7 @@ function cart_widget_click()
 
 
 //CART_DIALOG
-
+/*
 var cart_dialog_tabs_html = "<div class = 'header grey lighten-4' style = 'margin:0px;padding:0px;'>  <div class = 'row' id = 'cart_tabs' style = 'height:100%;margin-top:0px;padding-top:0px;'>    <div id = 'cart_tab_items' class = 'col s2 m2 l2 2 light green valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>      <div>          <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> list </i>          <hr>          Товары      </div>    </div>    <div id = 'cart_tab_pack' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>      <div>         <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> card_giftcard</i>         <hr>         Упаковка      </div>    </div>    <div id = 'cart_tab_pack' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>      <div>         <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'>local_shipping</i>         <hr>Доставка      </div>    </div>    <div id = 'cart_tab_pay' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>      <div>         <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> payment</i>         <hr>         Оплата      </div>    </div>      <div id = 'cart_tab_submit' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>        <div>          <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> done </i>          <hr>          Отслеживание        </div>      </div>      <div>        <hr>        <div id = 'cart_content'>                   </div>      </div>    </div>";
 
 
@@ -580,8 +581,7 @@ var cart_dialog_pack_html = "<div class = 'center-align'><div id = 'cart_dialog_
 cart_object.cart_dialog_tabs_html = cart_dialog_tabs_html;
 cart_object.cart_dialog_items_html = cart_dialog_items_html;
 cart_object.cart_dialog_pack_html = cart_dialog_pack_html;
-
-
+*/
 //CART DIALOG / DELETE_ITEM
 function cart_dialog_delete_item (cart_item_id)
 {

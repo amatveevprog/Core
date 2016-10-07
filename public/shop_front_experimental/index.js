@@ -7,7 +7,7 @@
 //Check for local storage session availability
 function check_local_storage_availability()
 {
-    return(false);
+    return(true);
 }
 
 
@@ -76,7 +76,9 @@ function shop_engine_read_from_storage(resolve,reject)
     cart_object.cart_dialog_pack_html = cart_dialog_pack_html;
 
 
-    try {
+    try
+    {
+
         cart_object.cart_items = JSON.parse(window.localStorage['cart_object_cart_items']);
         cart_object.cart_sum = JSON.parse(window.localStorage['cart_object_cart_sum']);
         cart_object.cart_item_id_counter = JSON.parse(window.localStorage['cart_object_cart_item_id_counter ']);
@@ -87,6 +89,7 @@ function shop_engine_read_from_storage(resolve,reject)
     }
 
     cart_object.draw_widget();
+    cart_object.calculate_price();
 
     //INIT catalog
 

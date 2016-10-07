@@ -9,6 +9,7 @@ var types_menu = function()
 
     this.init = function(types_menu_object,category_widget)
     {
+        document.getElementById(types_menu_object.target_div).innerHTML = '';
         var types_div = document.createElement('div');
         for(var type in category_widget.categories_data.types)
         {
