@@ -22,6 +22,7 @@ var types_menu = function()
                 var selected_type = event.target.id;
                 console.log(selected_type);
                 category_widget.selected_type = selected_type;
+                window.localStorage['category_widget_selected_type'] = JSON.stringify(category_widget.selected_type);
                 category_widget.init(category_widget);
 
             });

@@ -7,7 +7,7 @@
 //Check for local storage session availability
 function check_local_storage_availability()
 {
-    return(true);
+    return(false);
 }
 
 
@@ -76,7 +76,6 @@ function shop_engine_read_from_storage(resolve,reject)
     cart_object.cart_dialog_pack_html = cart_dialog_pack_html;
 
 
-    /*  Probpem Here
     try {
         cart_object.cart_items = JSON.parse(window.localStorage['cart_object_cart_items']);
         cart_object.cart_sum = JSON.parse(window.localStorage['cart_object_cart_sum']);
@@ -86,7 +85,7 @@ function shop_engine_read_from_storage(resolve,reject)
     {
         console.log(e);
     }
-    */
+
     cart_object.draw_widget();
 
     //INIT catalog
@@ -102,9 +101,17 @@ function shop_engine_read_from_storage(resolve,reject)
         + "&catalog_tile_open_item&"+')">ПОДРОБНЕЕ</a></p></div><div class = "col m8 s3 l3 3"><h6 id = "catalog_tile_price" style="font-size: 130%">'
         +"&catalog_tile_price&"+ '</h6></div></div></div><div class="card-reveal"><span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span><p>Here is some more information about this product that is only revealed once clicked on.</p></div> </div>';
 
-    catalog_object.tile_item_template = element_html_template;
-    catalog_object.items = JSON.parse(window.localStorage['catalog_object_items']);
-    catalog_object.filtered_items = JSON.parse(window.localStorage['catalog_object_filtered_items']);
+    try
+    {
+        catalog_object.tile_item_template = element_html_template;
+        catalog_object.items = JSON.parse(window.localStorage['catalog_object_items']);
+        catalog_object.filtered_items = JSON.parse(window.localStorage['catalog_object_filtered_items']);
+    }
+    catch(e)
+    {
+        console.log(e);
+    }
+
 
 
 
@@ -113,7 +120,7 @@ function shop_engine_read_from_storage(resolve,reject)
 
 
     category_widget.target_div = 'category_widget_div';
-    category_widget.selected_type = JSON.parse(window.localStorage['category_widget_selected_type']);;
+    category_widget.selected_type = JSON.parse(window.localStorage['category_widget_selected_type']);
     category_widget.categories_data =
     {
         "types": [
