@@ -7,7 +7,15 @@
 //Check for local storage session availability
 function check_local_storage_availability()
 {
-    return(true);
+    try
+    {
+        return 'localStorage' in window && window['localStorage']!== null;
+    }
+    catch(e)
+    {
+        return false;
+    }
+    //return(true);
 }
 
 
