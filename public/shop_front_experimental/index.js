@@ -7,7 +7,7 @@
 //Check for local storage session availability
 function check_local_storage_availability()
 {
-
+ //return(false);
 var arr = [
     //window.localStorage['category_widget_arrayOfUnchecked '],
     //window.localStorage['category_widget_selected_type'],
@@ -15,7 +15,7 @@ var arr = [
     window.localStorage['catalog_object_categories'],
     window.localStorage['catalog_object_items'],
     window.localStorage['catalog_object_filtered_items']
-   // window.localStorage['cart_object_cart_items'],
+    //window.localStorage['cart_object_cart_items'],
     //window.localStorage['cart_object_cart_sum'],
     //window.localStorage['cart_object_cart_item_id_counter '],
     //window.localStorage['cart_object_cart_template']
@@ -24,8 +24,8 @@ var arr = [
     {
         for(var i in arr)
         {
-
-            if(arr[i] == "" || arr[i] == null || arr[i] == [])
+            console.log(arr[i]);
+            if(arr[i] == "" || arr[i] == null || arr[i].length == 0)
             {
                 console.log(arr[i] +'  ' + i);
                 return false;
