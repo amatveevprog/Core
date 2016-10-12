@@ -6,6 +6,7 @@
     "email-templates": "^2.4.1",
     "express": "4.x",
     "fs": "0.0.1-security",
+    "md5": "^2.2.1",
     "mongoose": "4.1.x",
     "nodemailer": "^2.6.4",
     "nodemailer-sendmail-transport": "^1.0.0",

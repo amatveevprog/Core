@@ -7,7 +7,6 @@
 //Check for local storage session availability
 function check_local_storage_availability()
 {
-
 var arr = [
     //window.localStorage['category_widget_arrayOfUnchecked '],
     //window.localStorage['category_widget_selected_type'],
