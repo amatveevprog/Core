@@ -29,6 +29,7 @@ function checkIfIwasHere()
 //функция отправки
 function saveHtmlSnapShot()
 {
+    //f
     //var htmlString = window.document.body.innerHTML;
     //saveStorageData(htmlString);
     //window.localStorage['catalog_object'] = catalog_object;
