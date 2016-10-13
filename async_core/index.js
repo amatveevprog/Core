@@ -10,6 +10,7 @@ var UploadError = require('../errors').UploadError;
 var EndpointError = require('./endpoint_error');
 var FindFiles = require('node-find-files');
 var config = require('../config');
+var md5 = require('md5');
 //from config: api_api_prefix;
 
 
@@ -232,5 +233,11 @@ exports.lookupAndMakeEndpoints = function(dirPath,callback)
 
         }
     });
+};
+//генерит новую хеш-строку и сохраняет ее на сервере
+exports.setNewRefreshHash = function()
+{
+    let hashStr = md5(Math.random().toString());
+    process.env.REFRESH_HASH = hashStr;
 };
 
