@@ -84,7 +84,7 @@ var cart_object = new shopping_cart();
 $(document).ready(function()
 {
     //delta time for timestamp checking
-    var delta_time = 10;
+    var delta_time = 20;
     shop_engine_init.then(get_all_items(),function(){console.log('Init Error')});
     //Check local storage
    if(check_local_storage_availability() == true)
@@ -105,8 +105,9 @@ $(document).ready(function()
        if(check_completion_of_catalog_and_category()==true)
        {
            if(check_timestamp(delta_time)) {
-               console.log("STAB FOR LAST SESSION RECOVERY");
-               shop_engine_read_from_storage();
+               //console.log("STAB FOR LAST SESSION RECOVERY");
+               Materialize.toast('Мы сохранили Ваш прогресс. Продолжить с того момента где Вы остановились? <button onclick = "process_toast(this)">Да</button>  <button onclick = "delete_toast(this)">нет</button>', 14000);
+               //shop_engine_read_from_storage();
            }
        }
 
@@ -114,8 +115,18 @@ $(document).ready(function()
 });
 
 
+function delete_toast(element)
+{
+    element.parentNode.parentNode.removeChild(element.parentNode);
 
 
+}
+
+function process_toast(element)
+{
+    element.parentNode.parentNode.removeChild(element.parentNode);
+    shop_engine_read_from_storage();
+}
 function shop_engine_read_from_storage(resolve,reject)
 {
     console.log('read from storage');
