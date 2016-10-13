@@ -1,22 +1,12 @@
 /**
- * Created by alexander.bondarik on 29.09.2016.
- */
-exports.get_all_items_int = get_all_items;
-
-
-
-
-
-
-/**
  * Created by alexander.bondarik on 22.09.2016.
  */
 
 
 //return catalog items
-function get_all_items(response)
-{
 
+function get_all_categories(response)
+{
     mongodb = require('mongodb');
     var items_array = [];
     var uri = 'mongodb://user:pass@host:port/db';
@@ -36,7 +26,7 @@ function get_all_items(response)
             throw err;
         }
 
-        var items = db.collection('items_test2');
+        var items = db.collection('Catalog_Categories');
         //var items = db.collection('productcards');
         items.find().toArray(function (err, docs)
         {
@@ -48,12 +38,14 @@ function get_all_items(response)
                 response.end(err.toString())
             }
 
-            docs.forEach(function (doc)
-            {
-                items_array.push(doc);
-            });
-            var json_item = {"items":items_array};
-            var json = JSON.stringify(json_item);
+            //console.log(docs);
+            //docs.forEach(function (doc)
+            //{
+              //  items_array.push(doc);
+            //});
+            //console.log(json_item);
+            //var json_item = {"items":items_array};
+            var json = JSON.stringify(docs[0]);
 
             console.log('> Sending result to client.... | result = ' + json);
             response.writeHead(200, {"Content-Type": "application/json; charset=utf-8"});
@@ -66,3 +58,10 @@ function get_all_items(response)
 
 
 }
+
+
+
+
+
+
+exports.get_all_items_int = get_all_categories
