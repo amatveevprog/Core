@@ -55,7 +55,7 @@ function get_all_items(response)
             var json_item = {"items":items_array};
             var json = JSON.stringify(json_item);
 
-            console.log('> Sending result to client.... | result = ' + json);
+            //console.log('> Sending result to client.... | result = ' + json);
             response.writeHead(200, {"Content-Type": "application/json; charset=utf-8"});
             response.write(json);
             response.end();
