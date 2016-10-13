@@ -237,8 +237,7 @@ exports.lookupAndMakeEndpoints = function(dirPath,callback)
 //генерит новую хеш-строку и сохраняет ее на сервере
 exports.setNewRefreshHash = function()
 {
-    //let hashStr = md5(Math.random().toString());
-    var  hashStr = md5(Math.random().toString());
+    var hashStr = md5(Math.random().toString());
     process.env.REFRESH_HASH = hashStr;
 };
 

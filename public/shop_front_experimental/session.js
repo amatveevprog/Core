@@ -5,6 +5,7 @@ function registerEvents(timeStampDeltaMinutes)
 {
     window.onbeforeunload = function () {
         //делаем снапшот
+        //Доделать timestamp для отдельных групп
         window.localStorage['TimeStamp'] = Date.now();
         saveHtmlSnapShot();
         //window.localStorage.clear();
@@ -28,28 +29,23 @@ function checkIfIwasHere()
 //функция отправки
 function saveHtmlSnapShot()
 {
-    var htmlString = window.document.body.innerHTML;
-    saveStorageData(htmlString);
+    //f
+    //var htmlString = window.document.body.innerHTML;
+    //saveStorageData(htmlString);
     //window.localStorage['catalog_object'] = catalog_object;
+
     window.localStorage['catalog_object_categories'] = JSON.stringify(catalog_object.categories);
     window.localStorage['catalog_object_items'] = JSON.stringify(catalog_object.items);
     window.localStorage['catalog_object_filtered_items'] = JSON.stringify(catalog_object.filtered_items);
 
-   // window.localStorage['cart_widget'] = cart_widget;
-    //window.localStorage['types_menu_object'] = types_menu_object;
-    //window.localStorage['item_object'] = item_object;
-
-    //window.localStorage['cart_object'] = cart_object;
     window.localStorage['cart_object_cart_items'] = JSON.stringify(cart_object.cart_items);
     window.localStorage['cart_object_cart_sum'] = JSON.stringify(cart_object.cart_sum);
     window.localStorage['cart_object_cart_item_id_counter'] = JSON.stringify(cart_object.cart_item_id_counter);
     window.localStorage['cart_object_cart_template'] = JSON.stringify(cart_object.cart_template);
 
-    //window.localStorage['category_widget'] = category_widget;
     window.localStorage['category_widget_arrayOfUnchecked'] = JSON.stringify(category_widget.arrayOfUnchecked);
     window.localStorage['category_widget_selected_type'] = JSON.stringify(category_widget.selected_type);
     window.localStorage['category_widget_categories_data'] = JSON.stringify(category_widget.categories_data);
-
 
 
 }
@@ -90,12 +86,17 @@ function checkTimeStamp(initial_delta_seconds)
     let old_time = parseInt(window.localStorage['TimeStamp'],10);
     let raz = date_now-old_time;
     let initial_delta_miliseconds = initial_delta_seconds*1000;
+    console.log("now time: "+ date_now);
+    console.log("old time: "+ old_time);
+    console.log("DIFFERENCE: "+ raz);
     if(raz>initial_delta_miliseconds)
     {
+        console.log("timestamp false");
         return false;
     }
     else
     {
+        console.log("timestamp true");
         return true;
     }
 }

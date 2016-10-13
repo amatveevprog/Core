@@ -43,7 +43,9 @@ function get_all_categories()
 function get_all_items()
 {
     var xhr = new XMLHttpRequest();
+
     xhr.open('GET', '/API/get_all_items_experimental_js_get_all_items_int', true);
+    //xhr.open('GET', '/API/get_items_test_js_get_all_items_int', true);
     xhr.send();
     xhr.onreadystatechange = function()
     {
@@ -66,5 +68,4 @@ function get_all_items()
       }
 
     };
-
 }
