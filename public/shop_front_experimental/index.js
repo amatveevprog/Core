@@ -2,43 +2,76 @@
  * Created by alexander.bondarik on 01.10.2016.
  */
 
-
-
 //Check for local storage session availability
 function check_local_storage_availability()
 {
-var arr = [
-    //window.localStorage['category_widget_arrayOfUnchecked '],
-    //window.localStorage['category_widget_selected_type'],
-    window.localStorage['category_widget_categories_data'],
-    window.localStorage['catalog_object_categories'],
-    window.localStorage['catalog_object_items'],
-    window.localStorage['catalog_object_filtered_items']
-   // window.localStorage['cart_object_cart_items'],
-    //window.localStorage['cart_object_cart_sum'],
-    //window.localStorage['cart_object_cart_item_id_counter '],
-    //window.localStorage['cart_object_cart_template']
-];
     try
     {
-        for(var i in arr)
-        {
-
-            if(arr[i] == "" || arr[i] == null || arr[i] == [])
-            {
-                console.log(arr[i] +'  ' + i);
-                return false;
-            }
-        }
         return 'localStorage' in window && window['localStorage']!== null;
     }
     catch(e)
     {
         return false;
     }
-    //return(true);
 }
 
+
+function checkEmptyElementsInArray(array) {
+    for(var i=0;i<array.length;i++)
+    {
+        if(array[i] == "" || array[i] == null || array[i] == [])
+            return false;
+    }
+    return true;
+}
+//checks the completion of catalog_and_category
+function check_completion_of_catalog_and_category()
+{
+    var arr = [
+    //window.localStorage['catalog_object_categories'],
+    window.localStorage['catalog_object_items'],
+    window.localStorage['catalog_object_filtered_items'],
+    //window.localStorage['category_widget_arrayOfUnchecked'],
+    window.localStorage['category_widget_selected_type'],
+    window.localStorage['category_widget_categories_data']];
+    if(checkEmptyElementsInArray(arr)==true)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+};
+function check_completion_of_cart() {
+    var arr = [window.localStorage['cart_object_cart_items'],
+        window.localStorage['cart_object_cart_sum'],
+        window.localStorage['cart_object_cart_item_id_counter']];
+    if(checkEmptyElementsInArray(arr)==true)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+};
+
+function cart_object_init_from_localStorage()
+{
+    cart_object.cart_items = JSON.parse(window.localStorage['cart_object_cart_items']);
+    cart_object.cart_sum = JSON.parse(window.localStorage['cart_object_cart_sum']);
+    cart_object.cart_item_id_counter = JSON.parse(window.localStorage['cart_object_cart_item_id_counter']);
+}
+function cart_object_clear() {
+    cart_object.cart_items = [];
+    cart_object.cart_sum = 0;
+    cart_object.cart_item_id_counter=0;
+}
+function check_timestamp(seconds) {
+    //change seconds to hours!!!
+    return checkTimeStamp(seconds);
+}
 
 //Global Variables
 var catalog_object = new catalog();
@@ -50,25 +83,34 @@ var cart_object = new shopping_cart();
 
 $(document).ready(function()
 {
-
-    //STart to register evenst for session save
-    registerEvents(0);
-
+    //delta time for timestamp checking
+    var delta_time = 10;
+    shop_engine_init.then(get_all_items(),function(){console.log('Init Error')});
     //Check local storage
    if(check_local_storage_availability() == true)
    {
-       console.log('TRUE!!!!');
-       shop_engine_read_from_storage();
+       registerEvents(0);
+       //1st step: check cart completion
+       if(check_completion_of_cart()==true)
+       {
+           if(check_timestamp(delta_time)) {
+               //just copying elements from localStorage to cart object
+               cart_object_init_from_localStorage();
+           }
+           else
+           {
+               cart_object_clear();
+           }
+       }
+       if(check_completion_of_catalog_and_category()==true)
+       {
+           if(check_timestamp(delta_time)) {
+               console.log("STAB FOR LAST SESSION RECOVERY");
+               shop_engine_read_from_storage();
+           }
+       }
+
    }
-   else
-   {
-
-    //Normal_init
-       shop_engine_init.then(get_all_items(),function(){console.log('Init Error')});
-
-   }
-
-
 });
 
 
@@ -78,24 +120,6 @@ function shop_engine_read_from_storage(resolve,reject)
 {
     console.log('read from storage');
 
-    /*
-    try {
-        category_widget.arrayOfUnchecked = JSON.parse(window.localStorage['category_widget_arrayOfUnchecked ']);
-        category_widget.selected_type = JSON.parse(window.localStorage['category_widget_selected_type']);
-        category_widget.categories_data = JSON.parse(window.localStorage['category_widget_categories_data']);
-        catalog_object.categories = JSON.parse(window.localStorage['catalog_object_categories']);
-        catalog_object.items = JSON.parse(window.localStorage['catalog_object_items']);
-        catalog_object.filtered_items = JSON.parse(window.localStorage['catalog_object_filtered_items']);
-        cart_object.cart_items = JSON.parse(window.localStorage['cart_object_cart_items']);
-        cart_object.cart_sum = JSON.parse(window.localStorage['cart_object_cart_sum']);
-        cart_object.cart_item_id_counter = JSON.parse(window.localStorage['cart_object_cart_item_id_counter ']);
-        cart_object.cart_template = JSON.parse(window.localStorage['cart_object_cart_template']);
-    }
-    catch(e)
-    {
-        console.log(e);
-    }
-*/
 
     var cart_dialog_tabs_html = "<div class = 'header grey lighten-4' style = 'margin:0px;padding:0px;'>  <div class = 'row' id = 'cart_tabs' style = 'height:100%;margin-top:0px;padding-top:0px;'>    <div id = 'cart_tab_items' class = 'col s2 m2 l2 2 light green valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>      <div>          <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> list </i>          <hr>          Товары      </div>    </div>    <div id = 'cart_tab_pack' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>      <div>         <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> card_giftcard</i>         <hr>         Упаковка      </div>    </div>    <div id = 'cart_tab_pack' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>      <div>         <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'>local_shipping</i>         <hr>Доставка      </div>    </div>    <div id = 'cart_tab_pay' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>      <div>         <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> payment</i>         <hr>         Оплата      </div>    </div>      <div id = 'cart_tab_submit' class = 'col s2 m2 l2 2 white valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>        <div>          <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> done </i>          <hr>          Отслеживание        </div>      </div>      <div>        <hr>        <div id = 'cart_content'>                   </div>      </div>    </div>";
     var cart_dialog_items_html = "<div class = 'header grey lighten-4' style = 'margin:0px;padding:0px;'>  <div class = 'row' id = 'cart_tabs' style = 'height:100%;margin-top:0px;padding-top:0px;'>    <div id = 'cart_tab_items' class = 'col s2 m2 l2 2 light green valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%;'>      <div>          <i class = 'material-icons ' style = 'border-radius:999px;padding:3%'> list </i>          <hr>          Товары      </div>    </div>    <div id = 'cart_tab_pack' class = 'col s2 m2 l2 2 valign-wrapper hoverable waves-effect waves-yellow center-align z-depth-1' style = 'height:100px; padding:1%;background:#FAFAFA'>      <div>         <i class = 'material-icons  z-depth-1' style = 'border-radius:999px;padding:3%'> card_giftcard</i>         <hr>         Упаковка      </div>    </div>    <div id = 'cart_tab_pack' class = 'col s2 m2 l2 2  valign-wrapper hoverable waves-effect waves-yellow center-align z-depth-1' style = 'height:100px; padding:1%;background:#FAFAFA'>      <div>         <i class = 'material-icons  z-depth-1' style = 'border-radius:999px;padding:3%'>local_shipping</i>         <hr>Доставка      </div>    </div>    <div id = 'cart_tab_pay' class = 'col s2 m2 l2 2 valign-wrapper hoverable waves-effect waves-yellow center-align' style = 'height:100px; padding:1%; background:#FAFAFA'>      <div>         <i class = 'material-icons  z-depth-1' style = 'border-radius:999px;padding:3%;background:#FAFAFA'> payment</i>         <hr>         Оплата      </div>    </div>      <div id = 'cart_tab_submit' class = 'col s2 m2 l2 2  valign-wrapper hoverable waves-effect waves-yellow center-align z-depth-1' style = 'height:100px; padding:1%; background:#FAFAFA'>        <div>          <i class = 'material-icons  z-depth-1' style = 'border-radius:999px;padding:3%'> done </i>          <hr>          Отслеживание        </div>      </div>      <div>        <hr>        <div id = 'cart_content'>           <div class = 'row' style = ''> <div class = 'col s12 m12 l12 12 center-align purple lighten-4' id = 'cart_dialog_order_summary' style = 'margin-top:3%; background:#FAFAFA; margin-bottom:3%; padding:2%; background:#FAFAFA'>                 <h4 > Ваш заказ: </h4>                                           <h6 id = 'cart_items_counter'> Всего товаров: 24 </h6>                 <h5 id = 'cart_items_price'> На сумму: 670р.</h5>                                             * для выбора упаковки перейдите на следующий экран      </div>                                                                <div class = 'col s12 m12 l12 12 z-depth-1' style = ' background:#FAFAFA;padding:3%' >   <table class = 'responsive-table highlight striped' style = 'background:#FAFAFA; z-depth-1; padding:2%;'>                <thead>                  <tr>   <th data-field='id'>Фото</th>                    <th data-field='name'>Наименование</th>                    <th data-field='type'>Тип</th>                                                                            <th data-field='quantity'>количество</th>                    <th data-field='price'>цена</th>                  </tr>                                                                               <tbody id = 'cart_items_table'>                                                   </tbody>              </table>            </div>                                        </div>        </div>      </div>    </div>";
@@ -110,7 +134,7 @@ function shop_engine_read_from_storage(resolve,reject)
 
         cart_object.cart_items = JSON.parse(window.localStorage['cart_object_cart_items']);
         cart_object.cart_sum = JSON.parse(window.localStorage['cart_object_cart_sum']);
-        cart_object.cart_item_id_counter = JSON.parse(window.localStorage['cart_object_cart_item_id_counter ']);
+        cart_object.cart_item_id_counter = JSON.parse(window.localStorage['cart_object_cart_item_id_counter']);
     }
     catch(e)
     {

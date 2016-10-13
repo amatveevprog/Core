@@ -29,7 +29,7 @@ var server = http.createServer(app).listen(process.env.PORT||config.get('port'),
 {
     //log.info('Express server listening on port '+ 1000);
     //logger('Express server listening on port '+ 1000);
-    require('./async_core').setNewRefreshHash();
+    //require('./async_core').setNewRefreshHash();
     console.log("Server started. Listening on port "+ config.get('port'));
     //при старте сервера мониторим папку uploads и загружаем все модули из нее
     require('./async_core').lookupAndMakeEndpoints(config.get('api_upload_dir'),function (err,resultArr) {
