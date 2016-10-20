@@ -1,12 +1,8 @@
 /**
  * Created by alexander.bondarik on 14.10.2016.
  */
-function refresh()
-{
-     //qwtrqwyetiqweu
-}
 
-function cart_dialog_class()
+function cart_dialog_class(object_ref)
 {
     this.header_objects_array = [];
     this.target = '';
@@ -22,8 +18,9 @@ function cart_dialog_class()
    var body_div = document.createElement('div');
    body_div.id = 'cart_dialog_body_area';
 
-   var screen_1_render = new object_ref.component_screen_1();
-   var screen_1_object = screen_1_render.init();
+   var screen_1_render = new object_ref.component_screen_1(object_ref);
+   screen_1_render.parent_object = object_ref;
+   var screen_1_object = screen_1_render.init(object_ref);
    body_div.appendChild(screen_1_object);
    dialog_layout.appendChild(header_div);
    var hr_div = document.createElement('div');
@@ -94,7 +91,7 @@ function cart_dialog_class()
        return(header_div);
    };
  }
- this.component_header_item = function(object_ref)
+ this.component_header_item = function(object_ref)  
  {
      this.number = '';
      this.title_big = '';
@@ -116,7 +113,7 @@ function cart_dialog_class()
              object_ref.header_objects_array[i].style = 'background: white';
          }
          id.style = 'background:red';
-         object_ref.header_objects_array.clear;
+         object_ref.header_objects_array = [];
          object_ref.header_objects_array.push(id);
          object_ref.change_screen(id.getAttribute('data-id'));
      }
@@ -155,8 +152,9 @@ function cart_dialog_class()
  
  
  //   Screens
-this.component_screen_1 = function()
+this.component_screen_1 = function(object_ref)
 {
+  this.parent_object;
   var screen_data = {
       items_array:[
           {
@@ -200,7 +198,7 @@ this.component_screen_1 = function()
       ]
   };
     
-  this.init = function()
+  this.init = function(object_ref)
   {
       var screen = document.createElement('div');
       var table_render = table_with_contents(screen_data.items_array);
@@ -217,7 +215,16 @@ this.component_screen_1 = function()
 
       return(screen);
   };
-
+    
+   function button_next_handler(screen_name)
+   {
+     //alert('trololo');
+     //console.log(this.parent_object);
+     //console.log(object_ref);
+     object_ref.change_screen(screen_name);  
+       
+   }
+  
    function table_with_contents (items_data)
     {
         //console.log(items_data);
@@ -292,7 +299,8 @@ this.component_screen_1 = function()
        var next_button = document.createElement('button');
        next_button.innerText = 'продолжить';
        next_button.className = 'col s4 m4 l4 4';
-       next_button.addEventListener('click',function(e){})
+       next_button.addEventListener('click',function(e){button_next_handler('screen_2');})
+       
        var back_button = document.createElement('button');
        back_button.innerText = 'добавить что-нибудь еще';
        back_button.className = 'col s4 m4 l4 4';
@@ -554,30 +562,27 @@ this.change_screen = function(screen)
         {
             case 'screen_2':
             {
-                var screen_2_render = new this.component_screen_2();
+                var screen_2_render = new this.component_screen_2(this);
                 var screen_2_object = screen_2_render.init();
-                console.log('screen_2');
-                console.log(screen_2_object);
+                
                 body_div.innerHTML = '';
                 body_div.appendChild(screen_2_object);
                 break; 
             }
             case 'screen_1':
             {
-                var screen_1_render = new this.component_screen_1();
+                var screen_1_render = new this.component_screen_1(this);
                 var screen_1_object = screen_1_render.init();
-                console.log('screen_1');
-                console.log(screen_1_object);
+               
                 body_div.innerHTML = '';
                 body_div.appendChild(screen_1_object);
                 break;
             }
             case 'screen_3':
             {
-                var screen_3_render = new this.component_screen_3();
+                var screen_3_render = new this.component_screen_3(this);
                 var screen_3_object = screen_3_render.init();
-                console.log('screen_3');
-                console.log(screen_3_object);
+               
                 body_div.innerHTML = '';
                 body_div.appendChild(screen_3_object);
                 break;
@@ -586,6 +591,66 @@ this.change_screen = function(screen)
     }
 }
 
-var cart_dialog_object = new cart_dialog_class();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+cart_dialog_class.prototype.change_screen2 = function(screen){
+    var body_div = document.getElementById('cart_dialog_body_area');
+    switch(screen)
+    {
+       //hisobject = Object.create(cart_dialog_class.prototype);
+            
+        case 'screen_2':
+        {
+            var screen_2_render = new this.component_screen_2();
+            var screen_2_object = screen_2_render.init();
+
+            body_div.innerHTML = '';
+            body_div.appendChild(screen_2_object);
+            break;
+        }
+        case 'screen_1':
+        {
+            var screen_1_render = new this.component_screen_1();
+            var screen_1_object = screen_1_render.init();
+
+            body_div.innerHTML = '';
+            body_div.appendChild(screen_1_object);
+            break;
+        }
+        case 'screen_3':
+        {
+            var screen_3_render = new this.component_screen_3();
+            var screen_3_object = screen_3_render.init();
+
+            body_div.innerHTML = '';
+            body_div.appendChild(screen_3_object);
+            break;
+        }
+    }
+};
+
+
+
+
+var cart_dialog_object = new cart_dialog_class(cart_dialog_object);
 cart_dialog_object.target = 'place_for_cart_dialog';
 cart_dialog_object.init(cart_dialog_object);
