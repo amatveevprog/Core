@@ -18,6 +18,7 @@ function shopping_cart()
    this.current_pack = '';
    //
 
+
    this.cart_selected_packs = [];
 
 
@@ -437,7 +438,7 @@ this.draw_widget = function()
                           //packs_html +="<input onchange = 'cart_object.dialog_pack_choose_variant("+'"'+available_packs[k].pack_id +'"'+")'  name='packs' type='radio' id='pack"+ available_packs[k].pack_id +"' /><label for='pack"+available_packs[k].pack_id+'">'+available_packs[k].name+"</label></div>";
                           packs_html += '<div><p> <input onchange = "cart_object.dialog_pack_choose_variant('+"'"+available_packs[k].pack_id +"'"+')"  name="packs" type="radio" id="pack'+ available_packs[k].pack_id +'" /><label for="pack'+available_packs[k].pack_id+'"> Выбрать</label> </div></div>';
 
-                          packs_html +=" <div class='card-reveal'><span class='card-title grey-text text-darken-4'>Card Title<i class='material-icons right'>close</i></span>";
+                          packs_html +=" <div class='card-rгж.al'><span class='card-title grey-text text-darken-4'>Card Title<i class='material-icons right'>close</i></span>";
                           packs_html +="<p>Here is some more information about this product that is only revealed once clicked on.</p>";
                           packs_html +="<p>Here is some more information about this product that is only revealed once clicked on.</p>";
                           packs_html +="</div></div></div>";
