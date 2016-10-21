@@ -36,20 +36,14 @@ this.draw_widget = function()
  {
    //console.log('cart clicked');
 
-   this.shop_cart_dialog_items();
+   //this.shop_cart_dialog_items();
+   var cart_dialog_object = new cart_dialog_class(cart_dialog_object);
+   cart_dialog_object.target = 'modal_content_cart';
+   cart_dialog_object.init(cart_dialog_object);
+
    var modal_content = document.getElementById('modal_content_cart');
-
-
-
    $('#modal_cart').openModal();
    cart_full_screen();
-   //document.getElementById('modal_cart').style = 'top: 0%; width: 100%; height: 100%; max-height: 100%; z-index: 1003; display: block; opacity: 1; transform: scaleX(1);';
-   //document.getElementById('modal_cart').style.bottom = '10%';
-   //var modal_content = document.getElementById('modal_content_cart');
-   //var html_str = this.cart_dialog_items_html;
-   //modal_content.innerHTML = html_str;
-   //$('#modal_cart').openModal();
-
  };
 //________________________END_OF_CART_WIDGET_____________________________
 
@@ -132,6 +126,7 @@ this.draw_widget = function()
          }
       }
    };
+
 
 
 //_________________________END_OF_CART_LOGIC______________________________
