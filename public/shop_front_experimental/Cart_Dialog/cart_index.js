@@ -6,6 +6,7 @@ function cart_dialog_class(object_ref)
 {
     this.header_objects_array = [];
     this.target = '';
+    this.cart_object;
 
  this.init = function(object_ref)
  {
@@ -155,6 +156,7 @@ function cart_dialog_class(object_ref)
 this.component_screen_1 = function(object_ref)
 {
   this.parent_object;
+    //TO delete stub data for items_array_below
   var screen_data = {
       items_array:[
           {
@@ -197,7 +199,8 @@ this.component_screen_1 = function(object_ref)
           }
       ]
   };
-    
+  screen_data.items_array = object_ref.cart_object.cart_items;
+
   this.init = function(object_ref)
   {
       var screen = document.createElement('div');
@@ -249,6 +252,7 @@ this.component_screen_1 = function(object_ref)
           var type_td = document.createElement('td');
           var type = document.createElement('p');
           type.innerText = items_data[i].selected_type;
+          type_td.appendChild(type);
 
           var quantity_td = document.createElement('td');
           var quantity = document.createElement('input');
@@ -320,8 +324,9 @@ this.component_screen_1 = function(object_ref)
    function remove_from_cart_prompt(e)
    {
       //console.log(e.target.parentNode.parentNode);
+       object_ref.cart_object.remove_from_cart(e.target.parentNode.parentNode.getAttribute('data-cartitemid'));
        e.target.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode);
-       // to-do add 1)  prompt to delete 2) delete 3) recalc 4) remove_from_cart
+       // to-do add 1)  prompt to delete
    }
 
 

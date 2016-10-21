@@ -37,8 +37,10 @@ this.draw_widget = function()
    //console.log('cart clicked');
 
    //this.shop_cart_dialog_items();
+   document.getElementById('modal_content_cart').innerHTML = '';
    var cart_dialog_object = new cart_dialog_class(cart_dialog_object);
    cart_dialog_object.target = 'modal_content_cart';
+   cart_dialog_object.cart_object = this;
    cart_dialog_object.init(cart_dialog_object);
 
    var modal_content = document.getElementById('modal_content_cart');
