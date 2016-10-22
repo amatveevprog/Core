@@ -695,6 +695,9 @@ this.change_screen = function(screen)
                 
                 body_div.innerHTML = '';
                 body_div.appendChild(screen_2_object);
+                $(document).ready(function() {
+                    $('select').material_select();
+                });
                 break; 
             }
             case 'screen_1':
