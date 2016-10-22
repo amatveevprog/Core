@@ -393,6 +393,14 @@ this.component_screen_2 = function()
                                         required:"true"
                                     },
                                     {
+                                        description:"Телефог",
+                                        name:"Phone",
+                                        dom_type:"input",
+                                        data_type:"text",
+                                        className:"form_field_Phone",
+                                        required:"true"
+                                    },
+                                    {
                                         description:"Адрес электронной почты",
                                         name:"email",
                                         dom_type:"input",
@@ -425,6 +433,14 @@ this.component_screen_2 = function()
                                                 }
                                             ],
                                         className:"form_field_Delivery_Type",
+                                        required:"true"
+                                    },
+                                    {
+                                        description:"Город",
+                                        name:"Name",
+                                        dom_type:"input",
+                                        data_type:"text",
+                                        className:"form_field_FirstCity",
                                         required:"true"
                                     }
                                 ]
@@ -508,7 +524,7 @@ this.component_screen_2 = function()
               var group_div = document.createElement('div');
               group_div.id = screen_data.form_data.field_groups[form_group].name;
               group_div.className = screen_data.form_data.field_groups[form_group].className;
-              var group_title = document.createElement('p');
+              var group_title = document.createElement('h3');
               group_title.innerText = screen_data.form_data.field_groups[form_group].label;
               for(var field in screen_data.form_data.field_groups[form_group].fields)
               {
