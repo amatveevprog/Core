@@ -84,7 +84,7 @@ var cart_object = new shopping_cart();
 $(document).ready(function()
 {
     //delta time for timestamp checking
-    var delta_time = 20;
+    var delta_time = 60;
     shop_engine_init.then(get_all_items(),function(){console.log('Init Error')});
     //Check local storage
    if(check_local_storage_availability() == true)

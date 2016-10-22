@@ -73,7 +73,7 @@ function cart_dialog_class(object_ref)
            new_item.title_small = this.elements.elements[i].title_small;
            var header_item = new_item.draw();
            header_item.setAttribute('data-id','screen_'+new_item.number);
-           header_item.className = 'left';
+           header_item.className = 'left cart_dialog_header_item';
            header_item.name = 'Cart_Header_Item';
            header_div.appendChild(header_item);
            //object_ref.header_objects_array.push(header_item);
