@@ -118,8 +118,10 @@ $(document).ready(function()
 function delete_toast(element)
 {
     element.parentNode.parentNode.removeChild(element.parentNode);
-
-
+    window.localStorage.clear();
+    cart_object.cart_items=[];
+    cart_object.cart_sum = "";
+    cart_object.cart_item_id_counter='';
 }
 
 function process_toast(element)
