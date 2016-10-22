@@ -1,4 +1,4 @@
-/**
+j/**
  * Created by alexander.bondarik on 14.10.2016.
  */
 
@@ -333,7 +333,7 @@ this.component_screen_1 = function(object_ref)
 };
 this.component_screen_2 = function()
  {
-        var screen_data = {
+        screen_data = {
             items_array:[
                 {
                     cart_item_id:"1212",
@@ -373,7 +373,65 @@ this.component_screen_2 = function()
                         suffix:"Rub"
 
                     }
-                ]
+                ],
+            form_data:
+            {
+                field_groups:
+                    [
+                        {
+                            name:"personal_info",
+                            label:"Контактные данные",
+                            className:"field_group_Contact",
+                            fields:
+                                [
+                                    {
+                                        description:"Имя",
+                                        name:"Name",
+                                        dom_type:"input",
+                                        data_type:"text",
+                                        className:"form_field_FirstName",
+                                        required:"true"
+                                    },
+                                    {
+                                        description:"Адрес электронной почты",
+                                        name:"email",
+                                        dom_type:"input",
+                                        data_type:"email",
+                                        className:"form_field_Email",
+                                        required:"true"
+                                    }
+                                ]
+                        },
+                        {
+                            name:"delivery",
+                            label:"Доставка",
+                            className:"field_group_Delivery",
+                            fields:
+                                [
+                                    {
+                                        description:"Метод доставки",
+                                        name:"Delivery_Type",
+                                        dom_type:"select",
+                                        options:
+                                            [
+                                                {
+                                                    name:"самовывоз из чайной",
+                                                    value:"pickup",
+                                                    attributes:["selected"]
+                                                },
+                                                {
+                                                    name:"доставка",
+                                                    value:"delivery"
+                                                }
+                                            ],
+                                        className:"form_field_Delivery_Type",
+                                        required:"true"
+                                    }
+                                ]
+                        }
+                    ]
+            }
+
         };
         this.init = function()
         {
@@ -398,9 +456,13 @@ this.component_screen_2 = function()
         
         function screen_body()
         {
+            var screen = document.createElement('div');
             var title = document.createElement('p');
             title.innerText = 'Доставка и Оплата';
-            return(title);
+            var form_render = form_builder();
+            screen.appendChild(title);
+            screen.appendChild(form_render);
+            return(screen);
         }
         function footer(footer_data)
         {
@@ -434,6 +496,67 @@ this.component_screen_2 = function()
             footer_div.appendChild(next_button);
 
             return(footer_div);
+        }
+
+        function form_builder()
+        {
+          var form = document.createElement('form');
+          form.id = 'delivery_and_pickup_form';
+          for(var form_group in screen_data.form_data.field_groups)
+          {
+
+              var group_div = document.createElement('div');
+              group_div.id = screen_data.form_data.field_groups[form_group].name;
+              group_div.className = screen_data.form_data.field_groups[form_group].className;
+              var group_title = document.createElement('p');
+              group_title.innerText = screen_data.form_data.field_groups[form_group].label;
+              for(var field in screen_data.form_data.field_groups[form_group].fields)
+              {
+
+                  var field_div = document.createElement('div');
+                  field_div.id = 'field_group_'+ screen_data.form_data.field_groups[form_group].fields[field].name;
+
+                  var field_description = document.createElement('p');
+                  field_description.className = 'field_description';
+                  field_description.innerHTML = screen_data.form_data.field_groups[form_group].fields[field].description;
+
+                  var field_obj = document.createElement(screen_data.form_data.field_groups[form_group].fields[field].dom_type);
+
+                  //console.log(screen_data.form_data.field_groups[form_group].fields);
+                  //console.log(screen_data.form_data.field_groups[form_group].fields[field]);
+
+                  field_obj .id =  screen_data.form_data.field_groups[form_group].fields[field].name;
+                  if(screen_data.form_data.field_groups[form_group].fields[field].name != null)
+                  {
+                    field_obj.setAttribute('type',screen_data.form_data.field_groups[form_group].fields[field].data_type);
+                  }
+                  if(screen_data.form_data.field_groups[form_group].fields[field].dom_type == 'select')
+                  {
+                      for(var option in screen_data.form_data.field_groups[form_group].fields[field].options)
+                      {
+                          var option_obj = document.createElement('option');
+                          option_obj.innerText = screen_data.form_data.field_groups[form_group].fields[field].options[option].name;
+                          option_obj.value = screen_data.form_data.field_groups[form_group].fields[field].options[option].value;
+                          for(var attribute in screen_data.form_data.field_groups[form_group].fields[field].options[option].attributes)
+                          {
+                              option_obj.setAttribute(screen_data.form_data.field_groups[form_group].fields[field].options[option].attributes[attribute],"");
+                          }
+                          field_obj .appendChild(option_obj);
+                      }
+                  }
+                  if(screen_data.form_data.field_groups[form_group].fields[field].required == 'true')
+                  {
+                      field_obj .setAttribute('required','true');
+                  }
+                  field_div.appendChild(field_description);
+                  field_div.appendChild(field_obj );
+                  group_div.appendChild(field_div);
+
+              }
+              form.appendChild(group_div);
+          }
+          return(form);
+
         }
 
         this.footer_summary = function()
