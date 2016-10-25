@@ -1,0 +1,29 @@
+var database_map={
+    image_src:{
+        tag:"img",
+        content_src:"src",//прописываем setAttribute
+        class:"search-dashed search-item-image"
+    },
+    name:{
+        tag:"div",
+        class:"search-dashed search-item-title"
+    },
+    label:{
+        tag:"div",
+        class:"search-dashed search-item-label"
+    },
+    price:{
+        tag:"div",
+        class:"search-dashed search-item-price"
+    },
+    description:{
+        tag:"div",
+        class:"search-dashed search-item-description"
+    },
+    score:{
+        tag:"div",
+        class:"search-dashed settings"
+    }
+
+
+};

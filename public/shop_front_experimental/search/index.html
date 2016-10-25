@@ -1,14 +1,20 @@
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
+<link rel="stylesheet" href='/shop_front_experimental/search/style.css'>
 <head>
     </head>
-<script src="search.js"></script>
+
 <body>
-<form>
-    <p>
+<script src='/shop_front_experimental/search/search.config.js'></script>
+<script src='/shop_front_experimental/search/test.js'></script>
+<script src='/shop_front_experimental/search/search.js'></script>
+
+
 <input type="search" name="query" placeholder="Поиск по сайту">
-<input type="submit" value="Найти"></p>
-    </form>
+<button type="submit" value="Найти" onclick="find(document.getElementsByName('query')[0].value)">Найти</button>
+
+<button name="getAllItems" onclick="find_test()">Получить все из БД(проверка)</button>
+<div id="results"></div>
 </body>
 </html>

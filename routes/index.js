@@ -11,4 +11,5 @@ module.exports = function(app)
     app.get("/catalog_experimental",require('./catalog_experimental').get);
     app.get("/session",require('./session').get);
     app.get("/specialpage",require('./specialpage').get);
+    app.get("/search",require('./search').get);
 }

@@ -7,7 +7,7 @@ function cart_dialog_class(object_ref)
     this.header_objects_array = [];
     this.target = '';
 
- this.init = function(object_ref)
+ this.init = function(object_ref) 
  {
    var dialog_layout = document.createElement('div');
    var header_div = document.createElement('div');
