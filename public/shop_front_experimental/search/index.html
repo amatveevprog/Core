@@ -11,10 +11,11 @@
 <script src='/shop_front_experimental/search/search.js'></script>
 
 
+
 <input type="search" name="query" placeholder="Поиск по сайту">
 <button type="submit" value="Найти" onclick="find(document.getElementsByName('query')[0].value)">Найти</button>
-
 <button name="getAllItems" onclick="find_test()">Получить все из БД(проверка)</button>
+<select id="sel" class="select-find" ></select>
 <div id="results"></div>
 </body>
 </html>
