@@ -13,4 +13,5 @@ module.exports = function(app)
     app.get("/specialpage",require('./specialpage').get);
     app.get("/search",require('./search').get);
     app.get("/search2",require('./search2').get);
+    app.get("/search3",require('./search3').get);
 }

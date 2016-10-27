@@ -164,7 +164,7 @@ function registerQueryLiveProcessing()
             var select = document.getElementById("sel");
             createOptionsArrayFromMatched(select,matched);
         }
-        else
+        else 
             clearSelectPalette();
     });
 }
@@ -174,6 +174,7 @@ function clearSelectPalette()
     var select = document.getElementById("sel");
     select.innerHTML="";
 }
+
 function doGetCaretPosition (ctrl) {
 
     var CaretPos = 0;

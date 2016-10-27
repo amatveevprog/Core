@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.css" rel="stylesheet" />
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<head>
+</head>
+<body>
+<div class="row">
+    <div class="input-field col s12">
+        <label class="active">State</label>
+        <input type="text" id="autocompleteState" class="autocomplete inputFields">
+
+    </div>
+</div>
+
+
+<script>
+    var stateData = [{
+        value: "Alabama"
+    }, {
+        value: "Alaska"
+    }, {
+        value: "Arizona"
+    }, {
+        value: "Arkansas"
+    }, {
+        value: "California"
+    }, {
+        value: "Colorado"
+    }, {
+        value: "Connecticut"
+    }, {
+        value: "District of Columbia"
+    }, {
+        value: "Delaware"
+    }, {
+        value: "Florida"
+    }, {
+        value: "Georgia"
+    }, {
+        value: "Hawaii"
+    }, {
+        value: "Idaho"
+    }, {
+        value: "Illinois"
+    }, {
+        value: "Indiana"
+    }, {
+        value: "Iowa"
+    }, {
+        value: "Kansas"
+    }, {
+        value: "Kentucky"
+    }, {
+        value: "Louisiana"
+    }, {
+        value: "Maine"
+    }, ];
+
+    $('#autocompleteState').data('array', stateData);
+</script>
+
+
+</body>
+<style>
+    .autocomplete-content {
+        position: absolute;
+        background: #383838;
+        margin-top: -.9rem;
+    }
+    .autocomplete-content li {
+        clear: both;
+        color: rgba(0, 0, 0, 0.87);
+        cursor: pointer;
+        line-height: 0;
+        width: 100%;
+        text-align: left;
+        text-transform: none;
+        padding: 10px;
+    }
+    .autocomplete-content li > span {
+        color: #ffa726;
+        font-size: .9rem;
+        padding: 1.2rem;
+        display: block;
+    }
+    .autocomplete-content li > span .highlight {
+        color: #000000;
+    }
+    .autocomplete-content li img {
+        height: 52px;
+        width: 52px;
+        padding: 5px;
+        margin: 0 15px;
+    }
+    .autocomplete-content li:hover {
+        background: #eee;
+        cursor: pointer;
+    }
+    .autocomplete-content > li:hover {
+        background: #292929;
+    }
+
+</style>
+<script>
+    $('document').ready(function() {
+
+    var input_selector = 'input[type=text], input[type=password], input[type=email], input[type=url], input[type=tel], input[type=number], input[type=search], textarea';
+
+
+    /**************************
+    * Auto complete plugin  *
+    *************************/
+
+
+    $(input_selector).each(function() {
+    var $input = $(this);
+
+    if ($input.hasClass('autocomplete')) {
+    var $array = $input.data('array'),
+    $inputDiv = $input.closest('.input-field'); // Div to append on
+    // Check if "data-array" isn't empty
+    if ($array !== '') {
+    // Create html element
+    var $html = '<ul class="autocomplete-content hide">';
+
+        for (var i = 0; i < $array.length; i++) {
+        // If path and class aren't empty add image to auto complete else create normal element
+        if ($array[i]['path'] !== '' && $array[i]['path'] !== undefined && $array[i]['path'] !== null && $array[i]['class'] !== undefined && $array[i]['class'] !== '') {
+        $html += '<li class="autocomplete-option"><img src="' + $array[i]['path'] + '" class="' + $array[i]['class'] + '"><span>' + $array[i]['value'] + '</span></li>';
+        } else {
+        $html += '<li class="autocomplete-option"><span>' + $array[i]['value'] + '</span></li>';
+        }
+        }
+
+        $html += '</ul>';
+    $inputDiv.append($html); // Set ul in body
+    // End create html element
+
+    function highlight(string) {
+    $('.autocomplete-content li').each(function() {
+    var matchStart = $(this).text().toLowerCase().indexOf("" + string.toLowerCase() + ""),
+    matchEnd = matchStart + string.length - 1,
+    beforeMatch = $(this).text().slice(0, matchStart),
+    matchText = $(this).text().slice(matchStart, matchEnd + 1),
+    afterMatch = $(this).text().slice(matchEnd + 1);
+    $(this).html("<span>" + beforeMatch + "<span class='highlight'>" + matchText + "</span>" + afterMatch + "</span>");
+    });
+    }
+
+    // Perform search
+    $(document).on('keyup', $input, function() {
+    var $val = $input.val().trim(),
+    $select = $('.autocomplete-content');
+    // Check if the input isn't empty
+    $select.css('width',$input.width());
+
+    if ($val != '') {
+    $select.children('li').addClass('hide');
+    $select.children('li').filter(function() {
+    $select.removeClass('hide'); // Show results
+
+    // If text needs to highlighted
+    if ($input.hasClass('highlight-matching')) {
+    highlight($val);
+    }
+    var check = true;
+    for (var i in $val) {
+    if ($val[i].toLowerCase() !== $(this).text().toLowerCase()[i])
+    check = false;
+    };
+    return check ? $(this).text().toLowerCase().indexOf($val.toLowerCase()) !== -1 : false;
+    }).removeClass('hide');
+    } else {
+    $select.children('li').addClass('hide');
+    }
+    });
+
+    // Set input value
+    $('.autocomplete-option').click(function() {
+    $input.val($(this).text().trim());
+    $('.autocomplete-option').addClass('hide');
+    });
+    } else {
+    return false;
+    }
+    }
+    });
+
+
+
+
+
+
+    });
+
+</script>
+</html>
