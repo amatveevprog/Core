@@ -444,8 +444,75 @@ this.component_screen_2 = function()
                                         required:"true"
                                     }
                                 ]
+                        },
+                        {
+                            name:"Test1",
+                            label:"Тест группа",
+                            className:"field_group_Delivery",
+                            fields:
+                                [
+                                    {
+                                        description:"Поле 1",
+                                        name:"Delivery_Type123",
+                                        dom_type:"select",
+                                        options:
+                                            [
+                                                {
+                                                    name:"123123123",
+                                                    value:"pickup",
+                                                    attributes:["selected"]
+                                                },
+                                                {
+                                                    name:"123123123123",
+                                                    value:"delivery"
+                                                }
+                                            ],
+                                        className:"form_field_Delivery_Type",
+                                        required:"true"
+                                    },
+                                    {
+                                        description:"Поле 2",
+                                        name:"Test2",
+                                        dom_type:"input",
+                                        data_type:"text",
+                                        className:"form_field_FirstCity",
+                                        required:"true"
+                                    },
+                                    {
+                                        description:"Поле 2",
+                                        name:"Test2",
+                                        dom_type:"input",
+                                        data_type:"date",
+                                        className:"form_field_FirstCity",
+                                        required:"true"
+                                    }
+                                ]
                         }
-                    ]
+                    ],
+                form_delivery:
+                {
+                    field_groups:
+                     [
+                         {
+                             name:"delivery_address",
+                             label:"Адрес доставки",
+                             className:"field_group_delivery_adders",
+                             fields:
+                                 [
+                                     {
+                                         description:"Город",
+                                         name:"City",
+                                         dom_type:"input",
+                                         data_type:"text",
+                                         className:"form_field_FirstName",
+                                         required:"true"
+                                     }
+                                 ]
+                         }
+
+                     ]  
+                }
+
             }
 
         };

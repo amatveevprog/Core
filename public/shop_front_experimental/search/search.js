@@ -60,6 +60,9 @@ function makeRequest(searchString,parentElt)
                 createDOM("Ничего не найдено",parentElt);
                 return;
             }
+            document.getElementsByClassName('autocomplete').autocomplete({
+                data: items_json
+            });
             createDOM(items_json,parentElt);
         }
     }
@@ -143,3 +146,4 @@ function find_test()
     makeTestRequest(resultDiv);
 }
 
+document.getElementById('searchinput').addEventListener('change', function(){console.log('!'); find_test();}, false);

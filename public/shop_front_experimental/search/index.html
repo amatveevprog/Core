@@ -3,18 +3,26 @@
 <meta charset="utf-8">
 <link rel="stylesheet" href='/shop_front_experimental/search/style.css'>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="shop_front_experimental/styles.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" media="screen,projection">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
     </head>
 
 <body>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+
+<input type="search" name="query" placeholder="Поиск по сайту" id = 'searchinput' class = 'autocomplete'>
+<button type="submit" value="Найти" onclick="find(document.getElementsByName('query')[0].value)">Найти</button>
+
+<button name="getAllItems" onclick="find_test()">Получить все из БД(проверка)</button>
 <script src='/shop_front_experimental/search/search.config.js'></script>
 <script src='/shop_front_experimental/search/test.js'></script>
 <script src='/shop_front_experimental/search/search.js'></script>
 
-
-<input type="search" name="query" placeholder="Поиск по сайту">
-<button type="submit" value="Найти" onclick="find(document.getElementsByName('query')[0].value)">Найти</button>
-
-<button name="getAllItems" onclick="find_test()">Получить все из БД(проверка)</button>
 <div id="results"></div>
 </body>
 </html>
