@@ -59,3 +59,11 @@
     background: #27b2ff;
     color:black;
 }
+#searchDiv
+{
+    width:60%;
+}
+#searchfield
+{
+    width:50%;
+}

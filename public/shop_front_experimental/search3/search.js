@@ -28,7 +28,16 @@ document.getElementById('searchfield').addEventListener('input', function(){
     }
 
 }, false);
-
+document.getElementById('searchfield').addEventListener('keypress', function(event){
+    event.stopPropagation();
+    if(event.keyCode==13)
+    {
+        var ul = document.getElementById('dropdown');
+        ul.innerHTML = '';
+        //perform a search on "enter" pressed...
+        find(document.getElementById('searchfield').value);
+    }
+});
 function drawdropdown(matched_array)
 {
     $('.dropdown-content').dropdown('open');
@@ -49,10 +58,6 @@ function adddropdowns(ul,array_matched)
             outputOneItem(event.target);
         });
         ul.appendChild(li);
-     /*var li = document.createElement('li');
-     li.innerHTML = json[i].label;
-        //addEventListener for LI!!!
-     ul.appendChild(li);*/
     }
 
    //return(li);
@@ -122,7 +127,6 @@ function createDomFromMappings(json_object)
 }
 function makeRequest(searchString,parentElt)
 {
-    console.log('looking for...  ' + searchString);
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/API/get_search_items_js_search_items?query='+searchString, true);
     xhr.send();
@@ -135,17 +139,10 @@ function makeRequest(searchString,parentElt)
             var items_json = JSON.parse(xhr.responseText);
             if(items_json.items.length<1)
             {
-                //createDOM("Ничего не найдено",parentElt);
-                var ul = document.getElementById('dropdown');
-                ul.innerHTML = '<li> Ты ничего не нашел</li>';
+                createDOM("Ничего не найдено",parentElt);
                 return;
             }
-            //document.getElementsByClassName('autocomplete').autocomplete({
-               // data: items_json
-            //});
-            //createDOM(items_json,parentElt);
-           console.log(items_json);
-            drawdropdown(items_json);
+            createDOM(items_json,parentElt);
         }
     }
 }
@@ -206,16 +203,8 @@ function createDomElt(name,attributes)
 }
 function find(query)
 {
-    //console.log(query);
-    //alert("Зашел!!!! "+query+database_map);
     var resultDiv = document.getElementById('results');
-
-    //очищаем перед вставкой
-    //innerHtml="";
-    while(resultDiv.childNodes.length>0)
-    {
-        resultDiv.removeChild(resultDiv.childNodes[0]);
-    }
+    resultDiv.innerHTML='';
     makeRequest(query,resultDiv);
     //resultDiv.appendChild(createDomFromMappings(test_item));
 }
@@ -313,7 +302,7 @@ function searchInLocalArray(input_str,limit)
         //.test
         for(var elem in downloaded_items_array)
         {
-            if(rExp.test(downloaded_items_array[elem].name))
+            if(test_regExpForElement(rExp,downloaded_items_array[elem]))
             {
                 if(curr_count<limit) {
                     matched.push(downloaded_items_array[elem]);
@@ -328,5 +317,16 @@ function searchInLocalArray(input_str,limit)
         return matched;
     }
     return [];
+}
+function test_regExpForElement(regExp,eleMent)
+{
+    for(var keys in eleMent)
+    {
+        if(regExp.test(eleMent[keys]))
+        {
+            return true;
+        }
+    }
+    return false;
 }
 //document.getElementById('searchinput').addEventListener('change', function(){console.log('!'); find_test();}, false);
