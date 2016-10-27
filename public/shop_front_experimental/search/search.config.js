@@ -1,7 +1,7 @@
 var database_map={
     image_src:{
         tag:"img",
-        content_src:"src",//прописываем setAttribute
+        content_src:"src",//в этом случае прописываем setAttribute
         class:"search-dashed search-item-image"
     },
     name:{
@@ -24,6 +24,4 @@ var database_map={
         tag:"div",
         class:"search-dashed settings"
     }
-
-
 };

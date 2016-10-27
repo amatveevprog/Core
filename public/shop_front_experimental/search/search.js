@@ -17,7 +17,6 @@ function createDomFromMappings(json_object)
     //content_src
     var DOM_NODE;
     var podnode = document.createElement('div');
-    var i=0;
     for(var json_key in json_object) {
 
         for (var key in database_map) {
@@ -30,6 +29,7 @@ function createDomFromMappings(json_object)
                // elt.appendChild(num);
                 if(database_map[key].hasOwnProperty("content_src"))
                 {
+                    //при большом количестве переделать этот if на switch
                     elt.setAttribute("src",json_object[json_key]);
                 }
                 else
@@ -37,7 +37,6 @@ function createDomFromMappings(json_object)
                     elt.innerHTML=json_object[json_key];
                 }
                 podnode.appendChild(elt);
-                i++;
             }
         }
     }
@@ -128,6 +127,7 @@ function find(query)
     var resultDiv = document.getElementById('results');
 
     //очищаем перед вставкой
+    //innerHtml="";
     while(resultDiv.childNodes.length>0)
     {
         resultDiv.removeChild(resultDiv.childNodes[0]);
@@ -145,5 +145,74 @@ function find_test()
     }
     makeTestRequest(resultDiv);
 }
+//загружаем все, что есть в БД для живого поиска...
+var downloaded_items_array=[];
+function downloadItemsForQuickSearch()
+{
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/API/get_named_items_js_named_items', true);
+    xhr.send();
+    xhr.onreadystatechange = function()
+    {
+        if (xhr.readyState != 4) {
+            return;
+        }
+        if (xhr.status == 200) {
+            var items_json = JSON.parse(xhr.responseText);
+            //createDOM(items_json,parentElt);
+            for(var item in items_json.items)
+            {
+                downloaded_items_array.push(items_json.items[item]);
+            }
+        }
+        console.log(Date.now());
+    }
+}
+/*function downloadItemsForQuickSearch2()
+{
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/API/get_named_items_huge_js_named_items', true);
+    xhr.send();
+    xhr.onreadystatechange = function()
+    {
+        if (xhr.readyState != 4) {
+            return;
+        }
+        if (xhr.status == 200) {
+            var items_json = JSON.parse(xhr.responseText);
+            //createDOM(items_json,parentElt);
+            for(var item in items_json.items)
+            {
+                downloaded_items_array.push(items_json.items[item]);
+            }
+        }
+    }
+}*/
+function registerNamesLoading()
+{
+    window.onload = function () {
+        var date1 = Date.now();
+        console.log(date1);
+        downloadItemsForQuickSearch();
+        //var date2 = Date.now();
+        //console.log(date2);
+        //var delta = date2-date1;
+        //console.log("Поиск занял: "+delta+" мс.");
+        //console.log(downloaded_items_array.length);
+        //downloaded_items_array.forEach(function (cur) {
+        //    console.log(cur);
+        //});
+    };
+
+};
+
+registerNamesLoading();
+
+
+function clearSearchPalette() {
+    var resultDiv = document.getElementById('results');
+    resultDiv.innerHTML='';
+}
+
 
 document.getElementById('searchinput').addEventListener('change', function(){console.log('!'); find_test();}, false);
