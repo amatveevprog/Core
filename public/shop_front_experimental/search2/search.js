@@ -1,7 +1,39 @@
 //основная функция назначения клавиш, где при вводе будет осуществляться подбор ключевых слов
 //создает DOM-узлы(1 или более outputElem) и прикрепляет их к parentNode
 
+$('.dropdown-button').dropdown({
+        inDuration: 50,
+        outDuration: 70,
+        constrain_width: true, // Does not change width of dropdown to that of the activator
+        gutter: 12, // Spacing from edge
+        belowOrigin: true, // Displays dropdown below the button
+        alignment: 'left' // Displays dropdown with edge aligned to the left of button
+    }
+);
+document.getElementById('searchfield').addEventListener('input', function(){
+    var resultDiv = document.getElementById('results');
+    makeRequest(document.getElementById('searchfield').value);
+}, false);
 
+function drawdropdown(json)
+{
+    $('.dropdown-content').dropdown('open');
+    var ul = document.getElementById('dropdown');
+    ul.innerHTML = '';
+    adddropdowns(ul,json.items);
+}
+
+function adddropdowns(ul,json)
+{
+    for(var i in json)
+    {
+     var li = document.createElement('li');
+     li.innerHTML = json[i].label;
+     ul.appendChild(li);
+    }
+
+   //return(li);
+}
 
 function reqisterOnKeyboard(parentNode,outputElem)
 {
@@ -27,9 +59,9 @@ function createDomFromMappings(json_object)
             {
                 //создаем элемент DOM
                 var elt = createDomElt(database_map[key].tag,{class:database_map[key].class});
-               // var num = document.createElement('div');
-               // num.innerHTML="number: "+i+") ";
-               // elt.appendChild(num);
+                // var num = document.createElement('div');
+                // num.innerHTML="number: "+i+") ";
+                // elt.appendChild(num);
                 if(database_map[key].hasOwnProperty("content_src"))
                 {
                     //при большом количестве переделать этот if на switch
@@ -47,6 +79,7 @@ function createDomFromMappings(json_object)
 }
 function makeRequest(searchString,parentElt)
 {
+    console.log('looking for...  ' + searchString);
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/API/get_search_items_js_search_items?query='+searchString, true);
     xhr.send();
@@ -59,13 +92,17 @@ function makeRequest(searchString,parentElt)
             var items_json = JSON.parse(xhr.responseText);
             if(items_json.items.length<1)
             {
-                createDOM("Ничего не найдено",parentElt);
+                //createDOM("Ничего не найдено",parentElt);
+                var ul = document.getElementById('dropdown');
+                ul.innerHTML = '<li> Ты ничего не нашел</li>';
                 return;
             }
-            document.getElementsByClassName('autocomplete').autocomplete({
-                data: items_json
-            });
-            createDOM(items_json,parentElt);
+            //document.getElementsByClassName('autocomplete').autocomplete({
+               // data: items_json
+            //});
+            //createDOM(items_json,parentElt);
+           console.log(items_json);
+            drawdropdown(items_json);
         }
     }
 }
@@ -126,6 +163,7 @@ function createDomElt(name,attributes)
 }
 function find(query)
 {
+    //console.log(query);
     //alert("Зашел!!!! "+query+database_map);
     var resultDiv = document.getElementById('results');
 
@@ -168,29 +206,29 @@ function downloadItemsForQuickSearch()
                 downloaded_items_array.push(items_json.items[item]);
             }
         }
-        console.log(Date.now());
+        //console.log(Date.now());
     }
 }
 /*function downloadItemsForQuickSearch2()
-{
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/API/get_named_items_huge_js_named_items', true);
-    xhr.send();
-    xhr.onreadystatechange = function()
-    {
-        if (xhr.readyState != 4) {
-            return;
-        }
-        if (xhr.status == 200) {
-            var items_json = JSON.parse(xhr.responseText);
-            //createDOM(items_json,parentElt);
-            for(var item in items_json.items)
-            {
-                downloaded_items_array.push(items_json.items[item]);
-            }
-        }
-    }
-}*/
+ {
+ var xhr = new XMLHttpRequest();
+ xhr.open('GET', '/API/get_named_items_huge_js_named_items', true);
+ xhr.send();
+ xhr.onreadystatechange = function()
+ {
+ if (xhr.readyState != 4) {
+ return;
+ }
+ if (xhr.status == 200) {
+ var items_json = JSON.parse(xhr.responseText);
+ //createDOM(items_json,parentElt);
+ for(var item in items_json.items)
+ {
+ downloaded_items_array.push(items_json.items[item]);
+ }
+ }
+ }
+ }*/
 function registerNamesLoading()
 {
     window.onload = function () {
@@ -218,4 +256,4 @@ function clearSearchPalette() {
 }
 
 
-document.getElementById('searchinput').addEventListener('change', function(){console.log('!'); find_test();}, false);
+//document.getElementById('searchinput').addEventListener('change', function(){console.log('!'); find_test();}, false);

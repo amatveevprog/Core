@@ -1,0 +1,61 @@
+.search-item-image
+{
+    height:50px;
+}
+.search-item-title
+{
+    font-family: "Arial Narrow";
+    font-weight: bold;
+    font-size: 14pt;
+}
+.search-item-label
+{
+    font-family: "Arial";
+    font-style: italic;
+    font-size: 12pt;
+}
+.search-item-price
+{
+    font-family: "Arial";
+    font-weight: bold;
+    font-size: 14pt;
+    color: #ff0000;
+}
+.search-item-description
+{
+    font-family: 'Avenir Next', sans-serif;
+    font-size: 10pt;
+}
+.search-dashed
+{
+    //border: 2px dashed blue;
+}
+.settings
+{
+    background: #38993C;
+    font-family: Tahoma;
+    font-size:12pt;
+    color: #000066;
+}
+.select-find
+{
+    position: absolute;
+    size: 200px;
+}
+.option-search-item-name
+{
+    color: #0000ff;
+    font-size:12pt;
+    font-weight: bold;
+    //position: absolute;
+}
+.option-search-item-label
+{
+    font-size:10pt;
+    color:green;
+}
+.option-search-item-label:hover
+{
+    background: #27b2ff;
+    color:black;
+}
