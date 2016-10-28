@@ -65,3 +65,13 @@
   margin-left: 10px;
 
 }
+.short-search
+{
+  margin:20px;
+}
+
+.short-search:focus
+{
+
+ background:white;
+}

@@ -17,6 +17,7 @@ $('.dropdown-button').dropdown({
     }
 );
 document.getElementById('searchfield').addEventListener('input', function(){
+    $('.dropdown-content').dropdown('open');
     var resultDiv = document.getElementById('results');
     //makeRequest(document.getElementById('searchfield').value);
     var matched = searchInLocalArray(document.getElementById('searchfield').value,OUTPUT_LIMIT);
@@ -45,6 +46,7 @@ document.getElementById('searchfield').addEventListener('keypress', function(eve
 function drawdropdown(matched_array)
 {
     $('.dropdown-content').dropdown('open');
+    $('.dropdown-button-search').dropdown('open');
     var ul = document.getElementById('dropdown');
     ul.innerHTML = '';
     adddropdowns(ul,matched_array);
