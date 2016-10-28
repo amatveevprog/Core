@@ -130,6 +130,7 @@ function createDomFromMappings(json_object)
 }
 function makeRequest(searchString,parentElt)
 {
+    parentElt.innerHTML="Подождите, идет поиск...";
     var xhr = new XMLHttpRequest();
     xhr.open('GET', '/API/get_search_items_js_search_items?query='+searchString, true);
     xhr.send();
@@ -142,11 +143,29 @@ function makeRequest(searchString,parentElt)
             var items_json = JSON.parse(xhr.responseText);
             if(items_json.items.length<1)
             {
-                FL_EMPTY_RESULTS=true;
-                createDOM("Ничего не найдено",parentElt);
-                return;
+                if(ALLOW_COMBINED_SEARCH==true) {
+                    //убираем "Извините, ничего не найдено"
+                    //преобразуем массив matched в html строку параметров
+                    var matched = searchInLocalArray(document.getElementById('searchfield').value, OUTPUT_LIMIT);
+                    if (matched.length > 0) {
+                        //ищем по всем обджект - айдишникам
+                        findMultipleObjectIds(matched, parentElt);
+                        return;
+                    }
+                    else {
+                        parentElt.innerHTML='';
+                        createDOM("Ничего не найдено",parentElt);
+                        return;
+                    }
+                }
+                else
+                {
+                    parentElt.innerHTML='';
+                    createDOM("Ничего не найдено",parentElt);
+                    return;
+                }
             }
-            FL_EMPTY_RESULTS=false;
+            parentElt.innerHTML='';
             createDOM(items_json,parentElt);
         }
     }
@@ -212,19 +231,7 @@ function find(query)
     var resultDiv = document.getElementById('results');
     resultDiv.innerHTML='';
     makeRequest(query,resultDiv);
-    var htmlParamsString = '';
-    if(FL_EMPTY_RESULTS&&ALLOW_COMBINED_SEARCH)
-    {
-        //убираем "Извините, ничего не найдено"
-        resultDiv.innerHTML='';
-        //преобразуем массив matched в html строку параметров
-        var matched = searchInLocalArray(document.getElementById('searchfield').value,OUTPUT_LIMIT);
-        if(matched.length>0)
-        {
-            //ищем по всем обджект - айдишникам
-            findMultipleObjectIds(matched,resultDiv);
-        }
-    }
+
     //resultDiv.appendChild(createDomFromMappings(test_item));
 }
 function find_test()
@@ -379,12 +386,16 @@ function findMultipleObjectIds(matched,parentElt)
 }
 function placeObjectsOnPalette(json_items,parentElt)
 {
-    for(var current_item in json_items.items)
-    {
-        //разбираем по элементам и создаем для них DOM-структуру
-        parentElt.appendChild(createDomFromMappings(json_items.items[current_item]));
+    parentElt.innerHTML='';
+    if(json_items.items.length>0) {
+        for (var current_item in json_items.items) {
+            //разбираем по элементам и создаем для них DOM-структуру
+            parentElt.appendChild(createDomFromMappings(json_items.items[current_item]));
 
+        }
     }
+    else
+        createDOM("Ничего не найдено...",parentElt);
 }
 /// /API/get_multiple_obj_id_items_js_o_id?l=572b0fa0fca0fd639273afec&p=572b0ee7fca0fd639273afc0
 //document.getElementById('searchinput').addEventListener('change', function(){console.log('!'); find_test();}, false);
