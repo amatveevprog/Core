@@ -88,12 +88,34 @@ function outputOneItem(target) {
             for(var item in items_json.items)
             {
                 //downloaded_items_array.push(items_json.items[item]);
-                clearSearchPalette();
-                createDOM(items_json,document.getElementById("results"));
+                //clearSearchPalette();
+                clearItemsAreaPalette();
+                clearFilteredItemsArray();
+                //createDOM(items_json,document.getElementById("results"));
+                createProductCards(items_json);
+                drawProductCards();
             }
         }
     }
 }
+function clearItemsAreaPalette()
+{
+    document.getElementById("items_area").innerHTML='';
+}
+function clearFilteredItemsArray() {
+    catalog_object.filtered_items=[];
+}
+function createProductCards(items_json)
+{
+    for(var current_item in items_json.items)
+    {
+        catalog_object.filtered_items.push(items_json.items[current_item]);
+    }
+}
+function drawProductCards() {
+    catalog_object.paint_all_items();
+}
+
 
 //test_item from test.js
 function createDomFromMappings(json_object)
@@ -197,12 +219,16 @@ function createDOM(items_json,parentElt)
         parentElt.appendChild(child);
         return;
     }
-    for(var current_item in items_json.items)
-    {
-        //разбираем по элементам и создаем для них DOM-структуру
-        parentElt.appendChild(createDomFromMappings(items_json.items[current_item]));
-
-    }
+    clearItemsAreaPalette();
+    clearFilteredItemsArray();
+    createProductCards(items_json);
+    drawProductCards();
+    //for(var current_item in items_json.items)
+    // {
+    //     //разбираем по элементам и создаем для них DOM-структуру
+    //     //parentElt.appendChild(createDomFromMappings(items_json.items[current_item]));
+    //     createProductCards()
+    // }
 }
 function createDomElt(name,attributes)
 {
@@ -389,11 +415,12 @@ function placeObjectsOnPalette(json_items,parentElt)
 {
     parentElt.innerHTML='';
     if(json_items.items.length>0) {
-        for (var current_item in json_items.items) {
+        createDOM(json_items,parentElt);
+        /*for (var current_item in json_items.items) {
             //разбираем по элементам и создаем для них DOM-структуру
             parentElt.appendChild(createDomFromMappings(json_items.items[current_item]));
 
-        }
+        }*/
     }
     else
         createDOM("Ничего не найдено...",parentElt);
