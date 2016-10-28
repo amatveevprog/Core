@@ -32,6 +32,7 @@ var types_menu = function()
             ico.src = category_widget.categories_data.types[type].group_img;
             ico.className = 'category_type_icon';
 
+
             button.appendChild(ico);
 
             types_div.appendChild(button);

@@ -194,21 +194,9 @@ function shop_engine_read_from_storage(resolve,reject)
     {
         "types": [
             {
-                "group_type": "herbs",
-                "group_label":"Травы и Добавки",
-                "group_ico":"http://previews.123rf.com/images/imagevectors/imagevectors1603/imagevectors160300863/53026890-Flat-black-Medical-Herbs-web-icon-in-circle-on-white-background-Stock-Vector.jpg",
-                "groups": []
-            },
-            {
-                "group_type": "presents",
-                "group_label":"подарочные наборы",
-                "group_ico":"https://www.colourbox.com/preview/19801288-gift-box-sign-icon-present-symbol.jpg",
-                "groups": []
-            },
-            {
                 "group_type": "dishes",
                 "group_label":"Посуда",
-                "group_ico":"",
+                "group_img":"https://cdn4.iconfinder.com/data/icons/drink-me/500/oolong-512.png",
                 "groups": [
                     {
                         "id":"tea_pots",
@@ -228,7 +216,7 @@ function shop_engine_read_from_storage(resolve,reject)
                         "categories":[
                             {
                                 "id": "category_pottery_cups",
-                                "label": "Глинянные"
+                                "label": "Глиненные"
                             }
                         ]
                     }
@@ -237,6 +225,7 @@ function shop_engine_read_from_storage(resolve,reject)
             {
                 "group_type": "tea",
                 "group_label":"Чай",
+                "group_img":"http://scottbrookshiredesign.com/sage/images/icon-leaf.png",
                 "groups": [
                     {
                         "id": "tea_type",
@@ -285,6 +274,18 @@ function shop_engine_read_from_storage(resolve,reject)
                         ]
                     }
                 ]
+            },
+            {
+                "group_type": "herbd",
+                "group_label":"Травы и Добавки",
+                "group_img":"https://cdn4.iconfinder.com/data/icons/medical-5/500/herb-128.png",
+                "groups": []
+            },
+            {
+                "group_type": "presents",
+                "group_label":"Подарочные наборы",
+                "group_img":"http://www.megaicons.net/static/img/icons_title/8/178/title/ecommerce-gift-icon.png",
+                "groups": []
             }
         ]
     };
@@ -347,18 +348,6 @@ shop_engine_init = new Promise(function(resolve, reject)
         category_widget.categories_data =
         {
             "types": [
-                {
-                    "group_type": "herbd",
-                    "group_label":"Травы и Добавки",
-                    "group_img":"https://cdn4.iconfinder.com/data/icons/medical-5/500/herb-128.png",
-                    "groups": []
-                },
-                {
-                    "group_type": "presents",
-                    "group_label":"Подарочные наборы",
-                    "group_img":"http://www.megaicons.net/static/img/icons_title/8/178/title/ecommerce-gift-icon.png",
-                    "groups": []
-                },
                 {
                     "group_type": "dishes",
                     "group_label":"Посуда",
@@ -440,6 +429,18 @@ shop_engine_init = new Promise(function(resolve, reject)
                             ]
                         }
                     ]
+                },
+                {
+                    "group_type": "herbd",
+                    "group_label":"Травы и Добавки",
+                    "group_img":"https://cdn4.iconfinder.com/data/icons/medical-5/500/herb-128.png",
+                    "groups": []
+                },
+                {
+                    "group_type": "presents",
+                    "group_label":"Подарочные наборы",
+                    "group_img":"http://www.megaicons.net/static/img/icons_title/8/178/title/ecommerce-gift-icon.png",
+                    "groups": []
                 }
             ]
         };
