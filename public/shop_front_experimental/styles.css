@@ -32,7 +32,6 @@
 
 .category_type_button
 {
-
     font-family: times, Times New Roman, times-roman, georgia, serif;
     color: #444;
     margin: 0;
@@ -40,12 +39,25 @@
     line-height: 44px;
     letter-spacing: -2px;
     font-weight: bold;
-    padding:20px;
+    padding:5px 50px 5px 50px;
     border: none;
-
-
 }
 
+.category_type_button:active
+{
+    background: #ef9a9a;
+    background-color: #ef9a9a;
+}
+.category_type_button:target
+{
+    background: #ef9a9a;
+    background-color: #ef9a9a;
+}
+.category_type_button:focus
+{
+    background: #ef9a9a;
+    background-color: #ef9a9a;
+}
 .category_type_icon
 {
   height:30px;
