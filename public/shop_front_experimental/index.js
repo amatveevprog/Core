@@ -196,6 +196,7 @@ function shop_engine_read_from_storage(resolve,reject)
             {
                 "group_type": "dishes",
                 "group_label":"Посуда",
+                "group_img":"https://cdn4.iconfinder.com/data/icons/drink-me/500/oolong-512.png",
                 "groups": [
                     {
                         "id":"tea_pots",
@@ -215,7 +216,7 @@ function shop_engine_read_from_storage(resolve,reject)
                         "categories":[
                             {
                                 "id": "category_pottery_cups",
-                                "label": "Глинянные"
+                                "label": "Глиненные"
                             }
                         ]
                     }
@@ -224,6 +225,7 @@ function shop_engine_read_from_storage(resolve,reject)
             {
                 "group_type": "tea",
                 "group_label":"Чай",
+                "group_img":"http://scottbrookshiredesign.com/sage/images/icon-leaf.png",
                 "groups": [
                     {
                         "id": "tea_type",
@@ -272,6 +274,18 @@ function shop_engine_read_from_storage(resolve,reject)
                         ]
                     }
                 ]
+            },
+            {
+                "group_type": "herbd",
+                "group_label":"Травы и Добавки",
+                "group_img":"https://cdn4.iconfinder.com/data/icons/medical-5/500/herb-128.png",
+                "groups": []
+            },
+            {
+                "group_type": "presents",
+                "group_label":"Подарочные наборы",
+                "group_img":"http://www.megaicons.net/static/img/icons_title/8/178/title/ecommerce-gift-icon.png",
+                "groups": []
             }
         ]
     };
@@ -337,6 +351,7 @@ shop_engine_init = new Promise(function(resolve, reject)
                 {
                     "group_type": "dishes",
                     "group_label":"Посуда",
+                    "group_img":"https://cdn4.iconfinder.com/data/icons/drink-me/500/oolong-512.png",
                     "groups": [
                         {
                             "id":"tea_pots",
@@ -365,6 +380,7 @@ shop_engine_init = new Promise(function(resolve, reject)
                 {
                     "group_type": "tea",
                     "group_label":"Чай",
+                    "group_img":"http://scottbrookshiredesign.com/sage/images/icon-leaf.png",
                     "groups": [
                         {
                             "id": "tea_type",
@@ -413,6 +429,18 @@ shop_engine_init = new Promise(function(resolve, reject)
                             ]
                         }
                     ]
+                },
+                {
+                    "group_type": "herbd",
+                    "group_label":"Травы и Добавки",
+                    "group_img":"https://cdn4.iconfinder.com/data/icons/medical-5/500/herb-128.png",
+                    "groups": []
+                },
+                {
+                    "group_type": "presents",
+                    "group_label":"Подарочные наборы",
+                    "group_img":"http://www.megaicons.net/static/img/icons_title/8/178/title/ecommerce-gift-icon.png",
+                    "groups": []
                 }
             ]
         };
