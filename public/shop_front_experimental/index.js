@@ -194,8 +194,21 @@ function shop_engine_read_from_storage(resolve,reject)
     {
         "types": [
             {
+                "group_type": "herbs",
+                "group_label":"Травы и Добавки",
+                "group_ico":"http://previews.123rf.com/images/imagevectors/imagevectors1603/imagevectors160300863/53026890-Flat-black-Medical-Herbs-web-icon-in-circle-on-white-background-Stock-Vector.jpg",
+                "groups": []
+            },
+            {
+                "group_type": "presents",
+                "group_label":"подарочные наборы",
+                "group_ico":"https://www.colourbox.com/preview/19801288-gift-box-sign-icon-present-symbol.jpg",
+                "groups": []
+            },
+            {
                 "group_type": "dishes",
                 "group_label":"Посуда",
+                "group_ico":"",
                 "groups": [
                     {
                         "id":"tea_pots",
@@ -334,6 +347,17 @@ shop_engine_init = new Promise(function(resolve, reject)
         category_widget.categories_data =
         {
             "types": [
+                {
+                    "group_type": "herbd",
+                    "group_label":"Травы и Добавки",
+                    "group_img":"http://us.123rf.com/450wm/pandavector/pandavector1504/pandavector150402607/38544984-illustration-of-vector-medical-modern-icon-in-design.jpg?ver=6",
+                    "groups": []
+                },
+                {
+                    "group_type": "presents",
+                    "group_label":"Подарочные наборы",
+                    "groups": []
+                },
                 {
                     "group_type": "dishes",
                     "group_label":"Посуда",
