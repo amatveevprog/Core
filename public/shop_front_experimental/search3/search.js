@@ -3,6 +3,9 @@
 
 //LIMIT - глобальная переменная лимита количества записей
 var OUTPUT_LIMIT=10;
+var ALLOW_COMBINED_SEARCH=true;
+var FL_EMPTY_RESULTS=true;
+
 $('.dropdown-button').dropdown({
         inDuration: 50,
         outDuration: 70,
@@ -139,13 +142,16 @@ function makeRequest(searchString,parentElt)
             var items_json = JSON.parse(xhr.responseText);
             if(items_json.items.length<1)
             {
+                FL_EMPTY_RESULTS=true;
                 createDOM("Ничего не найдено",parentElt);
                 return;
             }
+            FL_EMPTY_RESULTS=false;
             createDOM(items_json,parentElt);
         }
     }
 }
+
 /*function makeTestRequest(parentElt)
 {
     var xhr = new XMLHttpRequest();
@@ -206,6 +212,19 @@ function find(query)
     var resultDiv = document.getElementById('results');
     resultDiv.innerHTML='';
     makeRequest(query,resultDiv);
+    var htmlParamsString = '';
+    if(FL_EMPTY_RESULTS&&ALLOW_COMBINED_SEARCH)
+    {
+        //убираем "Извините, ничего не найдено"
+        resultDiv.innerHTML='';
+        //преобразуем массив matched в html строку параметров
+        var matched = searchInLocalArray(document.getElementById('searchfield').value,OUTPUT_LIMIT);
+        if(matched.length>0)
+        {
+            //ищем по всем обджект - айдишникам
+            findMultipleObjectIds(matched,resultDiv);
+        }
+    }
     //resultDiv.appendChild(createDomFromMappings(test_item));
 }
 function find_test()
@@ -302,7 +321,7 @@ function searchInLocalArray(input_str,limit)
         //.test
         for(var elem in downloaded_items_array)
         {
-            if(test_regExpForElement(rExp,downloaded_items_array[elem]))
+            if(testRegExpForElement(rExp,downloaded_items_array[elem]))
             {
                 if(curr_count<limit) {
                     matched.push(downloaded_items_array[elem]);
@@ -318,7 +337,7 @@ function searchInLocalArray(input_str,limit)
     }
     return [];
 }
-function test_regExpForElement(regExp,eleMent)
+function testRegExpForElement(regExp,eleMent)
 {
     for(var keys in eleMent)
     {
@@ -329,4 +348,43 @@ function test_regExpForElement(regExp,eleMent)
     }
     return false;
 }
+function findMultipleObjectIds(matched,parentElt)
+{
+    //1-forming a string of object ids:
+    var str_O_ids='';
+    for(var i=0;i<matched.length-1;i++)
+    {
+        str_O_ids+='param'+i+'=';
+        str_O_ids+=matched[i]._id;
+        str_O_ids+='&';
+    }
+    str_O_ids+='param'+(matched.length-1)+'='+matched[matched.length-1]._id;
+    console.log(str_O_ids);
+    //2- making a request on a special url...
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/API/get_multiple_obj_id_items_js_o_id?'+str_O_ids, true);
+    xhr.send();
+    xhr.onreadystatechange = function()
+    {
+        if (xhr.readyState != 4) {
+            return;
+        }
+        if (xhr.status == 200) {
+            var items_json = JSON.parse(xhr.responseText);
+            //3- place objects on a palette...
+            placeObjectsOnPalette(items_json,parentElt);
+        }
+    }
+
+}
+function placeObjectsOnPalette(json_items,parentElt)
+{
+    for(var current_item in json_items.items)
+    {
+        //разбираем по элементам и создаем для них DOM-структуру
+        parentElt.appendChild(createDomFromMappings(json_items.items[current_item]));
+
+    }
+}
+/// /API/get_multiple_obj_id_items_js_o_id?l=572b0fa0fca0fd639273afec&p=572b0ee7fca0fd639273afc0
 //document.getElementById('searchinput').addEventListener('change', function(){console.log('!'); find_test();}, false);
