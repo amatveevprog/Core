@@ -41,6 +41,15 @@
     letter-spacing: -2px;
     font-weight: bold;
     padding:20px;
+    border: none;
 
+
+}
+
+.category_type_icon
+{
+  height:30px;
+  width: 30px;
+  margin-left: 10px;
 
 }

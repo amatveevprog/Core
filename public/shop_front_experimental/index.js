@@ -350,17 +350,19 @@ shop_engine_init = new Promise(function(resolve, reject)
                 {
                     "group_type": "herbd",
                     "group_label":"Травы и Добавки",
-                    "group_img":"http://us.123rf.com/450wm/pandavector/pandavector1504/pandavector150402607/38544984-illustration-of-vector-medical-modern-icon-in-design.jpg?ver=6",
+                    "group_img":"https://cdn4.iconfinder.com/data/icons/medical-5/500/herb-128.png",
                     "groups": []
                 },
                 {
                     "group_type": "presents",
                     "group_label":"Подарочные наборы",
+                    "group_img":"http://www.megaicons.net/static/img/icons_title/8/178/title/ecommerce-gift-icon.png",
                     "groups": []
                 },
                 {
                     "group_type": "dishes",
                     "group_label":"Посуда",
+                    "group_img":"https://cdn4.iconfinder.com/data/icons/drink-me/500/oolong-512.png",
                     "groups": [
                         {
                             "id":"tea_pots",
@@ -389,6 +391,7 @@ shop_engine_init = new Promise(function(resolve, reject)
                 {
                     "group_type": "tea",
                     "group_label":"Чай",
+                    "group_img":"http://scottbrookshiredesign.com/sage/images/icon-leaf.png",
                     "groups": [
                         {
                             "id": "tea_type",
