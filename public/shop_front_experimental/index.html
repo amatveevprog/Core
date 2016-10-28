@@ -25,7 +25,13 @@
 
            <div class = 'col s12 m6 l6 6'>
                <div class = 'row' style = 'margin-bottom:0px;'>
-                   <p></p>
+                   <div> <input class = 'dropdown-button short-search' data-beloworigin="true" type="text" id="searchfield" data-activates='dropdown' placeholder="Поиск по сайту">
+                       <a class="btn-floating btn-large waves-effect waves-light green" onclick="find(document.getElementById('searchfield').value)"><i class="material-icons">search</i></a>
+                       <!--<button id="search_btn" onclick="find(document.getElementById('searchfield').value)"></button>-->
+                       <ul id = 'dropdown' class = 'dropdown-content'>
+
+                       </ul>
+                   </div>
                </div>
            </div>
 
@@ -36,13 +42,6 @@
           </div>
         </div>
 
-  <div> <input class = 'dropdown-button short-search' data-beloworigin="true" type="text" id="searchfield" data-activates='dropdown' placeholder="Поиск по сайту">
-      <a class="btn-floating btn-large waves-effect waves-light green" onclick="find(document.getElementById('searchfield').value)"><i class="material-icons">search</i></a>
-      <!--<button id="search_btn" onclick="find(document.getElementById('searchfield').value)"></button>-->
-      <ul id = 'dropdown' class = 'dropdown-content'>
-
-      </ul>
-  </div>
 
 
   <div id="results"></div>
