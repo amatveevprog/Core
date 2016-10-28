@@ -67,11 +67,18 @@
 }
 .short-search
 {
+  color:white;
   margin:20px;
 }
 
 .short-search:focus
 {
-
+    width:100%;
+ color:#38993C;
  background:white;
+}
+
+.search_div
+{
+    margin-top:15px;
 }
