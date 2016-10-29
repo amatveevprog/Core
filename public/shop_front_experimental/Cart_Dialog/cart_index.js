@@ -109,9 +109,10 @@ function cart_dialog_class(object_ref)
          }
          //console.log(id.getAttribute('data-id'));
 
-         for(var i in object_ref.header_objects_array)
+         var selected_arr = document.getElementsByClassName('left cart_dialog_header_item_enabled');
+         for(var i in selected_arr)
          {
-             object_ref.header_objects_array[i].className = 'left cart_dialog_header_item';
+            selected_arr[i].className = 'left cart_dialog_header_item';
          }
          id.className = 'left cart_dialog_header_item_enabled';
          object_ref.header_objects_array = [];
@@ -410,6 +411,14 @@ this.component_screen_2 = function()
                                         data_type:"email",
                                         className:"form_field_Email",
                                         required:"true"
+                                    },
+                                    {
+                                        description:"Ваш город",
+                                        name:"City",
+                                        dom_type:"input",
+                                        data_type:"text",
+                                        className:"form_field_City",
+                                        required:"true"
                                     }
                                 ]
                         },
@@ -431,7 +440,7 @@ this.component_screen_2 = function()
                                                     attributes:["selected"]
                                                 },
                                                 {
-                                                    name:"доставка",
+                                                    name:"доставка курьером",
                                                     value:"delivery"
                                                 }
                                             ],
