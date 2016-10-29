@@ -63,7 +63,7 @@ function cart_dialog_class(object_ref)
    this.draw_header = function(object_ref)
    {
        var header_div = document.createElement('div');
-       header_div.className = '';
+       header_div.className = 'cart_dialog_header_container row';
 
        for(var i in this.elements.elements)
        {
@@ -232,7 +232,7 @@ this.component_screen_1 = function(object_ref)
     {
         //console.log(items_data);
         var table = document.createElement('table');
-        table.className = 'cart_dialog screen_items_table';
+        table.className = 'cart_dialog screen_items_table highlight';
         var table_header = document.createElement('thead');
         var table_body = document.createElement('tbody');
         for(var i in items_data)
@@ -240,9 +240,11 @@ this.component_screen_1 = function(object_ref)
           var row = document.createElement('tr');
           row.id = 'cart_item_rom_'+  items_data[i].cart_item_id;
           row.setAttribute('data-cartitemid',items_data[i].cart_item_id);
+          row.className = 'cart_dialog_table_row';
           var img_td = document.createElement('td');
           var img = document.createElement('img');
           img.src = items_data[i].image_src;
+          img.className = 'items_table_img';
           img_td.appendChild(img);
 
           var label_td = document.createElement('td');

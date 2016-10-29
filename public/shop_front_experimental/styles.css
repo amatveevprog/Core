@@ -85,5 +85,22 @@
 
 .screen_items_table
 {
-    
+
+}
+.items_table_img
+{
+    width:50px;
+    height:50px;
+}
+
+.cart_dialog_header_container
+{
+    padding:20px;
+    background:white;
+}
+.cart_dialog_table_row
+{
+    padding:5px;
+    background:white;
+    margin:5px;
 }
