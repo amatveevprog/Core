@@ -59,6 +59,10 @@
     background: #27b2ff;
     color:black;
 }
+.option-search-item-icon
+{
+    height: 32px;
+}
 #searchDiv
 {
     width:60%;

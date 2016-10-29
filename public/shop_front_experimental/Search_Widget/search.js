@@ -54,10 +54,29 @@ function drawdropdown(matched_array)
 
 function adddropdowns(ul,array_matched)
 {
+    //!!!те ключи, которые хотим добавить в результаты живого поиска, должны
+    //быть в конфиге в database_map
     for(var i=0;i<array_matched.length;i++)
     {
         var li = document.createElement('li');
-        li.innerHTML = array_matched[i].name+"\r\n"+array_matched[i].label;
+        for(var key in array_matched[i])
+        {
+            //идем в database_map
+            if(key in database_map)
+            {
+                var DOM_elem = document.createElement(database_map[key].tag);
+                if("content_src" in database_map[key])
+                {
+                    DOM_elem.setAttribute("src",array_matched[i][key]);
+                }
+                else
+                {
+                    DOM_elem.innerHTML=array_matched[i][key];
+                }
+                DOM_elem.className = database_map[key].class;
+                li.appendChild(DOM_elem);
+            }
+        }
         li.setAttribute("O_id",array_matched[i]._id);
         li.addEventListener('click',function(event){
             event.preventDefault();
@@ -96,7 +115,9 @@ function outputOneItem(target) {
                 //createDOM(items_json,document.getElementById("results"));
                 createProductCards(items_json);
                 drawProductCards();
+                catalog_object.open_item_by_obj_id(items_json.items[item]._id);
             }
+
         }
     }
 }
@@ -274,11 +295,18 @@ function find_test()
     makeTestRequest(resultDiv);
 }
 //загружаем все, что есть в БД для живого поиска...
-
 function downloadItemsForQuickSearch()
 {
+    //performing a named parameters request...
+    var strQuery='';
+    for(var key in quickSearchObject)
+    {
+        strQuery+=key+"="+quickSearchObject[key]+"&";
+    }
+    //str.substring(indexA, length-2)
+    strQuery = strQuery.substring(0,strQuery.length-1);
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', '/API/get_named_items_js_named_items', true);
+    xhr.open('GET', '/API/get_all_items_configurable_js_all?'+strQuery, true);
     xhr.send();
     xhr.onreadystatechange = function()
     {

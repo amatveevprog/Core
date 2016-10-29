@@ -1,6 +1,6 @@
 .search-item-image
 {
-    height:50px;
+    height:32px;
 }
 .search-item-title
 {
@@ -66,4 +66,8 @@
 #searchfield
 {
     width:50%;
+}
+.option-search-item-icon
+{
+    height: 32px;
 }

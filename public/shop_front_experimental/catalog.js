@@ -229,6 +229,27 @@ this.open_item = function(item_id)
   $('#modal_window').openModal();
 
 };
+    this.open_item_by_obj_id = function(obj_id)
+    {
+        // Get all the item_by_id
+        var item;
+        var item_id;
+        for(var i in this.items)
+        {
+            if(this.items[i]._id == obj_id)
+            {
+                item = this.items[i];
+                item_id = this.items[i].id;
+            }
+        }
+
+        // Test vreateion of full height modal
+
+        var modal_content = document.getElementById('modal_content');
+        modal_content.innerHTML = '<div> <h1>' + item_id +'</h1>'+ item.image_src+item.label+'</div>';
+        $('#modal_window').openModal();
+
+    };
 //-------Catalog-----Session
 
 }

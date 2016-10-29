@@ -25,3 +25,9 @@ var database_map={
         class:"search-dashed settings"
     }
 };
+var quickSearchObject=
+{
+    field1:"name",
+    field2:"label",
+    field3:"image_src"
+}
