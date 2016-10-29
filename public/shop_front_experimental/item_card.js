@@ -6,11 +6,11 @@ function item_card()
   {
     // Get all the item_by_id
     var item;
-    for(var i in catalog_object.items)
+    for(var i in catalog_object.filtered_items)
      {
-       if(catalog_object.items[i].id == item_id)
+       if(catalog_object.filtered_items[i].id == item_id)
         {
-          item = catalog_object.items[i];
+          item = catalog_object.filtered_items[i];
         }
      }
 
@@ -96,7 +96,7 @@ function item_card()
 
 function open_item(id)
 {
-  console.log(item_object.item_template);
+ //console.log(item_object.item_template);
   //catalog_object.open_item(id);
   item_object.open_item(id);
 }

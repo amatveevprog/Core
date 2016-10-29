@@ -232,6 +232,7 @@ this.component_screen_1 = function(object_ref)
     {
         //console.log(items_data);
         var table = document.createElement('table');
+        table.className = 'cart_dialog screen_items_table';
         var table_header = document.createElement('thead');
         var table_body = document.createElement('tbody');
         for(var i in items_data)
