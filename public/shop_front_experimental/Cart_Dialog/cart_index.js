@@ -111,9 +111,9 @@ function cart_dialog_class(object_ref)
 
          for(var i in object_ref.header_objects_array)
          {
-             object_ref.header_objects_array[i].style = 'background: white';
+             object_ref.header_objects_array[i].className = 'left cart_dialog_header_item';
          }
-         id.style = 'background:red';
+         id.className = 'left cart_dialog_header_item_enabled';
          object_ref.header_objects_array = [];
          object_ref.header_objects_array.push(id);
          object_ref.change_screen(id.getAttribute('data-id'));
@@ -772,6 +772,27 @@ this.component_screen_3 = function()
  //   Common Screens functions  
 this.change_screen = function(screen)
     {
+
+        //paint selected
+        var header_items = document.getElementsByClassName('cart_dialog_header_item');
+        var header_items1 = document.getElementsByClassName('cart_dialog_header_item_enabled');
+        //header_items.concat(header_items1);
+
+        for(var i in header_items1)
+        {
+            header_items1[i].className = 'left cart_dialog_header_item';
+        }
+
+        for(var i = 0; i <= header_items.length - 1;i++)
+        {
+            header_items[i].className = 'left cart_dialog_header_item';
+            console.log(header_items[i].getAttribute('data-id')+' vs '+ screen);
+            if(header_items[i].getAttribute('data-id') == screen)
+            {
+                console.log('wheeeee!!!!');
+                header_items[i].className = 'left cart_dialog_header_item_enabled';
+            }
+        }
         var body_div = document.getElementById('cart_dialog_body_area');
         switch(screen)
         {

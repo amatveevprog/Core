@@ -104,3 +104,13 @@
     background:white;
     margin:5px;
 }
+
+.cart_dialog_header_item
+{
+    background:white;
+}
+
+.cart_dialog_header_item_enabled
+{
+    background:red;
+}
