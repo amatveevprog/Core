@@ -115,7 +115,8 @@ function outputOneItem(target) {
                 //createDOM(items_json,document.getElementById("results"));
                 createProductCards(items_json);
                 drawProductCards();
-                catalog_object.open_item_by_obj_id(items_json.items[item]._id);
+                open_item_by_Obj_id(items_json.items[item]._id);
+                //catalog_object.open_item_by_obj_id(items_json.items[item]._id);
             }
 
         }
