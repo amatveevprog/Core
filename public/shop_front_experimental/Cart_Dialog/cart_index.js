@@ -397,14 +397,6 @@ this.component_screen_2 = function()
                                         required:"true"
                                     },
                                     {
-                                        description:"Сергей Великий",
-                                        name:"Name123",
-                                        dom_type:"input",
-                                        data_type:"checkbox",
-                                        className:"form_field_FirstName",
-                                        required:"true"
-                                    },
-                                    {
                                         description:"Телефон",
                                         name:"Phone",
                                         dom_type:"input",
@@ -437,7 +429,7 @@ this.component_screen_2 = function()
                             fields:
                                 [
                                     {
-                                        description:"Метод доставки",
+                                        description:"Возможнык варианты доставки",
                                         name:"Delivery_Type",
                                         dom_type:"select",
                                         options:
@@ -621,8 +613,14 @@ this.component_screen_2 = function()
 
                   var field_div = document.createElement('div');
                   field_div.id = 'field_group_'+ screen_data.form_data.field_groups[form_group].fields[field].name;
-
                   var field_description = document.createElement('p');
+                  if(screen_data.form_data.field_groups[form_group].fields[field].data_type == 'checkbox')
+                  {
+                      field_description = document.createElement('label');
+                      var for_value = screen_data.form_data.field_groups[form_group].fields[field].name;
+                      field_description.setAttribute('for',for_value);
+                  }
+
                   field_description.className = 'field_description';
                   field_description.innerHTML = screen_data.form_data.field_groups[form_group].fields[field].description;
 
@@ -651,13 +649,22 @@ this.component_screen_2 = function()
                           field_obj .appendChild(option_obj);
                       }
                   }
+
                   if(screen_data.form_data.field_groups[form_group].fields[field].required == 'true')
                   {
                       field_obj .setAttribute('required','true');
                   }
+
                   field_div.appendChild(field_description);
                   field_div.appendChild(field_obj );
                   group_div.appendChild(field_div);
+
+                  if(screen_data.form_data.field_groups[form_group].fields[field].data_type == 'checkbox')
+                  {
+                      field_div.innerHTML = '';
+                      field_div.appendChild(field_obj);
+                      field_div.appendChild(field_description);
+                  }
 
               }
               form.appendChild(group_div);
