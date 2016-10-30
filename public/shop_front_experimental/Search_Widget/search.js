@@ -7,6 +7,18 @@ var ALLOW_COMBINED_SEARCH=true;
 var downloaded_items_array=[];
 var FL_EMPTY_RESULTS=true;
 
+function isInAllowedArray(key) {
+    for(var i=0;i<fieldsAllowedForQuickSearch.length;i++)
+    {
+        if (fieldsAllowedForQuickSearch[i]===key)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+
 $('.dropdown-button').dropdown({
         inDuration: 50,
         outDuration: 70,
@@ -386,14 +398,12 @@ function searchInLocalArray(input_str,limit)
         //.test
         for(var elem in downloaded_items_array)
         {
-            if(testRegExpForElement(rExp,downloaded_items_array[elem]))
-            {
-                if(curr_count<limit) {
+            if (testRegExpForElement(rExp, downloaded_items_array[elem])) {
+                if (curr_count < limit) {
                     matched.push(downloaded_items_array[elem]);
                     curr_count++;
                 }
-                else
-                {
+                else {
                     return matched;
                 }
             }
@@ -406,7 +416,7 @@ function testRegExpForElement(regExp,eleMent)
 {
     for(var keys in eleMent)
     {
-        if(regExp.test(eleMent[keys]))
+        if(regExp.test(eleMent[keys])&&isInAllowedArray(keys))
         {
             return true;
         }
