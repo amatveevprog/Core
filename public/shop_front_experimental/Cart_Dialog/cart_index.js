@@ -19,15 +19,15 @@ function cart_dialog_class(object_ref)
    var body_div = document.createElement('div');
    body_div.id = 'cart_dialog_body_area';
 
-   var screen_1_render = new object_ref.component_screen_1(object_ref);
-   screen_1_render.parent_object = object_ref;
-   var screen_1_object = screen_1_render.init(object_ref);
-   body_div.appendChild(screen_1_object);
+   //var screen_1_render = new object_ref.component_screen_1(object_ref);
+   //screen_1_render.parent_object = object_ref;
+   //var screen_1_object = screen_1_render.init(object_ref);
+   //body_div.appendChild(screen_1_object);
    dialog_layout.appendChild(header_div);
    var hr_div = document.createElement('div');
    dialog_layout.appendChild(body_div);
    document.getElementById(object_ref.target).appendChild(dialog_layout);
-
+    object_ref.change_screen('screen_1');
 
  };
     
@@ -397,6 +397,14 @@ this.component_screen_2 = function()
                                         required:"true"
                                     },
                                     {
+                                        description:"Сергей Великий",
+                                        name:"Name123",
+                                        dom_type:"input",
+                                        data_type:"checkbox",
+                                        className:"form_field_FirstName",
+                                        required:"true"
+                                    },
+                                    {
                                         description:"Телефон",
                                         name:"Phone",
                                         dom_type:"input",
@@ -552,10 +560,10 @@ this.component_screen_2 = function()
         function screen_body()
         {
             var screen = document.createElement('div');
-            var title = document.createElement('p');
-            title.innerText = 'Доставка и Оплата';
+           // var title = document.createElement('p');
+           // title.innerText = 'Доставка и Оплата';
             var form_render = form_builder();
-            screen.appendChild(title);
+            //screen.appendChild(title);
             screen.appendChild(form_render);
             return(screen);
         }
@@ -597,13 +605,15 @@ this.component_screen_2 = function()
         {
           var form = document.createElement('form');
           form.id = 'delivery_and_pickup_form';
+          form.className = 'container cart_information_form';
           for(var form_group in screen_data.form_data.field_groups)
           {
 
               var group_div = document.createElement('div');
               group_div.id = screen_data.form_data.field_groups[form_group].name;
               group_div.className = screen_data.form_data.field_groups[form_group].className;
-              var group_title = document.createElement('h2');
+              group_div.className += '  cart_information_form_section';
+              var group_title = document.createElement('h4');
               group_div.appendChild(group_title);
               group_title.innerText = screen_data.form_data.field_groups[form_group].label;
               for(var field in screen_data.form_data.field_groups[form_group].fields)
@@ -626,6 +636,7 @@ this.component_screen_2 = function()
                   {
                     field_obj.setAttribute('type',screen_data.form_data.field_groups[form_group].fields[field].data_type);
                   }
+
                   if(screen_data.form_data.field_groups[form_group].fields[field].dom_type == 'select')
                   {
                       for(var option in screen_data.form_data.field_groups[form_group].fields[field].options)
@@ -795,10 +806,8 @@ this.change_screen = function(screen)
         for(var i = 0; i <= header_items.length - 1;i++)
         {
             header_items[i].className = 'left cart_dialog_header_item';
-            console.log(header_items[i].getAttribute('data-id')+' vs '+ screen);
             if(header_items[i].getAttribute('data-id') == screen)
             {
-                console.log('wheeeee!!!!');
                 header_items[i].className = 'left cart_dialog_header_item_enabled';
             }
         }

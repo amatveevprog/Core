@@ -114,3 +114,15 @@
 {
     background: #51d83e;
 }
+.cart_information_form
+{
+    padding:5%;
+}
+
+.cart_information_form_section
+{
+    background:white;
+    padding:5%;
+    margin-top:10px;
+
+}
