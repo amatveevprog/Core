@@ -29,5 +29,9 @@ var quickSearchObject=
 {
     field1:"name",
     field2:"label",
-    field3:"image_src"
+    field3:"image_src",
+
 }
+//here we just copy keys from previous object,- items that we want to search by
+//!!! Only fields that are set upper in quickSearch Object are able to be allowed!!!
+var fieldsAllowedForQuickSearch=["name","label"];
