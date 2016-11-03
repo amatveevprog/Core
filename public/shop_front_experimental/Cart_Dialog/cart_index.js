@@ -491,7 +491,7 @@ function cart_dialog_class(object_ref) {
                         name: "delivery_delivery",
                         field_groups: [
                             {
-                                name: "delivery_address",
+                                name: "delivery_delivery_address",
                                 className: "field_group_delivery_adders",
                                 label: "Доставка",
                                 fields: [
@@ -505,7 +505,7 @@ function cart_dialog_class(object_ref) {
                                     },
                                     {
                                         description: "Улица",
-                                        name: "Street",
+                                        name: "elivery_delivery_address_Street",
                                         dom_type: "input",
                                         data_type: "text",
                                         className: "form_field_FirstName",
@@ -513,7 +513,7 @@ function cart_dialog_class(object_ref) {
                                     },
                                     {
                                         description: "Фанарь",
-                                        name: "Street",
+                                        name: "elivery_delivery_address_Phonarr",
                                         dom_type: "input",
                                         data_type: "text",
                                         className: "form_field_FirstName",
@@ -528,13 +528,13 @@ function cart_dialog_class(object_ref) {
                         name: "delivery_pickup",
                         field_groups: [
                             {
-                                name: "delivery_address",
-                                className: "field_group_delivery_adders",
+                                name: "delivery_pickup_address",
+                                className: "field_group_delivery_pickup_adderes",
                                 label: "Самовывоз",
                                 fields: [
                                     {
                                         description: "Город",
-                                        name: "City",
+                                        name: "field_group_delivery_pickup_adderes_City",
                                         dom_type: "input",
                                         data_type: "text",
                                         className: "form_field_FirstName",
@@ -577,6 +577,12 @@ function cart_dialog_class(object_ref) {
             var form_render = form_builder();
             //screen.appendChild(title);
             screen.appendChild(form_render);
+            var button = document.createElement('button');
+            button.innerText = 'Test!';
+            button.onclick = function(){
+                get_data_from_form()
+            };
+            screen.appendChild(button);
             return (screen);
         }
 
@@ -816,6 +822,51 @@ function cart_dialog_class(object_ref) {
                     break;
                 }
             }
+        }
+
+        //get all the data from form
+
+        function get_data_from_form()
+        {
+            // 1) prepare the structure
+            //var form_fields = document.forms["delivery_and_pickup_form"].getElementsByTagName("input");
+            var form_data = {};
+
+            for(var key in screen_data.form_data.field_groups)
+            {
+                form_data[screen_data.form_data.field_groups[key].name] = {};
+              for(var key2 in screen_data.form_data.field_groups[key].fields) {
+                  try
+                  {
+                   form_data[screen_data.form_data.field_groups[key].name][screen_data.form_data.field_groups[key].fields[key2].name] = document.getElementById(screen_data.form_data.field_groups[key].fields[key2].name).value;
+                  }
+                  catch(e)
+                  {
+                      console.log(e.toString());
+                  }
+
+              }
+
+            }
+
+            for(var key0 in screen_data.form_data.sub_forms)
+            {
+                for(var key in screen_data.form_data.sub_forms[key0].field_groups) {
+                    form_data[screen_data.form_data.sub_forms[key0].field_groups[key].name] = {};
+                    for (var key2 in screen_data.form_data.sub_forms[key0].field_groups[key].fields) {
+                        try {
+                            form_data[screen_data.form_data.sub_forms[key0].field_groups[key].name][screen_data.form_data.sub_forms[key0].field_groups[key].fields[key2].name] = document.getElementById(screen_data.form_data.sub_forms[key0].field_groups[key].fields[key2].name).value;
+                        }
+                        catch (e) {
+                            console.log(e.toString());
+                        }
+
+                    }
+                }
+
+            }
+
+            console.log(form_data);
         }
 
         this.footer_summary = function () {
