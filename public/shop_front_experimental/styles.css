@@ -98,11 +98,14 @@
     padding:20px;
     background:white;
 }
+
+
 .cart_dialog_table_row
 {
     padding:5px;
     background:white;
     margin:5px;
+    border:grey;
 }
 
 .cart_dialog_header_item
@@ -113,6 +116,12 @@
 .cart_dialog_header_item_enabled
 {
     background: #51d83e;
+    padding:5px;
+}
+
+.screen_items_table
+{
+    margin-top:20px;
 }
 .cart_information_form
 {
@@ -125,4 +134,12 @@
     padding:5%;
     margin-top:10px;
 
+}
+
+.cart_dialog_items_title
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: 'Philosopher', sans-serif;
+    font-size:45px;
 }
