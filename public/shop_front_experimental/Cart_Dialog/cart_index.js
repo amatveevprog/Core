@@ -6,6 +6,7 @@ function cart_dialog_class(object_ref) {
     this.header_objects_array = [];
     this.target = '';
     this.cart_object;
+    this.form_data;
 
     this.init = function (object_ref) {
         var dialog_layout = document.createElement('div');
@@ -30,7 +31,7 @@ function cart_dialog_class(object_ref) {
     };
 
     //refresh
-// Header 
+// Header
     this.component_header = function () {
         this.elements = {
             elements: [
@@ -322,7 +323,7 @@ function cart_dialog_class(object_ref) {
 
 
     };
-    this.component_screen_2 = function () {
+    this.component_screen_2 = function (object_ref) {
         screen_data = {
             items_array: [
                 {
@@ -586,6 +587,7 @@ function cart_dialog_class(object_ref) {
             return (screen);
         }
 
+
         function footer(footer_data) {
             var footer_div = document.createElement('div');
             footer_div.className = 'row';
@@ -620,6 +622,13 @@ function cart_dialog_class(object_ref) {
         }
 
         function form_builder() {
+            try {
+                var saved_data = JSON.parse(window.localStorage.getItem('cart_form_data'));
+            }
+            catch(e)
+            {
+            }
+
             var form = document.createElement('form');
             form.id = 'delivery_and_pickup_form';
             form.className = 'container cart_information_form';
@@ -667,6 +676,10 @@ function cart_dialog_class(object_ref) {
                       });
                          **/
                     }
+                    else {
+                        //Then just set save to Storage
+                        field_obj.onchange = function (e) {get_data_from_form()};
+                    }
 
                     if (screen_data.form_data.field_groups[form_group].fields[field].name != null) {
                         field_obj.setAttribute('type', screen_data.form_data.field_groups[form_group].fields[field].data_type);
@@ -684,10 +697,32 @@ function cart_dialog_class(object_ref) {
                         }
                     }
 
+
                     if (screen_data.form_data.field_groups[form_group].fields[field].required == 'true') {
                         field_obj.setAttribute('required', 'true');
                     }
 
+                    //Check if already filled
+                    //console.log(saved_data);
+                    for(var k in saved_data)
+                    {
+
+                        for(var t in saved_data[k])
+                        {
+                            if(t == screen_data.form_data.field_groups[form_group].fields[field].name)
+                            {
+                                if(screen_data.form_data.field_groups[form_group].fields[field].dom_type != 'select')
+                                {
+                                    field_obj.value =  saved_data[k][t];
+                                }
+                                if(screen_data.form_data.field_groups[form_group].fields[field].dom_type == 'select')
+                                {
+                                    field_obj.value = '';
+                                }
+
+                            }
+                        }
+                    }
 
                     field_div.appendChild(field_description);
                     field_div.appendChild(field_obj);
@@ -707,7 +742,12 @@ function cart_dialog_class(object_ref) {
         }
 
         function build_section(subform) {
-            console.log(subform);
+            try {
+                var saved_data = JSON.parse(window.localStorage.getItem('cart_form_data'));
+            }
+            catch(e)
+            {
+            }
             var form = document.createElement('div');
             form.id = 'sub_from_' + subform.name;
             for (var form_group in subform.field_groups) {
@@ -775,11 +815,26 @@ function cart_dialog_class(object_ref) {
                         field_obj.setAttribute('required', 'true');
                     }
 
+                    //Check if already filled
+                    //console.log(saved_data);
+                    for(var k in saved_data)
+                    {
 
+                        for(var t in saved_data[k])
+                        {
+
+                            if(t == screen_data.form_data.field_groups[form_group].fields[field].name)
+                            {
+                                //console.log('set value of '+ field_obj.id +'  to ' +saved_data[k][t]);
+                                field_obj.value =  saved_data[k][t];
+                            }
+                        }
+                    }
+                     console.log(field_obj.value);
                     field_div.appendChild(field_description);
                     field_div.appendChild(field_obj);
                     group_div.appendChild(field_div);
-
+                    console.log(group_div);
                     if (subform.field_groups[form_group].fields[field].data_type == 'checkbox') {
                         field_div.innerHTML = '';
                         field_div.appendChild(field_obj);
@@ -787,6 +842,7 @@ function cart_dialog_class(object_ref) {
                     }
 
                 }
+                console.log(form);
                 form.appendChild(group_div);
             }
             return (form);
@@ -802,18 +858,24 @@ function cart_dialog_class(object_ref) {
                                 if (screen_data.form_data.sub_forms[j].name == formname) {
                                     var subform = screen_data.form_data.sub_forms[j];
                                     var section = build_section(subform);
+                                   // console.log(section);
                                     try {
                                         var adding_section = document.getElementById('sub_form_' + screen_data.form_data.sub_forms[j].name);
-                                        document.getElementById("subform_"+field_section.name).innerHTML = section.innerHTML;
+                                        document.getElementById("subform_"+field_section.name).parentNode.replaceChild(section, document.getElementById("subform_"+field_section.name));
+                                        //document.getElementById("subform_"+field_section.name).parentNode.replaceChild(section,document.getElementById("subform_"+field_section.name));
                                     }
                                     catch (e) {
+                                        /**
                                         var new_section = document.createElement("div");
                                         new_section.id = "subform_"+field_section.name;
                                         new_section.innerHTML = section.innerHTML;
                                         console.log(document.getElementById(field_section.name));
                                         document.getElementById(field_section.name).parentNode.insertBefore(new_section, document.getElementById(field_section.name));
+                                    **/
+                                        section.id = "subform_"+field_section.name;
+                                        document.getElementById(field_section.name).parentNode.insertBefore(section, document.getElementById(field_section.name));
                                     }
-                                    console.log(section);
+                                    //console.log(section);
                                 }
                             }
 
@@ -838,7 +900,7 @@ function cart_dialog_class(object_ref) {
               for(var key2 in screen_data.form_data.field_groups[key].fields) {
                   try
                   {
-                   form_data[screen_data.form_data.field_groups[key].name][screen_data.form_data.field_groups[key].fields[key2].name] = document.getElementById(screen_data.form_data.field_groups[key].fields[key2].name).value;
+                  form_data[screen_data.form_data.field_groups[key].name][screen_data.form_data.field_groups[key].fields[key2].name] = document.getElementById(screen_data.form_data.field_groups[key].fields[key2].name).value;
                   }
                   catch(e)
                   {
@@ -865,8 +927,9 @@ function cart_dialog_class(object_ref) {
                 }
 
             }
-
-            console.log(form_data);
+            object_ref.form_data = form_data;
+            window.localStorage.setItem('cart_form_data',JSON.stringify(form_data));
+            //console.log(form_data);
         }
 
         this.footer_summary = function () {
@@ -1006,7 +1069,7 @@ function cart_dialog_class(object_ref) {
         switch (screen) {
             case 'screen_2': {
                 var screen_2_render = new this.component_screen_2(this);
-                var screen_2_object = screen_2_render.init();
+                var screen_2_object = screen_2_render.init(object_ref);
 
                 body_div.innerHTML = '';
                 body_div.appendChild(screen_2_object);
