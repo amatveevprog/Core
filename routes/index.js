@@ -3,6 +3,7 @@ var regexp = new RegExp(".*"+config.get('api_api_prefix')+".*");
 module.exports = function(app)
 {
     app.post("/upload",require('./upload').post);
+    app.post(regexp,require('./api_post').post);
     app.get("/",require('./upload_route').get);
     app.get(regexp,require('./api').get);
     app.get("/functions",require('./functions').get);

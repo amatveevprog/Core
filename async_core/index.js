@@ -73,6 +73,40 @@ exports.executeFunction = function(requestUrl,response,callback)
         }
     }],callback);
 };
+//for working with json data came on POST request
+exports.executeJSONFunction = function(request,response,callback)
+{
+    async.waterfall([function(callback) {
+        var urlParsed = Url.parse(request.url);
+        var endpoint = urlParsed.pathname;
+        var JSON_String_Data = '';
+        request.on('readable', function () {
+            JSON_String_Data += request.read();
+        }).on('end', function () {
+            if (JSON_String_Data.endsWith("null")) {
+                //если файл заканчивается на null
+                JSON_String_Data = JSON_String_Data.substring(0, JSON_String_Data.length - 4);
+                //console.log("Ends with null: " + JSON_String_Data);
+            }
+            callback(null, JSON_String_Data, urlParsed, endpoint);
+        });
+    },function (JSON_String_Data,urlParsed, endpoint, callback){
+        if(router.hasUrl(endpoint))
+        {
+            callback(null,JSON_String_Data,urlParsed,endpoint);
+        }
+        else
+        {
+            callback(new EndpointError("No such Endpoint!"));
+        }
+    },function (JSON_String_Data,urlParsed,endpoint,callback) {
+        //массив из 2х элементов: на первом месте JSON String, на втором: response;
+        var arr=[];
+        arr.push(JSON.parse(JSON_String_Data));
+        arr.push(response);
+        router.executeOnUrl(endpoint,arr,callback);
+    }],callback);
+};
 //сформировать файл(контент) для отправки на клиент
 //result: callback(null,content) containing content ready to be sent - just call res.end(content)
 exports.getContentToSend = function (filePath,res,callback) {

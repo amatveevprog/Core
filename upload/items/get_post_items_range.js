@@ -1,7 +1,11 @@
 //получить только с именами и айдишниками.
-function get_all_search_items() {
+function get_search_items() {
     var response = arguments[arguments.length-1];
-    mongodb = require('mongodb');
+    var JSON_ = arguments[0];
+    //console.log(response);
+    console.log(JSON_);
+    response.end(JSON.stringify(JSON_));
+    /*mongodb = require('mongodb');
     var items_array = [];
     var uri = 'mongodb://user:pass@host:port/db';
     var dbpassword = 'Lisa1234';
@@ -44,6 +48,6 @@ function get_all_search_items() {
         });
 
 
-    });
+    });*/
 }
-exports.named_items = get_all_search_items;
+exports.json_query = get_search_items;
