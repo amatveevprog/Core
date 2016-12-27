@@ -639,7 +639,15 @@ function cart_dialog_class(object_ref) {
                     var field_div = document.createElement('div');
                     field_div.id = 'field_group_' + screen_data.form_data.field_groups[form_group].fields[field].name;
                     field_div.className = 'input-field';
-                    var field_description = document.createElement('label');
+                    if(screen_data.form_data.field_groups[form_group].fields[field].dom_type == 'input')
+                    {
+                        var field_description = document.createElement('label');
+                    }
+                    else
+                    {
+                        var field_description = document.createElement('p');
+                    }
+
                     if (screen_data.form_data.field_groups[form_group].fields[field].data_type == 'checkbox') {
                         field_description = document.createElement('label');
                         var for_value = screen_data.form_data.field_groups[form_group].fields[field].name;
