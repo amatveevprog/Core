@@ -652,7 +652,7 @@ function cart_dialog_class(object_ref) {
 
                     var field_obj = document.createElement(screen_data.form_data.field_groups[form_group].fields[field].dom_type);
                     field_obj.id = screen_data.form_data.field_groups[form_group].fields[field].name;
-                    field_obj.placeholder =screen_data.form_data.field_groups[form_group].fields[field].placeholder;
+                   // field_obj.placeholder =screen_data.form_data.field_groups[form_group].fields[field].placeholder;
                     //Add Action
                     if (screen_data.form_data.field_groups[form_group].fields[field].action != null) {
                         var action = screen_data.form_data.field_groups[form_group].fields[field].action;
