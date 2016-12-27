@@ -375,7 +375,8 @@ function cart_dialog_class(object_ref) {
                                 dom_type: "input",
                                 data_type: "text",
                                 className: "form_field_FirstName",
-                                required: "true"
+                                required: "true",
+                                placeholder:"Имя"
                             },
                             {
                                 description: "Телефон",
@@ -383,7 +384,8 @@ function cart_dialog_class(object_ref) {
                                 dom_type: "input",
                                 data_type: "text",
                                 className: "form_field_Phone",
-                                required: "true"
+                                required: "true",
+                                placeholder:"Телефон"
                             },
                             {
                                 description: "Адрес электронной почты",
@@ -391,7 +393,8 @@ function cart_dialog_class(object_ref) {
                                 dom_type: "input",
                                 data_type: "email",
                                 className: "form_field_Email",
-                                required: "true"
+                                required: "true",
+                                placeholder:"email"
                             }
                         ]
                     },
@@ -647,7 +650,7 @@ function cart_dialog_class(object_ref) {
 
                     var field_obj = document.createElement(screen_data.form_data.field_groups[form_group].fields[field].dom_type);
                     field_obj.id = screen_data.form_data.field_groups[form_group].fields[field].name;
-
+                    field_obj.placeholder =screen_data.form_data.field_groups[form_group].fields[field].placeholder;
                     //Add Action
                     if (screen_data.form_data.field_groups[form_group].fields[field].action != null) {
                         var action = screen_data.form_data.field_groups[form_group].fields[field].action;
