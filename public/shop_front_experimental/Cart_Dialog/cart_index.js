@@ -392,14 +392,6 @@ function cart_dialog_class(object_ref) {
                                 data_type: "email",
                                 className: "form_field_Email",
                                 required: "true"
-                            },
-                            {
-                                description: "Ваш город",
-                                name: "City",
-                                dom_type: "input",
-                                data_type: "text",
-                                className: "form_field_City",
-                                required: "true"
                             }
                         ]
                     },
@@ -426,7 +418,7 @@ function cart_dialog_class(object_ref) {
                                 ],
                                 className: "form_field_Delivery_Type",
                                 required: "true",
-                                action: {
+                               /* action: {
                                     type: "append_section",
                                     variants: [
                                         {
@@ -439,7 +431,7 @@ function cart_dialog_class(object_ref) {
                                         }
                                     ]
 
-                                }
+                                }*/
                             }
                         ]
                     },
