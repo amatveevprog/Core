@@ -71,7 +71,6 @@ function cart_dialog_class(object_ref) {
                 header_item.className = 'left cart_dialog_header_item';
                 header_item.name = 'Cart_Header_Item';
                 header_div.appendChild(header_item);
-                //object_ref.header_objects_array.push(header_item);
 
                 if (i < this.elements.elements.length - 1) {
                     var next = document.createElement('div');
@@ -91,14 +90,13 @@ function cart_dialog_class(object_ref) {
         this.title_big = '';
         this.title_small = '';
 
-        function onpress(e) {
-            //console.log(e.target);
+        function onpress(e)
+        {
             var id = e.target;
-            while (id.name != 'Cart_Header_Item') {
+            while (id.name != 'Cart_Header_Item')
+            {
                 id = id.parentNode;
-                //console.log('going up ' + id.name);
             }
-            //console.log(id.getAttribute('data-id'));
 
             var selected_arr = document.getElementsByClassName('left cart_dialog_header_item_enabled');
             for (var i in selected_arr) {
@@ -573,14 +571,12 @@ function cart_dialog_class(object_ref) {
 
         function screen_body() {
             var screen = document.createElement('div');
-            // var title = document.createElement('p');
-            // title.innerText = 'Доставка и Оплата';
             var form_render = form_builder();
-            //screen.appendChild(title);
             screen.appendChild(form_render);
             var button = document.createElement('button');
             button.innerText = 'Test!';
-            button.onclick = function(){
+            button.onclick = function()
+            {
                 get_data_from_form()
             };
             screen.appendChild(button);
@@ -622,7 +618,8 @@ function cart_dialog_class(object_ref) {
         }
 
         function form_builder() {
-            try {
+            try
+            {
                 var saved_data = JSON.parse(window.localStorage.getItem('cart_form_data'));
             }
             catch(e)
@@ -632,7 +629,8 @@ function cart_dialog_class(object_ref) {
             var form = document.createElement('form');
             form.id = 'delivery_and_pickup_form';
             form.className = 'container cart_information_form';
-            for (var form_group in screen_data.form_data.field_groups) {
+            for (var form_group in screen_data.form_data.field_groups)
+            {
 
                 var group_div = document.createElement('div');
                 group_div.id = screen_data.form_data.field_groups[form_group].name;
@@ -656,10 +654,6 @@ function cart_dialog_class(object_ref) {
                     field_description.innerHTML = screen_data.form_data.field_groups[form_group].fields[field].description;
 
                     var field_obj = document.createElement(screen_data.form_data.field_groups[form_group].fields[field].dom_type);
-
-                    //console.log(screen_data.form_data.field_groups[form_group].fields);
-                    //console.log(screen_data.form_data.field_groups[form_group].fields[field]);
-
                     field_obj.id = screen_data.form_data.field_groups[form_group].fields[field].name;
 
                     //Add Action
