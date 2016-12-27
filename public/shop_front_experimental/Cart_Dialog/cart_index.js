@@ -635,7 +635,7 @@ function cart_dialog_class(object_ref) {
                 group_div.appendChild(group_title);
                 group_title.innerText = screen_data.form_data.field_groups[form_group].label;
                 group_title.className = "blue-text THIN";
-
+                group_title.style = "text-align:center; margin-bottom:5%";
                 for (var field in screen_data.form_data.field_groups[form_group].fields) {
 
                     var field_div = document.createElement('div');
