@@ -630,7 +630,7 @@ function cart_dialog_class(object_ref) {
                 var group_div = document.createElement('div');
                 group_div.id = screen_data.form_data.field_groups[form_group].name;
                 group_div.className = screen_data.form_data.field_groups[form_group].className;
-                group_div.className += '  cart_information_form_section';
+                group_div.className += '  cart_information_form_section blue-text THIN';
                 var group_title = document.createElement('h4');
                 group_div.appendChild(group_title);
                 group_title.innerText = screen_data.form_data.field_groups[form_group].label;
