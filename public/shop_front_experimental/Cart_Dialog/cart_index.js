@@ -630,10 +630,12 @@ function cart_dialog_class(object_ref) {
                 var group_div = document.createElement('div');
                 group_div.id = screen_data.form_data.field_groups[form_group].name;
                 group_div.className = screen_data.form_data.field_groups[form_group].className;
-                group_div.className += '  cart_information_form_section blue-text THIN';
+                group_div.className += '  cart_information_form_section';
                 var group_title = document.createElement('h4');
                 group_div.appendChild(group_title);
                 group_title.innerText = screen_data.form_data.field_groups[form_group].label;
+                group_title.className = "blue-text THIN";
+
                 for (var field in screen_data.form_data.field_groups[form_group].fields) {
 
                     var field_div = document.createElement('div');
