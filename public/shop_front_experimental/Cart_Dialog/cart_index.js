@@ -376,7 +376,8 @@ function cart_dialog_class(object_ref) {
                                 data_type: "text",
                                 className: "form_field_FirstName",
                                 required: "true",
-                                placeholder:"Имя"
+                                placeholder:"Имя",
+                                icon:"account_circle"
                             },
                             {
                                 description: "Телефон",
@@ -385,7 +386,8 @@ function cart_dialog_class(object_ref) {
                                 data_type: "text",
                                 className: "form_field_Phone",
                                 required: "true",
-                                placeholder:"Телефон"
+                                placeholder:"Телефон",
+                                icon:"phone"
                             },
                             {
                                 description: "Адрес электронной почты",
@@ -394,7 +396,8 @@ function cart_dialog_class(object_ref) {
                                 data_type: "email",
                                 className: "form_field_Email",
                                 required: "true",
-                                placeholder:"email"
+                                placeholder:"email",
+                                icon:"mail"
                             }
                         ]
                     },
@@ -641,6 +644,14 @@ function cart_dialog_class(object_ref) {
                     var field_div = document.createElement('div');
                     field_div.id = 'field_group_' + screen_data.form_data.field_groups[form_group].fields[field].name;
                     field_div.className = 'input-field';
+
+                    if(screen_data.form_data.field_groups[form_group].fields[field].icon != null)
+                    {
+                        var field_icon = document.createElement('i');
+                        field_icon.className = 'material-icons prefix';
+                        field_icon.innerText = screen_data.form_data.field_groups[form_group].fields[field].icon;
+                    }
+
                     var field_obj = document.createElement(screen_data.form_data.field_groups[form_group].fields[field].dom_type);
                     field_obj.id = screen_data.form_data.field_groups[form_group].fields[field].name;
                     if((screen_data.form_data.field_groups[form_group].fields[field].dom_type == 'input')&&(screen_data.form_data.field_groups[form_group].fields[field].data_type != 'date'))
@@ -728,6 +739,7 @@ function cart_dialog_class(object_ref) {
                         }
                     }
 
+                    field_div.appendChild(field_icon);
                     field_div.appendChild(field_description);
                     field_div.appendChild(field_obj);
                     group_div.appendChild(field_div);
