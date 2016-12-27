@@ -641,7 +641,7 @@ function cart_dialog_class(object_ref) {
                     field_div.className = 'input-field';
                     var field_obj = document.createElement(screen_data.form_data.field_groups[form_group].fields[field].dom_type);
                     field_obj.id = screen_data.form_data.field_groups[form_group].fields[field].name;
-                    if(screen_data.form_data.field_groups[form_group].fields[field].dom_type == 'input')
+                    if((screen_data.form_data.field_groups[form_group].fields[field].dom_type == 'input')&&(screen_data.form_data.field_groups[form_group].fields[field].data_type != 'date'))
                     {
                         var field_description = document.createElement('label');
                         field_obj.style = 'border-color:#effff0';
