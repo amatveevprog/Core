@@ -396,8 +396,8 @@ function cart_dialog_class(object_ref) {
                                 data_type: "email",
                                 className: "form_field_Email",
                                 required: "true",
-                                placeholder:"email",
-                                icon:"email"
+                                icon:"phone",
+                                placeholder:"email"
                             }
                         ]
                     },
