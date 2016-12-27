@@ -13,7 +13,8 @@
     "nodemailer": "^2.6.4",
     "nodemailer-sendmail-transport": "^1.0.0",
     "nodemailer-smtp-transport": "^2.7.2",
-    "promise": "^7.1.1"
+    "promise": "^7.1.1",
+    "node-find-files":"^0.x"
   },
   "engines": {},
   "description": "```JavaScript\r needs theese node modules to work:<br>\r 1)async;\r 2)express@4;\r 3)mime;\r 4)mkdirp;\r 5)serve-static;\r additional if you need\r 6)path;\r 7)util;\r 8)http;\r 9)fs;\r ```\r simply install theese modules via npm:<br>\r example: <br> `npm install express@4 --save`<br>\r <b>an example of http-page</b><br>\r <h1> Загрузка файла модуля на сервер</h1>\r     <div>Выберите модуль для загрузки на сервер</div>\r     <form name = \"upload\">\r         <input type=\"file\" name=\"module\" class=\"btn btn-default\">\r         <input type=\"submit\" value=\"Загрузить\" class=\"btn btn-default\">\r         </form>\r <br>\r <h2>Latest Updates:</h2>\r <p>\r <b>*>monitoring< </b> When the server starts to listen the port [1000 by default], it looks up for the files that has been already uploaded to the server.Then it parses them to obtain the API-functions </p>\r <h2 style=\"color:yellow\">TODO</h2>\r <p>tasks</p>\r -[0] ejs-templates<br>\r -[0] errors handling based on ejs<br>\r -[0] front-end aggregation and routing<br>",
