@@ -468,6 +468,16 @@ function cart_dialog_class(object_ref) {
                                     ]
 
                                 }*/
+                            },
+                            {
+                                description: "Адрес электронной почты",
+                                name: "email10",
+                                dom_type: "input",
+                                data_type: "email",
+                                className: "form_field_Email14",
+                                required: "true",
+                                icon:"up",
+                                placeholder:"email"
                             }
                         ]
                     },
