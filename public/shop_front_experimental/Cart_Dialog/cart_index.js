@@ -401,10 +401,30 @@ function cart_dialog_class(object_ref) {
                             },
                             {
                                 description: "Адрес электронной почты",
-                                name: "email",
+                                name: "email2",
                                 dom_type: "input",
                                 data_type: "email",
                                 className: "form_field_Email2",
+                                required: "true",
+                                icon:"phone",
+                                placeholder:"email"
+                            },
+                            {
+                                description: "Адрес электронной почты",
+                                name: "email3",
+                                dom_type: "input",
+                                data_type: "email",
+                                className: "form_field_Email3",
+                                required: "true",
+                                icon:"phone",
+                                placeholder:"email"
+                            },
+                            {
+                                description: "Адрес электронной почты",
+                                name: "email4",
+                                dom_type: "input",
+                                data_type: "email",
+                                className: "form_field_Email4",
                                 required: "true",
                                 icon:"phone",
                                 placeholder:"email"
