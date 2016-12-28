@@ -391,13 +391,13 @@ function cart_dialog_class(object_ref) {
                             },
                             {
                                 description: "Адрес электронной почты",
-                                name: "email",
+                                name: "email_addres",
                                 dom_type: "input",
                                 data_type: "email",
                                 className: "form_field_Email",
                                 required: "true",
                                 icon:"phone",
-                                placeholder:"email"
+                                placeholder:"email"s
                             }
                         ]
                     },
