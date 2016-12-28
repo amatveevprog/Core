@@ -397,7 +397,7 @@ function cart_dialog_class(object_ref) {
                                 className: "form_field_Email",
                                 required: "true",
                                 icon:"phone",
-                                placeholder:"email"s
+                                placeholder:"email"
                             }
                         ]
                     },
