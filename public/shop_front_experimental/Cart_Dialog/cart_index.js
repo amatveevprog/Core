@@ -396,7 +396,7 @@ function cart_dialog_class(object_ref) {
                                 data_type: "email",
                                 className: "form_field_Email1",
                                 required: "true",
-                                icon:"phone",
+                                icon:"mail",
                                 placeholder:"email"
                             },
                             {
@@ -451,7 +451,7 @@ function cart_dialog_class(object_ref) {
                             }
                         ]
                     },
-                    {
+                    /*{
                         name: "Test1",
                         label: "Тест группа",
                         className: "field_group_Delivery",
@@ -491,7 +491,7 @@ function cart_dialog_class(object_ref) {
                                 required: "true"
                             }
                         ]
-                    }
+                    }*/
                 ],
                 sub_forms: [
                     {
