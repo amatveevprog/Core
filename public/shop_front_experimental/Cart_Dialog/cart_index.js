@@ -394,7 +394,17 @@ function cart_dialog_class(object_ref) {
                                 name: "email_addres",
                                 dom_type: "input",
                                 data_type: "email",
-                                className: "form_field_Email",
+                                className: "form_field_Email1",
+                                required: "true",
+                                icon:"phone",
+                                placeholder:"email"
+                            },
+                            {
+                                description: "Адрес электронной почты",
+                                name: "email",
+                                dom_type: "input",
+                                data_type: "email",
+                                className: "form_field_Email2",
                                 required: "true",
                                 icon:"phone",
                                 placeholder:"email"
