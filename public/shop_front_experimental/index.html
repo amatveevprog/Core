@@ -182,9 +182,15 @@ $('.modal-trigger').leanModal({
 //INIT Tabs
 $(document).ready(function(){
    $('ul.tabs').tabs();
+    $('.button-collapse').sideNav({
+                menuWidth: 300, // Default is 240
+                edge: 'right', // Choose the horizontal origin
+                draggable: true // Choose whether you can drag to open on touch screens
+            }
+    );
  });
 
-$(".button-collapse").sideNav();
+
 
 
 </script>
