@@ -11,6 +11,7 @@ var types_menu = function()
     {
         document.getElementById(types_menu_object.target_div).innerHTML = '';
         var types_div = document.createElement('div');
+        types_div.className ='types_menu_bar';
         for(var type in category_widget.categories_data.types)
         {
             var button = document.createElement('button');
