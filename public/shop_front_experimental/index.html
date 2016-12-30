@@ -15,7 +15,7 @@
 
 
   <nav>
-      <div class="nav-wrapper">
+      <div class="nav-wrapper green" >
   <ul id="slide-out" class="side-nav">
       <li><a href="#!">First Sidebar Link</a></li>
       <li><a href="#!">Second Sidebar Link</a></li>
@@ -205,6 +205,7 @@ $(document).ready(function(){
    $('ul.tabs').tabs();
     $('.button-collapse').sideNav({
                 edge: 'left', // Choose the horizontal origin
+                width:100%,
                 closeOnClick: true, // Closes side-nav on <a> clicks, useful for Angular/Meteor
                 draggable: true // Choose whether you can drag to open on touch screens
             }
