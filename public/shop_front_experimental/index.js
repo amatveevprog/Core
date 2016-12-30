@@ -161,7 +161,7 @@ function shop_engine_read_from_storage(resolve,reject)
 
 //верстальшик сделал больше строк
 
-    var element_html_template = '<div class="card" style = "min-width:225px; max-width:240px; max-height:365px;" onclick = "open_item('+ "&catalog_tile_open_item&" +')">' +
+    var element_html_template = '<div class="card" style = "min-width:225px; max-width:240px; max-height:365px;box-shadow:none" onclick = "open_item('+ "&catalog_tile_open_item&" +')">' +
         '<div class="card-image waves-effect waves-block waves-light">   ' +
         '<img id = "catalog_tile_image_src" class="activator" src="'
         + " &catalog_tile_image_src&" + '" style = "height: 200px; min-width:225px; max-width:240px;">     </div>' +
