@@ -151,4 +151,5 @@
 .ul_fasset_widget
 {
     box-shadow: none;
+    border-width: 0;
 }
