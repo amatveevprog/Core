@@ -18,7 +18,7 @@ function Category_widget(widget_object)
          document.getElementById(widget_object.target_div).innerHTML = '';
          var widget_html = document.createElement('ul');
          widget_html.className = 'collapsible ul_fasset_widget';
-         widget_html.style = 'box-shadow: none; border-width:0';
+         widget_html.style = 'box-shadow: none; border-width:0; background:white';
          widget_html.setAttribute('data-collapsible','expandable');
          widget_object.parse_types(widget_object,widget_html,widget_object.selected_type);
          //catalog_object.Update_Categories;
