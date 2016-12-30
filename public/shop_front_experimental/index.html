@@ -18,7 +18,7 @@
             </div>
        </div>
 
-  <ul id="slide-out" class="side-nav">
+  <<ul id="slide-out" class="side-nav">
       <li><div class="userView">
           <div class="background">
               <img src="images/office.jpg">
@@ -33,17 +33,7 @@
       <li><a class="subheader">Subheader</a></li>
       <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
   </ul>
-
-  <nav class = 'green' style = ''>
-      <div class="nav-wrapper" style = ''>
-          <a href="#!" class="brand-logo center">Logo</a>
-          <ul class="left hide-on-med-and-down" style = ''>
-              <li><a href="sass.html">Sass</a></li>
-              <li><a href="badges.html">Components</a></li>
-              <li class="active"><a href="collapsible.html">JavaScript</a></li>
-          </ul>
-      </div>
-  </nav>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
 
        <div class = "col s12 m12 l12 12" style = "position:fixed; width:100%; z-index:100;background:#FAFAFA">
        </div>
@@ -200,7 +190,7 @@ $(document).ready(function(){
    $('ul.tabs').tabs();
     $('.button-collapse').sideNav({
                 menuWidth: 300, // Default is 240
-                edge: 'right', // Choose the horizontal origin
+                edge: 'left', // Choose the horizontal origin
                 draggable: true // Choose whether you can drag to open on touch screens
             }
     );
