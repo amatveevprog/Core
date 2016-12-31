@@ -391,40 +391,10 @@ function cart_dialog_class(object_ref) {
                             },
                             {
                                 description: "Адрес электронной почты",
-                                name: "email_addres",
+                                name: "email",
                                 dom_type: "input",
                                 data_type: "email",
-                                className: "form_field_Email1",
-                                required: "true",
-                                icon:"mail",
-                                placeholder:"email"
-                            },
-                            {
-                                description: "Адрес электронной почты",
-                                name: "email2",
-                                dom_type: "input",
-                                data_type: "email",
-                                className: "form_field_Email2",
-                                required: "true",
-                                icon:"phone",
-                                placeholder:"email"
-                            },
-                            {
-                                description: "Адрес электронной почты",
-                                name: "email3",
-                                dom_type: "input",
-                                data_type: "email",
-                                className: "form_field_Email3",
-                                required: "true",
-                                icon:"phone",
-                                placeholder:"email"
-                            },
-                            {
-                                description: "Адрес электронной почты",
-                                name: "email4",
-                                dom_type: "input",
-                                data_type: "email",
-                                className: "form_field_Email4",
+                                className: "form_field_Email",
                                 required: "true",
                                 icon:"phone",
                                 placeholder:"email"
@@ -437,6 +407,24 @@ function cart_dialog_class(object_ref) {
                         className: "field_group_Delivery",
                         fields: [
                             {
+                                description: "Адрес электронной почты1231231221",
+                                name: "email41232121",
+                                dom_type: "input",
+                                data_type: "email",
+                                className: "form_field_Email4123123",
+                                required: "true",
+                                placeholder:"email123213"
+                            },
+                            {
+                                description: "Адрес243 электро213213213нной почты",
+                                name: "email2432112212312134",
+                                dom_type: "input",
+                                data_type: "email",
+                                className: "form_field_Email212331212122121123434",
+                                required: "true",
+                                placeholder:"email"
+                            }
+                           /* {
                                 description: "Возможные варианты доставки",
                                 name: "Delivery_Type",
                                 dom_type: "select",
@@ -454,7 +442,7 @@ function cart_dialog_class(object_ref) {
                                 ],
                                 className: "form_field_Delivery_Type",
                                 required: "true",
-                               /* action: {
+                               /!* action: {
                                     type: "append_section",
                                     variants: [
                                         {
@@ -467,18 +455,8 @@ function cart_dialog_class(object_ref) {
                                         }
                                     ]
 
-                                }*/
-                            },
-                            {
-                                description: "Адрес электронной почты",
-                                name: "email10",
-                                dom_type: "input",
-                                data_type: "email",
-                                className: "form_field_Email14",
-                                required: "true",
-                                icon:"up",
-                                placeholder:"email"
-                            }
+                                }*!/
+                            },*/
                         ]
                     },
                     /*{
@@ -685,12 +663,7 @@ function cart_dialog_class(object_ref) {
                     field_div.id = 'field_group_' + screen_data.form_data.field_groups[form_group].fields[field].name;
                     field_div.className = 'input-field';
 
-                    if(screen_data.form_data.field_groups[form_group].fields[field].icon != null)
-                    {
-                        var field_icon = document.createElement('i');
-                        field_icon.className = 'material-icons prefix';
-                        field_icon.innerText = screen_data.form_data.field_groups[form_group].fields[field].icon;
-                    }
+
 
                     var field_obj = document.createElement(screen_data.form_data.field_groups[form_group].fields[field].dom_type);
                     field_obj.id = screen_data.form_data.field_groups[form_group].fields[field].name;
@@ -715,7 +688,13 @@ function cart_dialog_class(object_ref) {
                     field_description.innerHTML = screen_data.form_data.field_groups[form_group].fields[field].description;
 
 
-
+                    if(screen_data.form_data.field_groups[form_group].fields[field].icon != null)
+                    {
+                        var field_icon = document.createElement('i');
+                        field_icon.className = 'material-icons prefix';
+                        field_icon.id = screen_data.form_data.field_groups[form_group].fields[field].name;
+                        field_icon.innerText = screen_data.form_data.field_groups[form_group].fields[field].icon;
+                    }
                    // field_obj.placeholder =screen_data.form_data.field_groups[form_group].fields[field].placeholder;
                     //Add Action
                     if (screen_data.form_data.field_groups[form_group].fields[field].action != null) {
@@ -778,6 +757,11 @@ function cart_dialog_class(object_ref) {
                             }
                         }
                     }
+
+                    console.log('assign ' );
+                    console.log(field_icon);
+                    console.log(' to ');
+                    console.log(field_div);
 
                     field_div.appendChild(field_icon);
                     field_div.appendChild(field_description);
