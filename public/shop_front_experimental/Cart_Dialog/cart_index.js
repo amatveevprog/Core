@@ -112,19 +112,22 @@ function cart_dialog_class(object_ref) {
             var header_item_div = document.createElement('div');
             var header_item_div_left = document.createElement('div');
             var header_item_div_right = document.createElement('div');
-            var header_item_number = document.createElement('h4');
-            var header_item_title_big = document.createElement('p');
+            /*var header_item_number = document.createElement('p');*/
+            var header_item_title_big = document.createElement('h6');
+            header_item_title_big.className = 'header_item_title_big';
             var header_item_title_small = document.createElement('p');
 
             header_item_title_big.innerText = this.title_big;
             header_item_title_small.innerText = this.title_small;
-            header_item_number.innerText = this.number;
+            /*header_item_number.innerText = this.number + '.';*/
 
             header_item_div.className = 'row';
+/*
             header_item_div_left.className = 'left';
             header_item_div_right.className = 'right';
+*/
 
-            header_item_div_left.appendChild(header_item_number);
+           /* header_item_div_left.appendChild(header_item_number);*/
             header_item_div_right.appendChild(header_item_title_big);
             header_item_div_right.appendChild(header_item_title_small);
             header_item_div.appendChild(header_item_div_left);

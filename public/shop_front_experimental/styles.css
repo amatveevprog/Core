@@ -153,3 +153,9 @@
     box-shadow: none;
     border-width: 0;
 }
+
+.header_item_title_big
+ {
+     color: green;
+     font-size: 110%;
+ }
