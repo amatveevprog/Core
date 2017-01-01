@@ -116,6 +116,7 @@ function cart_dialog_class(object_ref) {
             var header_item_title_big = document.createElement('h6');
             header_item_title_big.className = 'header_item_title_big';
             var header_item_title_small = document.createElement('p');
+            header_item_title_small.className = 'header_item_title_small';
 
             header_item_title_big.innerText = this.title_big;
             header_item_title_small.innerText = this.title_small;

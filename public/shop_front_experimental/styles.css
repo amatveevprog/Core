@@ -115,8 +115,10 @@
 
 .cart_dialog_header_item_enabled
 {
-    background: #51d83e;
-    padding:5px;
+    color: #51d83e;
+    border-style: solid;
+    border-width: 0px 0px 5px 0px;
+    /*padding:5px;*/
 }
 
 .screen_items_table
@@ -156,6 +158,12 @@
 
 .header_item_title_big
  {
-     color: green;
-     font-size: 110%;
+   /*  color:green;*/
+    font-size: 150%;
+    font-style: italic;
  }
+
+.header_item_title_small
+{
+    font-style: italic;
+}
