@@ -279,7 +279,7 @@ function cart_dialog_class(object_ref) {
 
         function footer(footer_data) {
             var footer_div = document.createElement('div');
-            footer_div.className = 'row';
+            footer_div.className = 'row cart_dialog_footer_div';
 
             var summary_div = document.createElement('div');
             summary_div.className = 'col s4 m4 l4 4';
@@ -296,14 +296,14 @@ function cart_dialog_class(object_ref) {
 
             var next_button = document.createElement('button');
             next_button.innerText = 'продолжить';
-            next_button.className = 'col s4 m4 l4 4';
+            next_button.className = 'col s4 m4 l4 4 cart_dialog_button';
             next_button.addEventListener('click', function (e) {
                 button_next_handler('screen_2');
             })
 
             var back_button = document.createElement('button');
             back_button.innerText = 'добавить что-нибудь еще';
-            back_button.className = 'col s4 m4 l4 4';
+            back_button.className = 'col s4 m4 l4 4 cart_dialog_button';
 
             footer_div.appendChild(back_button);
             footer_div.appendChild(summary_div);
@@ -606,7 +606,7 @@ function cart_dialog_class(object_ref) {
 
         function footer(footer_data) {
             var footer_div = document.createElement('div');
-            footer_div.className = 'row';
+            footer_div.className = 'row cart_dialog_footer_div';
 
             var summary_div = document.createElement('div');
             summary_div.className = 'col s4 m4 l4 4';
@@ -623,11 +623,11 @@ function cart_dialog_class(object_ref) {
 
             var next_button = document.createElement('button');
             next_button.innerText = 'продолжить';
-            next_button.className = 'col s4 m4 l4 4';
+            next_button.className = 'col s4 m4 l4 4 cart_dialog_button';
 
             var back_button = document.createElement('button');
             back_button.innerText = 'назад к заказу';
-            back_button.className = 'col s4 m4 l4 4';
+            back_button.className = 'col s4 m4 l4 4 cart_dialog_button';
             back_button.addEventListener('click', function (e) {
             });
             footer_div.appendChild(back_button);
@@ -1052,7 +1052,7 @@ function cart_dialog_class(object_ref) {
 
         function footer(footer_data) {
             var footer_div = document.createElement('div');
-            footer_div.className = 'row';
+            footer_div.className = 'row cart_dialog_footer_div';
 
             var summary_div = document.createElement('div');
             summary_div.className = 'col s4 m4 l4 4';
@@ -1069,7 +1069,7 @@ function cart_dialog_class(object_ref) {
 
             var next_button = document.createElement('button');
             next_button.innerText = 'продолжить';
-            next_button.className = 'col s4 m4 l4 4';
+            next_button.className = 'col s4 m4 l4 4 cart_dialog_button';
 
             var back_button = document.createElement('button');
             back_button.innerText = 'назад к заказу';

@@ -118,6 +118,8 @@
     color: #51d83e;
     border-style: solid;
     border-width: 0px 0px 5px 0px;
+    -webkit-transition: color 1s; /* Safari */
+    transition: color 1s;
     /*padding:5px;*/
 }
 
@@ -166,4 +168,18 @@
 .header_item_title_small
 {
     font-style: italic;
+}
+
+.cart_dialog_button
+{
+  background:#DDDDDD;
+  color:green;
+  padding:15px;
+  border-width:0px;
+}
+
+.cart_dialog_footer_div
+{
+    background:white;
+    padding:50px;
 }
