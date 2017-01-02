@@ -109,14 +109,14 @@
 }
 
 .cart_dialog_header_item
-{
-    background:white;
+{    background:white;
 }
 
 .cart_dialog_header_item_enabled
 {
     color: #51d83e;
     border-style: solid;
+    border-color:black;
     border-width: 0px 0px 5px 0px;
     -webkit-transition: color 1s; /* Safari */
     transition: color 1s;
@@ -149,7 +149,7 @@
 }
 .types_menu_bar
 {
-  background:#dddddd;
+    background:#BBBBBB;
 }
 
 .ul_fasset_widget
