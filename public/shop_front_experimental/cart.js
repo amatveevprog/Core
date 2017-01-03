@@ -68,7 +68,18 @@ this.draw_widget = function()
            new_item.selected_quantity = selected_quantity;
            new_item.packed_quantity = 0;
 
-           this.cart_item_id_counter = this.cart_item_id_counter + 1;
+           //Calculate Position Price
+             var coefficient = 1;
+             for(var t in new_item.variants)
+             {
+                 if(new_item.variants[t].name == new_item.selected_type)
+                 {
+                     coefficient = new_item.variants[t].coefficient;
+                 }
+             }
+             new_item.position_price  = new_item.price*new_item.selected_quantity*coefficient;
+
+             this.cart_item_id_counter = this.cart_item_id_counter + 1;
            new_item.cart_item_id = 'citem_N'+this.cart_item_id_counter;
            this.cart_items.push(new_item);
             window.localStorage['cart_object_cart_items'] =   JSON.stringify(this.cart_items);

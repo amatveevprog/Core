@@ -3,7 +3,6 @@
   opacity:1;
   background:white;
    -webkit-transition: opacity 1s;
-
 }
 
 .cart_dialog_packs_variant_item :hover
@@ -17,7 +16,6 @@
   opacity:1;
   background:white;
    -webkit-transition: opacity 1s;
-
 }
 
 .header_line
@@ -147,6 +145,15 @@
     font-family: 'Philosopher', sans-serif;
     font-size:45px;
 }
+
+.cart_dialog_items_title2
+{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-family: 'Philosopher', sans-serif;
+    font-size:25px;
+}
+
 .types_menu_bar
 {
     background:#BBBBBB;
@@ -160,7 +167,6 @@
 
 .header_item_title_big
  {
-   /*  color:green;*/
     font-size: 150%;
     font-style: italic;
  }
@@ -173,8 +179,8 @@
 .cart_dialog_button
 {
   background:#DDDDDD;
-  color:green;
-  padding:15px;
+  margin-left:5px;
+  height:50px;
   border-width:0px;
 }
 

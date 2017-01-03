@@ -198,7 +198,6 @@ function cart_dialog_class(object_ref) {
             var screen_title = document.createElement('p');
             screen_title.innerText = 'Ваш заказ:'
             screen_title.className = 'cart_dialog_items_title';
-
             var table_render = table_with_contents(screen_data.items_array);
             var footer_render = footer(screen_data.footer_data);
             var delimeter = document.createElement('div');
@@ -258,15 +257,21 @@ function cart_dialog_class(object_ref) {
                 delete_ico.innerText = 'delete';
                 delete_ico.className = 'material-icons';
                 delete_ico.addEventListener('click', function (e) {
-                    remove_from_cart_prompt(e)
+                    remove_from_cart_prompt(e);
                 });
                 delete_ico_td.appendChild(delete_ico);
+
+                var position_price_td = document.createElement('td');
+                var position_price = document.createElement('p');
+                position_price.innerText = items_data[i].position_price +' Rub';
+                position_price_td.appendChild(position_price);
 
                 row.appendChild(img_td);
                 row.appendChild(label_td);
                 row.appendChild(type_td);
                 row.appendChild(quantity_td);
                 row.appendChild(delete_ico_td);
+                row.appendChild(position_price_td);
 
                 table_body.appendChild(row);
 
@@ -282,13 +287,13 @@ function cart_dialog_class(object_ref) {
             footer_div.className = 'row cart_dialog_footer_div';
 
             var summary_div = document.createElement('div');
-            summary_div.className = 'col s4 m4 l4 4';
+            summary_div.className = 'col s12 m8 l8 8';
 
             for (var i in footer_data) {
                 var new_field = document.createElement('p');
                 new_field.id = footer_data[i].field;
-                new_field.innerText = footer_data[i].name + ': ' + footer_data[i].value + ' ' + footer_data[i].suffix;
-                new_field.className = 'left';
+                new_field.innerText = footer_data[i].name + ': ' + footer_data[i].value + '  ' + footer_data[i].suffix+ '   ';
+                // new_field.className = 'left';
                 summary_div.appendChild(new_field);
 
             }
@@ -296,17 +301,17 @@ function cart_dialog_class(object_ref) {
 
             var next_button = document.createElement('button');
             next_button.innerText = 'продолжить';
-            next_button.className = 'col s4 m4 l4 4 cart_dialog_button';
+            next_button.className = 'col s6 m2 l2 2 cart_dialog_button';
             next_button.addEventListener('click', function (e) {
                 button_next_handler('screen_2');
             })
 
             var back_button = document.createElement('button');
             back_button.innerText = 'добавить что-нибудь еще';
-            back_button.className = 'col s4 m4 l4 4 cart_dialog_button';
+            back_button.className = 'col s6 m2 l2 2 cart_dialog_button';
 
-            footer_div.appendChild(back_button);
             footer_div.appendChild(summary_div);
+            footer_div.appendChild(back_button);
             footer_div.appendChild(next_button);
 
             return (footer_div);
@@ -614,7 +619,7 @@ function cart_dialog_class(object_ref) {
             for (var i in footer_data) {
                 var new_field = document.createElement('p');
                 new_field.id = footer_data[i].field;
-                new_field.innerText = footer_data[i].name + ': ' + footer_data[i].value + ' ' + footer_data[i].suffix;
+                new_field.innerText = footer_data[i].name + ': ' + footer_data[i].value + ' ' + footer_data[i].suffix +' ';
                 new_field.className = 'left';
                 summary_div.appendChild(new_field);
 
@@ -630,9 +635,12 @@ function cart_dialog_class(object_ref) {
             back_button.className = 'col s4 m4 l4 4 cart_dialog_button';
             back_button.addEventListener('click', function (e) {
             });
-            footer_div.appendChild(back_button);
+
+
             footer_div.appendChild(summary_div);
+            footer_div.appendChild(back_button);
             footer_div.appendChild(next_button);
+
 
             return (footer_div);
         }
@@ -1060,8 +1068,8 @@ function cart_dialog_class(object_ref) {
             for (var i in footer_data) {
                 var new_field = document.createElement('p');
                 new_field.id = footer_data[i].field;
-                new_field.innerText = footer_data[i].name + ': ' + footer_data[i].value + ' ' + footer_data[i].suffix;
-                new_field.className = 'left';
+                new_field.innerText = footer_data[i].name + ': ' + footer_data[i].value + ' ' + footer_data[i].suffix+' ';
+                // new_field.className = 'left';
                 summary_div.appendChild(new_field);
 
             }
@@ -1073,12 +1081,14 @@ function cart_dialog_class(object_ref) {
 
             var back_button = document.createElement('button');
             back_button.innerText = 'назад к заказу';
-            back_button.className = 'col s4 m4 l4 4';
+            back_button.className = 'col s4 m4 l4 4 cart_dialog_button';
             back_button.addEventListener('click', function (e) {
             });
-            footer_div.appendChild(back_button);
+
             footer_div.appendChild(summary_div);
+            footer_div.appendChild(back_button);
             footer_div.appendChild(next_button);
+
 
             return (footer_div);
         }
