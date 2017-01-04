@@ -331,7 +331,16 @@ function cart_dialog_class(object_ref) {
             object_ref.cart_object.remove_from_cart(e.target.parentNode.parentNode.getAttribute('data-cartitemid'));
             e.target.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode);
             // to-do add 1)  prompt to delete
+            repaint_sum(object_ref);
         }
+
+        //repaint cart summary
+        function repaint_sum(object_ref)
+        {
+            var sum_block = document.getElementById('total_sum');
+            sum_block.innerHTML = 'Общая сумма: ' + object_ref.cart_object.cart_sum + ' Rub';
+        }
+
 
        /* function check_items()
         {
@@ -626,7 +635,6 @@ function cart_dialog_class(object_ref) {
             screen.appendChild(button);
             return (screen);
         }
-
 
         function footer(footer_data) {
             var footer_div = document.createElement('div');
