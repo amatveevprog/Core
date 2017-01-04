@@ -30,12 +30,12 @@
 
 .category_type_button
 {
-    font-family: times, Times New Roman, times-roman, georgia, serif;
+    font-family: times,times-roman, georgia, serif;
     color: #444;
     margin: 0;
-    font-size: 30px;
-    line-height: 44px;
-    letter-spacing: -2px;
+    font-size: 20px;
+    line-height: 34px;
+    letter-spacing: 2px;
     font-weight: bold;
     padding:5px 50px 5px 50px;
     border: none;

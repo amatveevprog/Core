@@ -99,10 +99,11 @@ function cart_dialog_class(object_ref) {
             }
 
             var selected_arr = document.getElementsByClassName('left cart_dialog_header_item_enabled');
-            for (var i in selected_arr) {
-                selected_arr[i].className = 'left cart_dialog_header_item';
+            for (var i in selected_arr)
+            {
+                //selected_arr[i].className = 'left cart_dialog_header_item';
             }
-            id.className = 'left cart_dialog_header_item_enabled';
+            //id.className = 'left cart_dialog_header_item_enabled';
             object_ref.header_objects_array = [];
             object_ref.header_objects_array.push(id);
             object_ref.change_screen(id.getAttribute('data-id'));
@@ -177,23 +178,25 @@ function cart_dialog_class(object_ref) {
             footer_data: [
                 {
                     field: "total_sum",
-                    name: "общая сумма",
-                    value: "1200",
+                    name: "Общая сумма",
+                    value: "0",
                     suffix: " Rub"
 
                 },
                 {
                     field: "shipping_sum",
-                    name: "доставка",
-                    value: "400",
+                    name: "Стоимость доставки",
+                    value: "0",
                     suffix: "Rub"
 
                 }
             ]
         };
         screen_data.items_array = object_ref.cart_object.cart_items;
+        screen_data.footer_data[0].value = 0 + object_ref.cart_object.cart_sum;
+        this.init = function (object_ref)
+        {
 
-        this.init = function (object_ref) {
             var screen = document.createElement('div');
             var screen_title = document.createElement('p');
             screen_title.innerText = 'Ваш заказ:'
@@ -211,6 +214,7 @@ function cart_dialog_class(object_ref) {
 
             return (screen);
         };
+
 
         function button_next_handler(screen_name) {
             //alert('trololo');
@@ -292,7 +296,7 @@ function cart_dialog_class(object_ref) {
             for (var i in footer_data) {
                 var new_field = document.createElement('p');
                 new_field.id = footer_data[i].field;
-                new_field.innerText = footer_data[i].name + ': ' + footer_data[i].value + '  ' + footer_data[i].suffix+ '   ';
+                new_field.innerHTML = footer_data[i].name + ': ' + footer_data[i].value + '  ' + footer_data[i].suffix+ '<br/>';
                 // new_field.className = 'left';
                 summary_div.appendChild(new_field);
 
@@ -303,6 +307,7 @@ function cart_dialog_class(object_ref) {
             next_button.innerText = 'продолжить';
             next_button.className = 'col s6 m2 l2 2 cart_dialog_button';
             next_button.addEventListener('click', function (e) {
+
                 button_next_handler('screen_2');
             })
 
@@ -327,6 +332,18 @@ function cart_dialog_class(object_ref) {
             e.target.parentNode.parentNode.parentNode.removeChild(e.target.parentNode.parentNode);
             // to-do add 1)  prompt to delete
         }
+
+       /* function check_items()
+        {
+            if( screen_data.footer_data[0].value == 0)
+            {
+                return(false);
+            }
+            else
+            {
+                return(true);
+            }
+        }*/
 
 
     };
@@ -358,14 +375,14 @@ function cart_dialog_class(object_ref) {
             footer_data: [
                 {
                     field: "total_sum",
-                    name: "общая сумма",
+                    name: "Общая сумма",
                     value: "1200",
                     suffix: " Rub"
 
                 },
                 {
                     field: "shipping_sum",
-                    name: "доставка",
+                    name: "Стоимость доставки",
                     value: "400",
                     suffix: "Rub"
 
@@ -574,6 +591,8 @@ function cart_dialog_class(object_ref) {
             }
 
         };
+        screen_data.items_array = object_ref.cart_object.cart_items;
+        screen_data.footer_data[0].value = 0 + object_ref.cart_object.cart_sum;
         this.init = function () {
             var screen = document.createElement('div');
             var body = screen_body();
@@ -616,11 +635,13 @@ function cart_dialog_class(object_ref) {
             var summary_div = document.createElement('div');
             summary_div.className = 'col s4 m4 l4 4';
 
-            for (var i in footer_data) {
+            for (var i in footer_data)
+            {
                 var new_field = document.createElement('p');
                 new_field.id = footer_data[i].field;
-                new_field.innerText = footer_data[i].name + ': ' + footer_data[i].value + ' ' + footer_data[i].suffix +' ';
+                new_field.innerHTML = footer_data[i].name + ': ' + footer_data[i].value + ' ' + footer_data[i].suffix +'';
                 new_field.className = 'left';
+                var new_line = document.createElement('br');
                 summary_div.appendChild(new_field);
 
             }
@@ -770,11 +791,11 @@ function cart_dialog_class(object_ref) {
                         }
                     }
 
-                    console.log('assign ' );
+                   /* console.log('assign ' );
                     console.log(field_icon);
                     console.log(' to ');
                     console.log(field_div);
-
+*/
                     field_div.appendChild(field_icon);
                     field_div.appendChild(field_description);
                     field_div.appendChild(field_obj);
@@ -882,7 +903,7 @@ function cart_dialog_class(object_ref) {
                             }
                         }
                     }
-                     console.log(field_obj.value);
+                     // console.log(field_obj.value);
                     field_div.appendChild(field_description);
                     field_div.appendChild(field_obj);
                     group_div.appendChild(field_div);
@@ -990,7 +1011,7 @@ function cart_dialog_class(object_ref) {
 
 
     };
-    this.component_screen_3 = function () {
+    this.component_screen_3 = function (object_ref) {
         var screen_data = {
             items_array: [
                 {
@@ -1018,20 +1039,22 @@ function cart_dialog_class(object_ref) {
             footer_data: [
                 {
                     field: "total_sum",
-                    name: "общая сумма",
+                    name: "Общая сумма",
                     value: "1200",
                     suffix: " Rub"
 
                 },
                 {
                     field: "shipping_sum",
-                    name: "доставка",
+                    name: "Стоимость доставки",
                     value: "400",
                     suffix: "Rub"
 
                 }
             ]
         };
+        screen_data.items_array = object_ref.cart_object.cart_items;
+        screen_data.footer_data[0].value = 0 + object_ref.cart_object.cart_sum;
         this.init = function () {
             var screen = document.createElement('div');
             var body = screen_body();
@@ -1068,7 +1091,7 @@ function cart_dialog_class(object_ref) {
             for (var i in footer_data) {
                 var new_field = document.createElement('p');
                 new_field.id = footer_data[i].field;
-                new_field.innerText = footer_data[i].name + ': ' + footer_data[i].value + ' ' + footer_data[i].suffix+' ';
+                new_field.innerHTML = footer_data[i].name + ': ' + footer_data[i].value + ' ' + footer_data[i].suffix+'<br/>';
                 // new_field.className = 'left';
                 summary_div.appendChild(new_field);
 
@@ -1109,19 +1132,18 @@ function cart_dialog_class(object_ref) {
         var header_items1 = document.getElementsByClassName('cart_dialog_header_item_enabled');
         //header_items.concat(header_items1);
 
-        for (var i in header_items1) {
-            header_items1[i].className = 'left cart_dialog_header_item';
-        }
 
-        for (var i = 0; i <= header_items.length - 1; i++) {
-            header_items[i].className = 'left cart_dialog_header_item';
-            if (header_items[i].getAttribute('data-id') == screen) {
-                header_items[i].className = 'left cart_dialog_header_item_enabled';
-            }
-        }
         var body_div = document.getElementById('cart_dialog_body_area');
         switch (screen) {
             case 'screen_2': {
+                var check = check_business_rules('screen_1',this);
+                console.log(check);
+                if(check.status == false)
+                {
+                    Materialize.toast(check.msg, 2000);
+                    return;
+                }
+
                 var screen_2_render = new this.component_screen_2(this);
                 var screen_2_object = screen_2_render.init(object_ref);
 
@@ -1133,6 +1155,7 @@ function cart_dialog_class(object_ref) {
                 break;
             }
             case 'screen_1': {
+
                 var screen_1_render = new this.component_screen_1(this);
                 var screen_1_object = screen_1_render.init();
 
@@ -1148,6 +1171,44 @@ function cart_dialog_class(object_ref) {
                 body_div.appendChild(screen_3_object);
                 break;
             }
+        }
+
+        //Visualize for selection
+        for (var i in header_items1) {
+            header_items1[i].className = 'left cart_dialog_header_item';
+        }
+
+        for (var i = 0; i <= header_items.length - 1; i++) {
+            header_items[i].className = 'left cart_dialog_header_item';
+            if (header_items[i].getAttribute('data-id') == screen) {
+                header_items[i].className = 'left cart_dialog_header_item_enabled';
+            }
+        }
+
+        function check_business_rules(screen,object_ref)
+        {
+            switch(screen)
+             {
+                case 'screen_1':
+                {
+                    // console.log('check in rules for screen_1');
+                    // console.log(object_ref.cart_object.cart_sum);
+                    if((object_ref.cart_object.cart_sum!=null)&&(object_ref.cart_object.cart_sum!=0))
+                    {
+                        var error = {};
+                        error.status = true;
+                        error.msg = '';
+                        return(error);
+                    }
+                    else
+                    {
+                        var error = {};
+                        error.status = false;
+                        error.msg = 'Ваша корзина пуста, положите в нее немного чая';
+                        return(error);
+                    }
+                }
+             }
         }
     }
 }
