@@ -178,16 +178,9 @@ function cart_dialog_class(object_ref) {
             footer_data: [
                 {
                     field: "total_sum",
-                    name: "Общая сумма",
-                    value: "0",
+                    name: "Общая сумма (*без учета стоиомости доставки)",
+                    value: "1200",
                     suffix: " Rub"
-
-                },
-                {
-                    field: "shipping_sum",
-                    name: "Стоимость доставки",
-                    value: "0",
-                    suffix: "Rub"
 
                 }
             ]
@@ -384,16 +377,9 @@ function cart_dialog_class(object_ref) {
             footer_data: [
                 {
                     field: "total_sum",
-                    name: "Общая сумма",
+                    name: "Общая сумма (*без учета стоиомости доставки)",
                     value: "1200",
                     suffix: " Rub"
-
-                },
-                {
-                    field: "shipping_sum",
-                    name: "Стоимость доставки",
-                    value: "400",
-                    suffix: "Rub"
 
                 }
             ],
@@ -1099,16 +1085,9 @@ function cart_dialog_class(object_ref) {
             footer_data: [
                 {
                     field: "total_sum",
-                    name: "Общая сумма",
+                    name: "Общая сумма (*без учета стоиомости доставки)",
                     value: "1200",
                     suffix: " Rub"
-
-                },
-                {
-                    field: "shipping_sum",
-                    name: "Стоимость доставки",
-                    value: "400",
-                    suffix: "Rub"
 
                 }
             ]
