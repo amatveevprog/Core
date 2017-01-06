@@ -452,13 +452,14 @@ function cart_dialog_class(object_ref) {
                                 required: "true"
                             },
                             {
-                                description: "Field_5",
-                                name: "email",
+                                description: "Адрес доставки",
+                                name: "Delivery_Address",
                                 dom_type: "input",
-                                data_type: "email",
-                                className: "form_field_Email212331212122121123434",
+                                data_type: "text",
+                                className: "Delivery_Address",
                                 required: "true",
-                                placeholder:"email"
+                                placeholder:"address",
+
                             }
                            /* {
                                 description: "Возможные варианты доставки",
@@ -568,7 +569,7 @@ function cart_dialog_class(object_ref) {
                         ]
                     }*/
                 ],
-               /* sub_forms: [
+                sub_forms: [
                     {
                         name: "delivery_delivery",
                         field_groups: [
@@ -628,7 +629,7 @@ function cart_dialog_class(object_ref) {
                         ]
                     }
 
-                ]*/
+                ]
             }
 
         };
@@ -649,8 +650,6 @@ function cart_dialog_class(object_ref) {
             screen.appendChild(body);
             screen.appendChild(delimeter);
             screen.appendChild(footer_render);
-
-
             return (screen);
         };
 
@@ -738,8 +737,6 @@ function cart_dialog_class(object_ref) {
                     field_div.id = 'field_group_' + screen_data.form_data.field_groups[form_group].fields[field].name;
                     field_div.className = 'input-field';
 
-
-
                     var field_obj = document.createElement(screen_data.form_data.field_groups[form_group].fields[field].dom_type);
                     field_obj.id = screen_data.form_data.field_groups[form_group].fields[field].name;
                     if((screen_data.form_data.field_groups[form_group].fields[field].dom_type == 'input')&&(screen_data.form_data.field_groups[form_group].fields[field].data_type != 'date'))
@@ -804,7 +801,7 @@ function cart_dialog_class(object_ref) {
                             for (var attribute in screen_data.form_data.field_groups[form_group].fields[field].options[option].attributes) {
                                 option_obj.setAttribute(screen_data.form_data.field_groups[form_group].fields[field].options[option].attributes[attribute], "");
                             }
-                            field_description.className += 'field_description_select';
+                            field_description.className += 'field_description_select grey-text';
 
                             field_obj.appendChild(option_obj);
                         }
@@ -814,6 +811,8 @@ function cart_dialog_class(object_ref) {
                     if (screen_data.form_data.field_groups[form_group].fields[field].required == 'true') {
                         field_obj.setAttribute('required', 'true');
                     }
+
+
 
                     //Check if already filled
                     //console.log(saved_data);
@@ -869,8 +868,9 @@ function cart_dialog_class(object_ref) {
             }
             var form = document.createElement('div');
             form.id = 'sub_from_' + subform.name;
-            for (var form_group in subform.field_groups) {
-
+            for (var form_group in subform.field_groups)
+            {
+                var group_div_main = document.createElement('div');
                 var group_div = document.createElement('div');
                 group_div.id = subform.field_groups[form_group].name;
                 group_div.className = subform.field_groups[form_group].className;
@@ -878,6 +878,10 @@ function cart_dialog_class(object_ref) {
                 var group_title = document.createElement('h4');
                 group_div.appendChild(group_title);
                 group_title.innerText = subform.field_groups[form_group].label;
+                group_title.className = 'Grey-text thin cart_dialog_personal_data_title';
+                group_div_main.appendChild(group_title);
+                group_div_main.appendChild(group_div);
+
                 for (var field in subform.field_groups[form_group].fields) {
 
                     var field_div = document.createElement('div');
@@ -893,9 +897,6 @@ function cart_dialog_class(object_ref) {
                     field_description.innerHTML = subform.field_groups[form_group].fields[field].description;
 
                     var field_obj = document.createElement(subform.field_groups[form_group].fields[field].dom_type);
-
-                    //console.log(screen_data.form_data.field_groups[form_group].fields);
-                    //console.log(screen_data.form_data.field_groups[form_group].fields[field]);
 
                     field_obj.id = subform.field_groups[form_group].fields[field].name;
 
@@ -944,7 +945,6 @@ function cart_dialog_class(object_ref) {
 
                             if(t == screen_data.form_data.field_groups[form_group].fields[field].name)
                             {
-                                //console.log('set value of '+ field_obj.id +'  to ' +saved_data[k][t]);
                                 field_obj.value =  saved_data[k][t];
                             }
                         }
@@ -962,7 +962,7 @@ function cart_dialog_class(object_ref) {
 
                 }
                 console.log(form);
-                form.appendChild(group_div);
+                form.appendChild(group_div_main);
             }
             return (form);
         }
@@ -1055,6 +1055,22 @@ function cart_dialog_class(object_ref) {
 
         }
 
+        this.add_logic_to_form = function()
+        {
+
+            delivery_type_logic();
+        }
+
+        //Custom Logic
+          // Delivery Form
+        function delivery_type_logic()
+        {
+            document.getElementById('field_group_Delivery_Type').childNodes[1].addEventListener('onchange',function(e)
+            {
+                console.log(e);
+                console.log('Keksik the best!!!');
+            });
+        }
 
     };
     this.component_screen_3 = function (object_ref) {
@@ -1188,8 +1204,13 @@ function cart_dialog_class(object_ref) {
 
                 body_div.innerHTML = '';
                 body_div.appendChild(screen_2_object);
+                console.log('welll');
+                console.log(screen_2_render );
+                screen_2_render.add_logic_to_form();
+
                 $(document).ready(function () {
                     $('select').material_select();
+
                 });
                 break;
             }
