@@ -409,7 +409,7 @@ function cart_dialog_class(object_ref) {
                                 name: "Name",
                                 dom_type: "input",
                                 data_type: "text",
-                                className: "form_field_FirstName",
+                                className: "form_field_ShortName",
                                 required: "true",
                                 placeholder:"Имя",
                                 icon:"account_circle"
@@ -425,13 +425,13 @@ function cart_dialog_class(object_ref) {
                                 icon:"phone"
                             },
                             {
-                                description: "Адрес электронной почты",
+                                description: "email",
                                 name: "email",
                                 dom_type: "input",
                                 data_type: "email",
                                 className: "form_field_Email",
                                 required: "true",
-                                icon:"phone",
+                                icon:"email",
                                 placeholder:"email"
                             }
                         ]
@@ -442,17 +442,32 @@ function cart_dialog_class(object_ref) {
                         className: "field_group_Delivery",
                         fields: [
                             {
-                                description: "Адрес электронной почты1231231221",
-                                name: "email41232121",
-                                dom_type: "input",
-                                data_type: "email",
-                                className: "form_field_Email4123123",
-                                required: "true",
-                                placeholder:"email123213"
+                                description: "Метод Доставки",
+                                name: "Delivery_Type",
+                                dom_type: "select",
+                                options: [
+                                    {
+                                        name: "самовывоз из чайной (Москва)",
+                                        value: "pickup",
+                                        attributes: ["selected"]
+                                    },
+                                    {
+                                        name: "доставка курьером (Москва)",
+                                        value: "delivery"
+
+                                    },
+                                    {
+                                        name: "Доставка почтой России в регионы",
+                                        value: "delivery"
+
+                                    }
+                                ],
+                                className: "form_field_Delivery_Type",
+                                required: "true"
                             },
                             {
-                                description: "Адрес243 электро213213213нной почты",
-                                name: "email2432112212312134",
+                                description: "Field_5",
+                                name: "email",
                                 dom_type: "input",
                                 data_type: "email",
                                 className: "form_field_Email212331212122121123434",
@@ -493,6 +508,37 @@ function cart_dialog_class(object_ref) {
                                 }*!/
                             },*/
                         ]
+                    },
+                    {
+                        name: "Payment",
+                        label: "Метод оплаты",
+                        className: "field_group_Payment",
+                        fields: [
+                            {
+                                description: "Метод Оплаты",
+                                name: "Payment_Type",
+                                dom_type: "select",
+                                options: [
+                                    {
+                                        name: "Оплата наличными курьеру",
+                                        value: "cash_logistics",
+                                        attributes: ["selected"]
+                                    },
+                                    {
+                                        name: "Оплата картой курьеру",
+                                        value: "credit_logistics"
+
+                                    },
+                                    {
+                                        name: "Предоплата картой на сайте",
+                                        value: "credit_website"
+
+                                    }
+                                ],
+                                className: "form_field_Payment_Type",
+                                required: "true"
+                            },
+                                ]
                     },
                     /*{
                         name: "Test1",
@@ -536,7 +582,7 @@ function cart_dialog_class(object_ref) {
                         ]
                     }*/
                 ],
-                sub_forms: [
+               /* sub_forms: [
                     {
                         name: "delivery_delivery",
                         field_groups: [
@@ -596,7 +642,7 @@ function cart_dialog_class(object_ref) {
                         ]
                     }
 
-                ]
+                ]*/
             }
 
         };
@@ -674,7 +720,8 @@ function cart_dialog_class(object_ref) {
             return (footer_div);
         }
 
-        function form_builder() {
+        function form_builder()
+        {
             try
             {
                 var saved_data = JSON.parse(window.localStorage.getItem('cart_form_data'));
@@ -688,16 +735,17 @@ function cart_dialog_class(object_ref) {
             form.className = 'container cart_information_form';
             for (var form_group in screen_data.form_data.field_groups)
             {
-
+                var group_div_main = document.createElement('div');
                 var group_div = document.createElement('div');
                 group_div.id = screen_data.form_data.field_groups[form_group].name;
                 group_div.className = screen_data.form_data.field_groups[form_group].className;
                 group_div.className += '  cart_information_form_section';
                 var group_title = document.createElement('h4');
-                group_div.appendChild(group_title);
+                group_div_main.appendChild(group_title);
+                group_div_main.appendChild(group_div);
                 group_title.innerText = screen_data.form_data.field_groups[form_group].label;
-                group_title.className = "blue-text THIN";
-                group_title.style = "text-align:center; margin-bottom:5%";
+                group_title.className = "Grey-text thin cart_dialog_personal_data_title";
+                group_title.style = "text-align:center;";
                 for (var field in screen_data.form_data.field_groups[form_group].fields) {
 
                     var field_div = document.createElement('div');
@@ -760,14 +808,18 @@ function cart_dialog_class(object_ref) {
                         field_obj.setAttribute('type', screen_data.form_data.field_groups[form_group].fields[field].data_type);
                     }
 
-                    if (screen_data.form_data.field_groups[form_group].fields[field].dom_type == 'select') {
-                        for (var option in screen_data.form_data.field_groups[form_group].fields[field].options) {
+                    if (screen_data.form_data.field_groups[form_group].fields[field].dom_type == 'select')
+                    {
+                        for (var option in screen_data.form_data.field_groups[form_group].fields[field].options)
+                        {
                             var option_obj = document.createElement('option');
                             option_obj.innerText = screen_data.form_data.field_groups[form_group].fields[field].options[option].name;
                             option_obj.value = screen_data.form_data.field_groups[form_group].fields[field].options[option].value;
                             for (var attribute in screen_data.form_data.field_groups[form_group].fields[field].options[option].attributes) {
                                 option_obj.setAttribute(screen_data.form_data.field_groups[form_group].fields[field].options[option].attributes[attribute], "");
                             }
+                            field_description.className += 'field_description_select';
+
                             field_obj.appendChild(option_obj);
                         }
                     }
@@ -799,24 +851,24 @@ function cart_dialog_class(object_ref) {
                         }
                     }
 
-                   /* console.log('assign ' );
-                    console.log(field_icon);
-                    console.log(' to ');
-                    console.log(field_div);
-*/
-                    field_div.appendChild(field_icon);
+                    if(screen_data.form_data.field_groups[form_group].fields[field].icon != null)
+                    {
+                        field_div.appendChild(field_icon);
+                    }
+
                     field_div.appendChild(field_description);
                     field_div.appendChild(field_obj);
                     group_div.appendChild(field_div);
 
-                    if (screen_data.form_data.field_groups[form_group].fields[field].data_type == 'checkbox') {
+                    if (screen_data.form_data.field_groups[form_group].fields[field].data_type == 'checkbox')
+                    {
                         field_div.innerHTML = '';
                         field_div.appendChild(field_obj);
                         field_div.appendChild(field_description);
                     }
 
                 }
-                form.appendChild(group_div);
+                form.appendChild(group_div_main);
             }
             return (form);
 
