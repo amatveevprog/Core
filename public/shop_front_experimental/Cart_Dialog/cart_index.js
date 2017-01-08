@@ -419,7 +419,18 @@ function cart_dialog_class(object_ref) {
                                 required: "true",
                                 icon:"email",
                                 placeholder:"email"
-                            }
+                            },
+                            {
+                                description: "вероисповедание",
+                                name: "religion",
+                                dom_type: "input",
+                                data_type: "text",
+                                className: "form_field_religion",
+                                required: "true",
+                                icon:"wb_sunny",
+                                placeholder:"email"
+                            },
+
                         ]
                     },
                     {
@@ -435,31 +446,24 @@ function cart_dialog_class(object_ref) {
                                     {
                                         name: "самовывоз из чайной (Москва)",
                                         value: "pickup",
-                                        attributes: ["selected"]
+                                        attributes: ["selected"],
+                                        message:'САМАВЫВАЗ ИЗ ЧАЙНОЙ, <br/> <h1> ХАЛЯВА</h1>'
                                     },
                                     {
                                         name: "доставка курьером (Москва)",
-                                        value: "delivery"
+                                        value: "delivery",
+                                        message:'ДАСТАВКА КУРЬЕРОМ, <br/> <h1> КУРИЕР </h1>'
 
                                     },
                                     {
                                         name: "Доставка почтой России в регионы",
-                                        value: "delivery"
+                                        value: "delivery_post",
+                                        message:'ПОЧТА РАССИИ'
 
                                     }
                                 ],
                                 className: "form_field_Delivery_Type",
                                 required: "true"
-                            },
-                            {
-                                description: "Адрес доставки",
-                                name: "Delivery_Address",
-                                dom_type: "input",
-                                data_type: "text",
-                                className: "Delivery_Address",
-                                required: "true",
-                                placeholder:"address",
-
                             }
                            /* {
                                 description: "Возможные варианты доставки",
@@ -658,12 +662,12 @@ function cart_dialog_class(object_ref) {
             var form_render = form_builder();
             screen.appendChild(form_render);
             var button = document.createElement('button');
-            button.innerText = 'Test!';
-            button.onclick = function()
-            {
-                get_data_from_form()
-            };
-            screen.appendChild(button);
+            // button.innerText = 'Test!';
+            // button.onclick = function()
+            // {
+            //     get_data_from_form()
+            // };
+            // //screen.appendChild(button);
             return (screen);
         }
 
@@ -784,7 +788,8 @@ function cart_dialog_class(object_ref) {
                     }
                     else {
                         //Then just set save to Storage
-                        field_obj.onchange = function (e) {get_data_from_form()};
+                        field_obj.onchange = function (e) {get_data_from_form(e)};
+                        field_obj.id = 'select_'+screen_data.form_data.field_groups[form_group].fields[field].name;
                     }
 
                     if (screen_data.form_data.field_groups[form_group].fields[field].name != null) {
@@ -1007,8 +1012,9 @@ function cart_dialog_class(object_ref) {
 
         //get all the data from form
 
-        function get_data_from_form()
+        function get_data_from_form(e)
         {
+            console.log(e);
             // 1) prepare the structure
             //var form_fields = document.forms["delivery_and_pickup_form"].getElementsByTagName("input");
             var form_data = {};
@@ -1016,10 +1022,11 @@ function cart_dialog_class(object_ref) {
             for(var key in screen_data.form_data.field_groups)
             {
                 form_data[screen_data.form_data.field_groups[key].name] = {};
-              for(var key2 in screen_data.form_data.field_groups[key].fields) {
+              for(var key2 in screen_data.form_data.field_groups[key].fields)
+              {
                   try
                   {
-                  form_data[screen_data.form_data.field_groups[key].name][screen_data.form_data.field_groups[key].fields[key2].name] = document.getElementById(screen_data.form_data.field_groups[key].fields[key2].name).value;
+                   form_data[screen_data.form_data.field_groups[key].name][screen_data.form_data.field_groups[key].fields[key2].name] = document.getElementById(screen_data.form_data.field_groups[key].fields[key2].name).value;
                   }
                   catch(e)
                   {
@@ -1039,7 +1046,7 @@ function cart_dialog_class(object_ref) {
                             form_data[screen_data.form_data.sub_forms[key0].field_groups[key].name][screen_data.form_data.sub_forms[key0].field_groups[key].fields[key2].name] = document.getElementById(screen_data.form_data.sub_forms[key0].field_groups[key].fields[key2].name).value;
                         }
                         catch (e) {
-                            console.log(e.toString());
+                            //console.log(e.toString());
                         }
 
                     }
@@ -1057,19 +1064,55 @@ function cart_dialog_class(object_ref) {
 
         this.add_logic_to_form = function()
         {
-
             delivery_type_logic();
         }
 
         //Custom Logic
           // Delivery Form
         function delivery_type_logic()
-        {
-            document.getElementById('field_group_Delivery_Type').childNodes[1].addEventListener('onchange',function(e)
-            {
-                console.log(e);
-                console.log('Keksik the best!!!');
-            });
+         {
+             //draw this shit
+             function draw_new_div(option)
+             {
+                 main_block = document.getElementsByClassName('field_group_Delivery');
+                 try
+                 {
+                     new_div = document.getElementById('delivery_option_details');
+                     new_div.innerHTML = '';
+                 }
+                 catch(e)
+                 {
+                     var new_div = document.createElement('div');
+                     new_div.id = 'delivery_option_details';
+                 }
+
+                 for(var i in screen_data.form_data.field_groups[1].fields[0].options)
+                 {
+                      if(screen_data.form_data.field_groups[1].fields[0].options[i].value == option)
+                      {
+                          new_div.innerHTML = screen_data.form_data.field_groups[1].fields[0].options[i].message;
+                      }
+                 }
+                 main_block[0].appendChild(new_div);
+             }
+               console.log('Well, Adding event listener to select');
+               elements = document.getElementById('field_group_Delivery_Type').childNodes[1].childNodes[2];
+               console.log(elements);
+               for(var i = 0; i <= elements.childNodes.length-1; i++)
+               {
+                   console.log(elements.childNodes[i]+'  ' +i);
+                   document.getElementById('field_group_Delivery_Type').childNodes[1].childNodes[2].childNodes[i].addEventListener('click',function()
+                   {
+                       draw_new_div(document.getElementById('select_Delivery_Type').value);
+                   });
+               }
+
+        //     document.getElementById('field_group_Delivery_Type').childNodes[1].onChange = function(){console.log('qwerty')};
+        //     document.getElementById('field_group_Delivery_Type').childNodes[1].childNodes[3].addEventListener('change',function(e)
+        //     {
+        //         console.log(e);
+        //         console.log('Keksik the best!!!');
+        //     },false);
         }
 
     };
@@ -1204,14 +1247,15 @@ function cart_dialog_class(object_ref) {
 
                 body_div.innerHTML = '';
                 body_div.appendChild(screen_2_object);
-                console.log('welll');
-                console.log(screen_2_render );
-                screen_2_render.add_logic_to_form();
 
-                $(document).ready(function () {
+                $(document).ready(function ()
+                {
+                    screen_2_render.add_logic_to_form();
                     $('select').material_select();
-
+                    screen_2_render.add_logic_to_form();
                 });
+
+
                 break;
             }
             case 'screen_1': {
