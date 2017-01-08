@@ -204,3 +204,13 @@
 {
     color:grey;
 }
+
+.delivery_option_details_div
+{
+    text-align:left;
+}
+
+.select_pickup_point_address_div
+{
+    width:30%;
+}

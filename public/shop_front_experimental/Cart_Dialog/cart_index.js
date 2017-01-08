@@ -445,9 +445,21 @@ function cart_dialog_class(object_ref) {
                                 options: [
                                     {
                                         name: "самовывоз из чайной (Москва)",
-                                        value: "pickup",
+                                        value: "pickup_from_point",
                                         attributes: ["selected"],
-                                        message:'САМАВЫВАЗ ИЗ ЧАЙНОЙ, <br/> <h1> ХАЛЯВА</h1>'
+                                        message:'САМАВЫВАЗ ИЗ ЧАЙНОЙ, <br/> <h5> ХАЛЯВА</h5><br/> Выберите место, откуда будет удобно забрать чай:',
+                                        options:
+                                            [
+                                                {
+                                                    description:"чайная на красной площади",
+                                                    name:"red_square"
+                                                },
+                                                {
+                                                    description:"чайная в горах Хуань",
+                                                    name:"huan_mountains"
+                                                }
+                                            ]
+
                                     },
                                     {
                                         name: "доставка курьером (Москва)",
@@ -458,7 +470,7 @@ function cart_dialog_class(object_ref) {
                                     {
                                         name: "Доставка почтой России в регионы",
                                         value: "delivery_post",
-                                        message:'ПОЧТА РАССИИ'
+                                        message:'ПОЧТА РАССИИ  <br/> * Долго, Дешего, Не туда'
 
                                     }
                                 ],
@@ -728,7 +740,7 @@ function cart_dialog_class(object_ref) {
                 var group_div = document.createElement('div');
                 group_div.id = screen_data.form_data.field_groups[form_group].name;
                 group_div.className = screen_data.form_data.field_groups[form_group].className;
-                group_div.className += '  cart_information_form_section';
+                group_div.className += ' cart_information_form_section';
                 var group_title = document.createElement('h4');
                 group_div_main.appendChild(group_title);
                 group_div_main.appendChild(group_div);
@@ -1065,25 +1077,30 @@ function cart_dialog_class(object_ref) {
         this.add_logic_to_form = function()
         {
             delivery_type_logic();
+
         }
 
         //Custom Logic
           // Delivery Form
         function delivery_type_logic()
          {
-             //draw this shit
+             // draw delivery description
              function draw_new_div(option)
              {
                  main_block = document.getElementsByClassName('field_group_Delivery');
+
                  try
                  {
+                     console.log('found block');
                      new_div = document.getElementById('delivery_option_details');
+                     console.log(new_div);
                      new_div.innerHTML = '';
                  }
                  catch(e)
                  {
                      var new_div = document.createElement('div');
                      new_div.id = 'delivery_option_details';
+                     new_div.className = 'delivery_option_details_div';
                  }
 
                  for(var i in screen_data.form_data.field_groups[1].fields[0].options)
@@ -1093,7 +1110,53 @@ function cart_dialog_class(object_ref) {
                           new_div.innerHTML = screen_data.form_data.field_groups[1].fields[0].options[i].message;
                       }
                  }
+
+
+
+                 //add input fields
+                 switch(option)
+                 {
+                     case 'pickup_from_point':
+                     {
+
+                      //console.log('rendering...');
+                      var fields_options = pickup_options();
+                      new_div.appendChild(fields_options);
+                      $('#delivery_options_address_select').material_select();
+                      break;
+                     }
+
+                 }
                  main_block[0].appendChild(new_div);
+
+             }
+
+             // generate options for pickup
+             function pickup_options()
+             {
+               var div_block = document.createElement('div');
+               div_block.className = 'right-align select_pickup_point_address_div';
+               var address_select = document.createElement('select');
+               address_select.id = 'delivery_options_address_select';
+               console.log('Options = ');
+               console.log(screen_data.form_data.field_groups[1].fields[0].options[0].options);
+               for(var i in screen_data.form_data.field_groups[1].fields[0].options[0].options)
+               {
+                   var option = document.createElement('option');
+                   option.value = screen_data.form_data.field_groups[1].fields[0].options[0].options[i].name;
+                   option.innerText = screen_data.form_data.field_groups[1].fields[0].options[0].options[i].description;
+                   address_select.appendChild(option);
+               }
+
+               div_block.appendChild(address_select);
+               //console.log(div_block);
+               return(div_block);
+             }
+
+             // generate address field for delivery
+             function delivery()
+             {
+
              }
                console.log('Well, Adding event listener to select');
                elements = document.getElementById('field_group_Delivery_Type').childNodes[1].childNodes[2];
