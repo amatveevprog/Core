@@ -159,7 +159,7 @@ function shop_engine_read_from_storage(resolve,reject)
 
     //INIT catalog
 
-//верстальшик сделал больше строк
+    //masonry element
 
     var element_html_template = '<div class="card" style = "min-width:225px; max-width:240px; max-height:365px;box-shadow:none" onclick = "open_item('+ "&catalog_tile_open_item&" +')">' +
         '<div class="card-image waves-effect waves-block waves-light">   ' +
@@ -323,7 +323,7 @@ shop_engine_init = new Promise(function(resolve, reject)
 
         //INIT catalog
 
-//верстальшик сделал больше строк
+//masonry element
 
         var element_html_template = '<div class="card" style = "min-width:225px; max-width:240px; max-height:365px;box-shadow:none" onclick = "open_item('+ "&catalog_tile_open_item&" +')">' +
             '<div class="card-image waves-effect waves-block waves-light">   ' +
