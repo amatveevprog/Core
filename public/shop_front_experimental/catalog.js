@@ -93,7 +93,7 @@ function catalog()
      var price = item.price;
      var id = item.id;
      var item_container_div = document.createElement('div');
-     item_container_div.className = 'col s12 m6 l4 4';
+     item_container_div.className = 'col s12 m6 l4 4 hoverable';
      item_container_div.id = id;  
     
      var element_html = item_template;

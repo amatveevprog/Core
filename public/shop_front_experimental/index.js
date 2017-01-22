@@ -166,9 +166,8 @@ function shop_engine_read_from_storage(resolve,reject)
         '<img id = "catalog_tile_image_src" class="activator" src="'
         + " &catalog_tile_image_src&" + '" style = "height: 200px; min-width:225px; max-width:240px;">     </div>' +
         '<div class="card-content"><span id = "catalog_tile_label"  class="card-title activator truncate grey-text text-darken-4">'
-        + "&catalog_tile_label&"+'<br></span> <div class = "row"><div class = "col m19 s9 l9 9"><p><a id = "catalog_tile_open_item" class="waves-effect waves-light btn" style="width:145px; text-align: left;" onclick = "open_item('
-        + "&catalog_tile_open_item&"+')">ПОДРОБНЕЕ</a></p></div><div class = "col m8 s3 l3 3"><h6 id = "catalog_tile_price" style="font-size: 130%">'
-        +"&catalog_tile_price&"+ '</h6></div></div></div> </div>';
+        + "&catalog_tile_label&"+'<br></span> <div class = "row"><h6 id = "catalog_tile_price" style="font-size: 130%; text-align: center">'
+        +"&catalog_tile_price&"+ '<img src="http://lamcdn.net/the-village.ru/post_image-image/VH8zUVbOtjPGSVSkuovNyg-article.png" height="15px" width="15px"></h6></div></div> </div>';
 
     try
     {
@@ -330,9 +329,8 @@ shop_engine_init = new Promise(function(resolve, reject)
             '<img id = "catalog_tile_image_src" class="activator" src="'
             + " &catalog_tile_image_src&" + '" style = "height: 200px; min-width:225px; max-width:240px;">     </div>' +
             '<div class="card-content"><span id = "catalog_tile_label"  class="card-title activator truncate grey-text text-darken-4">'
-            + "&catalog_tile_label&"+'<br></span> <div class = "row"><div class = "col m19 s9 l9 9"><p><a id = "catalog_tile_open_item" class="waves-effect waves-light btn" style="width:145px; text-align: left;" onclick = "open_item('
-            + "&catalog_tile_open_item&"+')">ПОДРОБНЕЕ</a></p></div><div class = "col m8 s3 l3 3"><h6 id = "catalog_tile_price" style="font-size: 130%">'
-            +"&catalog_tile_price&"+ '</h6></div></div></div> </div>';
+            + "&catalog_tile_label&"+'<br></span> <div class = "row"><h6 id = "catalog_tile_price" style="font-size: 130%; text-align: center">'
+            +"&catalog_tile_price&"+ '<img src="http://lamcdn.net/the-village.ru/post_image-image/VH8zUVbOtjPGSVSkuovNyg-article.png" height="15px" width="15px"></h6></div></div> </div>';
 
             catalog_object.tile_item_template = element_html_template;
 
