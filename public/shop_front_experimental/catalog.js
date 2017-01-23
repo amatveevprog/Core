@@ -94,8 +94,8 @@ function catalog()
      var id = item.id;
      var item_container_div = document.createElement('div');
      item_container_div.className = 'col s12 m6 l4 4 hoverable';
-     item_container_div.id = id;  
-    
+     item_container_div.id = id;
+
      var element_html = item_template;
      element_html = element_html.replace("&catalog_tile_image_src&", image_src);
      element_html = element_html.replace("&catalog_tile_label&",label);
