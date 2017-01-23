@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="shop_front_experimental/styles.css">
+  <link rel="stylesheet" href='/shop_front_experimental/Search_Widget/style.css'>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css" media="screen,projection">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+
+<head>
+ <body class="grey lighten-4">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+       <div style = ' background:white'>
+            <div>
+            </div>
+       </div>
+
+  <nav>
+      <div class="nav-wrapper green">
+          <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+          <ul class="right hide-on-med-and-down">
+              <li><a href="sass.html">Где мы берем чай</a></li>
+              <li><a href="badges.html">Оптовым клиентам</a></li>
+              <li><a href="collapsible.html">Адреса Чайных</a></li>
+              <li><a href="mobile.html">Чайная школа</a></li>
+              <li><a href="mobile.html">Чайные церемонии</a></li>
+              <li><a href="mobile.html">Выездной бар</a></li>
+          </ul>
+          <ul class="side-nav" id="mobile-demo">
+              <li><a href="sass.html">Где мы берем чай</a></li>
+              <li><a href="badges.html">Оптовым клиентам</a></li>
+              <li><a href="collapsible.html">Адреса Чайных</a></li>
+              <li><a href="mobile.html">Чайная школа</a></li>
+              <li><a href="mobile.html">Чайные церемонии</a></li>
+              <li><a href="mobile.html">Выездной бар</a></li>
+          </ul>
+      </div>
+  </nav>
+
+
+  <div class = "col s12 m12 l12 12" style = "position:fixed; width:100%; z-index:100;background:#FAFAFA">
+       </div>
+
+       <div class = "row header_line" style = "margin-bottom:0px;" >
+           <div class = 'col s6 m2 l2 2'>
+            <div class = 'row' style = 'margin-bottom:0px;'>
+                <img src="https://pp.vk.me/c836435/v836435222/15029/1erC8kqDdaQ.jpg" style="sidth:80px;height:80px; margin-top:10px; margin-left:30%;">
+            </div>
+           </div>
+           <div class = 'col s6 m2 l2 2'>
+               <div class = 'row' style = 'margin-top:10%; margin-bottom:0px; color:green; font-size:large'>
+                   Магазин Настоящего Чая
+               </div>
+               <div class = 'row' style = 'margin-bottom:0px;'>
+                   +8 988 898 98 89
+               </div>
+           </div>
+
+           <div class = 'col s12 m6 l6 6'>
+               <div class = 'row' style = 'margin-bottom:0px;'>
+
+                   <div class = "search_div">
+                       <input class = 'dropdown-button-search short-search' data-beloworigin="true" class = "color:white" type="text" id="searchfield" data-activates='dropdown' placeholder="Поиск по сайту">
+                       <a class="btn btn-small waves-effect waves-light green" onclick="find(document.getElementById('searchfield').value)"><i class="material-icons">search</i></a>
+                       <!--<button id="search_btn" onclick="find(document.getElementById('searchfield').value)"></button>-->
+                       <ul id = 'dropdown' class = 'dropdown-content'>
+
+                       </ul>
+                   </div>
+               </div>
+           </div>
+
+
+           <div class = 'col s12 m2 l2 2 hoverable'>
+              <div class = 'row' id = 'shopping_cart_wrapper' >
+              </div>
+          </div>
+        </div>
+
+
+
+
+
+  <div class = 'col s12 m12 l12 12 hide-on-small-only' id = 'types_area'>
+  </div>
+
+
+<div id = 'main_area' style = 'margin-top:5%;background:#f5f5f5' class = 'row' style = 'margin-top:20%;'>
+
+
+<div class = 'col s12 m2 l2 2 hide-on-small-only' >
+  <div id = 'category_sidebar' class = '' >
+    <div style = 'white'>
+        <!-- Accordeon -->
+        <div id = 'category_widget_div'>
+
+         </div>
+   </div>
+  </div>
+</div>
+
+<!-- STart Main Catalog Area-->
+<div class = 'col s12 m10 l10 10 '>
+ <div class="container">
+   <!-- Search Area -->
+   <div class="row center-align" style = 'margin-top:1.5%;padding:20px;background:white' >
+    область сортировки
+   </div>
+
+     <div id="results"></div>
+   <div class="row center-align" id = 'items_area' style = 'margin-top:3%;'>
+   </div>
+
+ </div>
+ </div>
+</div>
+
+<!-- modal window -->
+<div id="modal_window" class="modal  modal-fixed-footer" style = 'width:95%; overflow:visible'>
+  <div class="modal-content" id = 'modal_content' style = 'overflow:auto'>
+  </div>
+  <div class="modal-footer" id = 'modal_footer'>
+  </div>
+</div>
+
+<!-- modal window cart -->
+
+<div id = "modal_cart" class="modal modal-fixed-footer grey lighten-4" style = 'top:0%; width:100%; height:100%; max-height:100%;'>
+  <div class="modal-content" id = 'modal_content_cart'>
+  </div>
+  <div class="modal-footer" id = 'modal_footer_cart'>
+    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Назад</a>
+  </div>
+</div>
+
+
+
+<div>
+</div>
+
+
+  <!-- Footer !-->
+
+  <div class = "col s12 m12 l12 12" style = "background: #4AB04D; height:100px">
+       <p>
+            Магазин Настоящего чая
+       </p>
+      <p>
+            +7 987 789 98 89
+      </p>
+      <p>
+          ООО 'Время чая'
+      </p>
+      <p>
+          (с) Tea Time SHop Ru
+      </p>
+  </div>
+ </body>
+</html>
+
+<script src = 'SHOP_FRONT_PRODUCTION/bundle.js'></script>
+
+<!--<script>-->
+<!--//pin header-->
+<!--/*-->
+<!--$(document).ready(function(){-->
+   <!--$('.tabs-wrapper .row .header').pushpin({ top: $('.tabs-wrapper .header').offset().top });-->
+ <!--});-->
+<!--*/-->
+ <!--//Drop-Down init-->
+ <!--$('.dropdown-button').dropdown({-->
+    <!--inDuration: 300,-->
+    <!--outDuration: 225,-->
+    <!--constrain_width: false, // Does not change width of dropdown to that of the activator-->
+    <!--hover: true, // Activate on hover-->
+    <!--gutter: 0, // Spacing from edge-->
+    <!--belowOrigin: false, // Displays dropdown below the button-->
+    <!--alignment: 'left' // Displays dropdown with edge aligned to the left of button-->
+  <!--}-->
+<!--);-->
+
+<!--//modal settings-->
+<!--$('.modal-trigger').leanModal({-->
+      <!--dismissible: true, // Modal can be dismissed by clicking outside of the modal-->
+      <!--opacity: .5, // Opacity of modal background-->
+      <!--in_duration: 300, // Transition in duration-->
+      <!--out_duration: 200, // Transition out duration-->
+    <!--}-->
+  <!--);-->
+
+<!--//tabs-wrapper-->
+
+<!--//INIT Tabs-->
+<!--$(document).ready(function(){-->
+   <!--$('ul.tabs').tabs();-->
+   <!--$(".button-collapse").sideNav();-->
+ <!--});-->
+
+
+<!--</script>-->
+<!--<script src = 'shop_front_experimental/catalog.js'>-->
+<!--</script>-->
+<!--<script src = 'shop_front_experimental/item_card.js'>-->
+<!--</script>-->
+<!--<script src = 'shop_front_experimental/cart.js'>-->
+<!--</script>-->
+<!--<script src = 'shop_front_experimental/ClientServer.js'>-->
+<!--</script>-->
+<!--<script src = 'shop_front_experimental/Test_Category_Widget/categories_widget.js'>-->
+<!--</script>-->
+<!--<script src = 'shop_front_experimental/Test_Category_Widget/types_widget.js'>-->
+<!--</script>-->
+<!--<script src = 'shop_front_experimental/index.js'>-->
+<!--</script>-->
+<!--<script src = 'shop_front_experimental/session.js'>-->
+<!--</script>-->
+<!--<script src = 'shop_front_experimental/Cart_Dialog/cart_index.js'>-->
+<!--</script>-->
+<!--<script src='shop_front_experimental/Search_Widget/search.config.js'></script>-->
+<!--<script src='shop_front_experimental/Search_Widget/search.js'></script>-->

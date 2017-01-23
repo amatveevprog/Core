@@ -1,5 +1,5 @@
 //[========================Product Catalog LOGIC==========================]
-
+console.log('Catalog required');
 function catalog()
 {
 
