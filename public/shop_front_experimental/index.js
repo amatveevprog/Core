@@ -161,10 +161,10 @@ function shop_engine_read_from_storage(resolve,reject)
 
     //masonry element
 
-    var element_html_template = '<div class="card" style = "margin: 1rem auto; min-width:225px; max-width:240px; max-height:365px;box-shadow:none" onclick = "open_item('+ "&catalog_tile_open_item&" +')">' +
+    var element_html_template = '<div class="card" style = "margin: 1rem auto; min-width:200px; max-width:250px; max-height:300px;box-shadow:none;padding: 0% !important;" onclick = "open_item('+ "&catalog_tile_open_item&" +')">' +
         '<div class="card-image waves-effect waves-block waves-light">   ' +
         '<img id = "catalog_tile_image_src" class="activator" src="'
-        + " &catalog_tile_image_src&" + '" style = "height: 200px; min-width:225px; max-width:240px;">     </div>' +
+        + " &catalog_tile_image_src&" + '" style = "height: 200px; min-width:180px; max-width:250px;">     </div>' +
         '<div class="card-content"><span id = "catalog_tile_label"  class="card-title activator truncate grey-text text-darken-4">'
         + "&catalog_tile_label&"+'<br></span> <div class = "row"><h6 id = "catalog_tile_price" style="font-size: 130%; text-align: center; color: limegreen">'
         +"&catalog_tile_price&"+ '<img src="http://lamcdn.net/the-village.ru/post_image-image/VH8zUVbOtjPGSVSkuovNyg-article.png" height="15px" width="15px"></h6></div></div> </div>';
@@ -327,10 +327,10 @@ shop_engine_init = new Promise(function(resolve, reject)
         var element_html_template = '<div class="card" style = "margin: 1rem auto; min-width:200px; max-width:250px; max-height:300px;box-shadow:none;padding: 0% !important;" onclick = "open_item('+ "&catalog_tile_open_item&" +')">' +
             '<div class="card-image waves-effect waves-block waves-light">   ' +
             '<img id = "catalog_tile_image_src" class="activator" src="'
-            + " &catalog_tile_image_src&" + '" style = "height: 180px; min-width:180px; max-width:250px;" ">     </div>' +
+            + " &catalog_tile_image_src&" + '" style = "height: 200px; min-width:180px; max-width:250px;" ">     </div>' +
             '<div class="card-content"><span id = "catalog_tile_label"  class="card-title activator truncate grey-text text-darken-4">'
             + "&catalog_tile_label&"+'<br></span> <div class = "row"><h6 id = "catalog_tile_price" style="font-size: 130%; text-align: center; color: limegreen">'
-            +"&catalog_tile_price&"+ '<img src="http://st.depositphotos.com/2780829/4907/i/110/depositphotos_49078393-stock-photo-green-russian-rouble-sign-on.jpg" height="15px" width="15px"></h6></div></div> </div>';
+            +"&catalog_tile_price&"+ '<img src="http://lamcdn.net/the-village.ru/post_image-image/VH8zUVbOtjPGSVSkuovNyg-article.png" height="15px" width="15px"></h6></div></div> </div>';
 
             catalog_object.tile_item_template = element_html_template;
 

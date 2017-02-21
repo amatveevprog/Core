@@ -11,7 +11,7 @@
         "categories":[
           {
             "id": "category_glass_pots",
-            "label": "Стеклянные"
+            "label": "Стекло"
           }
           ]
         },
@@ -22,7 +22,7 @@
           "categories":[
             {
               "id": "category_pottery_cups",
-              "label": "Глиненные"
+              "label": "Глина"
             }
           ]
         }

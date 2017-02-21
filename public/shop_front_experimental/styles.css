@@ -30,38 +30,50 @@
 
 .category_type_button
 {
-    font-family: times,times-roman, georgia, serif;
-    color: #444;
+    width: 25%;
+    font-family: roboto, times,times-roman, georgia, serif;
+    color: #000;
     margin: 0;
-    font-size: 20px;
-    line-height: 34px;
-    letter-spacing: 2px;
+    font-size: 15px;
+    line-height: 50px;
+    letter-spacing: 0px;
     font-weight: bold;
-    padding:5px 50px 5px 50px;
+    padding:2px 10px 2px 10px;
     border: none;
+    height: 200%;
 }
 
 .category_type_button:active
 {
-    background: #ef9a9a;
-    background-color: #ef9a9a;
+    background: #ffffff;
+    background-color: #ffffff;
+    transition: 3s;
 }
 .category_type_button:target
 {
-    background: #ef9a9a;
-    background-color: #ef9a9a;
+    color: #00ee00;
+    transition: 1s;
 }
 .category_type_button:focus
 {
-    background: #ef9a9a;
-    background-color: #ef9a9a;
+    background: #ffffff;
+    background-color: #ffffff;
+    transition: 3s;
 }
+.category_type_button:hover
+{
+    color: #00ee00;
+    transition: 1s;
+}
+
+
+
 .category_type_icon
 {
   height:30px;
   width: 30px;
   margin-left: 10px;
-
+  margin-bottom: -3px;
 }
 .short-search
 {
@@ -160,7 +172,7 @@
 
 .types_menu_bar
 {
-    background:#BBBBBB;
+    background:#dddddd;
 }
 
 .ul_fasset_widget
